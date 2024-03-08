@@ -10,14 +10,18 @@ func opening_door():
 	$StaticBody2D/AnimationPlayer.play("Opening")
 	await $StaticBody2D/AnimationPlayer.animation_finished
 	$StaticBody2D/AnimationPlayer.play("Opened")
-	$StaticBody2D/CollisionShape2D.disabled = true
+	$StaticBody2D/closed_door_collision.disabled = true
+	$StaticBody2D/opened_door_collision.disabled = false
+	$StaticBody2D/opened_door_collision2.disabled = false
 	door_closed = false
 
 func closing_door():
 	$StaticBody2D/AnimationPlayer.play("Closing")
 	await $StaticBody2D/AnimationPlayer.animation_finished
 	$StaticBody2D/AnimationPlayer.play("Closed")
-	$StaticBody2D/CollisionShape2D.disabled = false
+	$StaticBody2D/closed_door_collision.disabled = false
+	$StaticBody2D/opened_door_collision.disabled = true
+	$StaticBody2D/opened_door_collision2.disabled = true	
 	door_closed = true
 
 func _on_area_2d_body_entered(body):

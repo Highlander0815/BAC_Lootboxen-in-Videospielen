@@ -841,7 +841,7 @@ sources/5 = SubResource("TileSetAtlasSource_fxgb4")
 
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(-322, -158)
+position = Vector2(-320, -160)
 
 [node name="PlayerCat" parent="." instance=ExtResource("1_8rr7t")]
 position = Vector2(345, 164)
