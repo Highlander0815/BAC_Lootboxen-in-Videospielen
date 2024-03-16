@@ -82,7 +82,7 @@ _data = {
 size = Vector2(2, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_616ga"]
-size = Vector2(12, 28)
+size = Vector2(12, 27)
 
 [node name="Door" type="Sprite2D"]
 texture = ExtResource("1_wjp4u")
@@ -113,7 +113,7 @@ shape = SubResource("RectangleShape2D_dnfvm")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_616ga")
 debug_color = Color(0, 0.65098, 0.0352941, 0.419608)
 

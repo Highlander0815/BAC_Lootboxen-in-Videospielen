@@ -8,6 +8,7 @@ enum COW_STATE { IDLE, WALK }
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var sprite = $Sprite2D
 @onready var timer = $Timer
+@onready var collision = $CollisionShape2D
 
 var move_direction : Vector2 = Vector2.ZERO
 var current_state : COW_STATE = COW_STATE.IDLE
@@ -40,6 +41,11 @@ func select_new_direction():
 		sprite.flip_h = true
 	elif(move_direction.x > 0):
 		sprite.flip_h = false
+		
+	if (sprite.flip_h):
+		collision.position.x = 2
+	else:
+		collision.position.x = -2
 
 func pick_new_state():
 	if(current_state == COW_STATE.IDLE):

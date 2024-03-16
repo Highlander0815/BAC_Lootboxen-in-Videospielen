@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ci2vir4lph004" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_0upcq"]
 [ext_resource type="Script" path="res://Characters/player_cat.gd" id="1_dgsuv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3skhl"]
-size = Vector2(10, 6)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7hnq"]
+radius = 4.0
+height = 8.0
 
 [sub_resource type="Animation" id="Animation_xfjlh"]
 length = 0.001
@@ -236,16 +237,19 @@ states/Walk/position = Vector2(526, 100)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_k46fd"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_gm5nj"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_76vfq")]
 
 [node name="PlayerCat" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_dgsuv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
 texture = ExtResource("1_0upcq")
 hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_3skhl")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j7hnq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

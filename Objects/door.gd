@@ -4,8 +4,8 @@ var door_closed = true
 var player_entered = false
 
 func _ready():
-	$Info_press.visible = false
-
+	pass
+	
 func opening_door():
 	$StaticBody2D/AnimationPlayer.play("Opening")
 	await $StaticBody2D/AnimationPlayer.animation_finished
@@ -27,15 +27,13 @@ func closing_door():
 func _on_area_2d_body_entered(body):
 	if body.name == "PlayerCat":
 		player_entered = true
-		$Info_press.visible = true
 
 func _on_area_2d_body_exited(_body):
-	$Info_press.visible = false
 	player_entered = false
 
 		
 func _input(_event):
-	if Input.is_action_just_pressed("interact_door") && player_entered == true:
+	if Input.is_action_just_pressed("interact") && player_entered == true:
 		if (door_closed):
 			opening_door()
 		elif (!door_closed):
