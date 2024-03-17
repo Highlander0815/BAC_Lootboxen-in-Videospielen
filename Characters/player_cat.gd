@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var move_speed : float = 80
 @export var starting_direction : Vector2 = Vector2(0, 1)
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
+
+signal facing_direction_change(facing : String)
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -17,16 +21,14 @@ func _physics_process(_delta):
 	).normalized()
 	
 	update_animation_parameters(input_direction)
-	
-	#print(input_direction)
-	
+
 	# Update velocity
 	velocity = input_direction * move_speed
 	
 	# Move and Slide function uses velocity of character body to move character on map
 	move_and_slide()
 	
-	#print(velocity)
+	move_direction(input_direction)
 	
 	pick_new_state()
 	
@@ -42,3 +44,13 @@ func pick_new_state():
 		state_machine.travel("Walk")
 	else:
 		state_machine.travel("Idle")
+
+func move_direction(input_direction : Vector2):
+	if (input_direction.x > 0.8):
+		emit_signal("facing_direction_change", "E")
+	if (input_direction.x < -0.8):
+		emit_signal("facing_direction_change", "W")
+	if (input_direction.y > 0.8):
+		emit_signal("facing_direction_change", "S")
+	if (input_direction.y < -0.8):
+		emit_signal("facing_direction_change", "N")

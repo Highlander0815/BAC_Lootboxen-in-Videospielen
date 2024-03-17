@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://bk774ufcr67pd"]
+[gd_scene load_steps=31 format=3 uid="uid://bk774ufcr67pd"]
 
 [ext_resource type="Texture2D" uid="uid://ci2vir4lph004" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_0upcq"]
 [ext_resource type="Script" path="res://Characters/player_cat.gd" id="1_dgsuv"]
+[ext_resource type="Script" path="res://Characters/Hitbox.gd" id="3_5v2m8"]
+[ext_resource type="Script" path="res://Characters/facing_hitbox.gd" id="4_0qva8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7hnq"]
 radius = 4.0
@@ -236,6 +238,10 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ypy66")
 states/Walk/position = Vector2(526, 100)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_k46fd"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_gm5nj"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_76vfq")]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vyy2j"]
+radius = 5.0
+height = 18.0
+
 [node name="PlayerCat" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
@@ -264,3 +270,21 @@ tree_root = SubResource("AnimationNodeStateMachine_hxhsw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0.0355805, 0.314978)
 parameters/Walk/blend_position = Vector2(-0.0786517, -0.121145)
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape")]
+script = ExtResource("3_5v2m8")
+player = NodePath("..")
+facing_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vyy2j")
+debug_color = Color(0.2, 0.639216, 0, 0.419608)
+script = ExtResource("4_0qva8")
+facing_right = Vector2(7, -4)
+facing_left = Vector2(-7, -4)
+facing_up = Vector2(0, -7)
+facing_down = Vector2(0, 5)
+
+[connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
