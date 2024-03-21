@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://clyw6m2lbw6ec"]
+
+[ext_resource type="Script" path="res://UI/ResourceItemDisplay.gd" id="1_vem1k"]
+[ext_resource type="Texture2D" uid="uid://b6tluek5ldqgt" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/apple_item.png" id="2_lofbt"]
+
+[node name="ResourceItemDisplay" type="HBoxContainer"]
+script = ExtResource("1_vem1k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_lofbt")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "0
+"

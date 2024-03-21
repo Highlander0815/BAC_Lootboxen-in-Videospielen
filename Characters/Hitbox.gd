@@ -7,14 +7,9 @@ extends Area2D
 func _ready():
 	player.connect("facing_direction_change", _on_player_facing_direction_changed)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_body_entered(body):
-	pass # Replace with function body.
+	print(body.name)
+	pass
 
 func _on_player_facing_direction_changed(facing : String):
 	if (facing == "N"):

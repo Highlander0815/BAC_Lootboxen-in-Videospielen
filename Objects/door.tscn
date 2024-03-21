@@ -91,22 +91,22 @@ vframes = 5
 frame = 10
 script = ExtResource("2_xf31d")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Door_Body" type="StaticBody2D" parent="."]
 
-[node name="closed_door_collision" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="closed_door_collision" type="CollisionShape2D" parent="Door_Body"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_14emi")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door_Body"]
 libraries = {
 "": SubResource("AnimationLibrary_urwwn")
 }
 
-[node name="opened_door_collision" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="opened_door_collision" type="CollisionShape2D" parent="Door_Body"]
 position = Vector2(-7, 5)
 shape = SubResource("RectangleShape2D_dnfvm")
 
-[node name="opened_door_collision2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="opened_door_collision2" type="CollisionShape2D" parent="Door_Body"]
 position = Vector2(7, 5)
 shape = SubResource("RectangleShape2D_dnfvm")
 

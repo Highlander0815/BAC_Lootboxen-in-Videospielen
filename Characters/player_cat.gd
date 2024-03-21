@@ -7,6 +7,7 @@ class_name Player
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
+var velo_multiplicator : float = 1.0
 
 signal facing_direction_change(facing : String)
 
@@ -23,7 +24,7 @@ func _physics_process(_delta):
 	update_animation_parameters(input_direction)
 
 	# Update velocity
-	velocity = input_direction * move_speed
+	velocity = input_direction * move_speed * velo_multiplicator
 	
 	# Move and Slide function uses velocity of character body to move character on map
 	move_and_slide()
@@ -54,3 +55,12 @@ func move_direction(input_direction : Vector2):
 		emit_signal("facing_direction_change", "S")
 	if (input_direction.y < -0.8):
 		emit_signal("facing_direction_change", "N")
+		
+
+func _input(event):
+	if Input.is_action_just_pressed("run"):
+		velo_multiplicator = 1.25
+	
+	if Input.is_action_just_released("run"):
+		velo_multiplicator = 1.0
+	
