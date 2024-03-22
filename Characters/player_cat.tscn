@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://bk774ufcr67pd"]
+[gd_scene load_steps=70 format=3 uid="uid://bk774ufcr67pd"]
 
 [ext_resource type="Script" path="res://Characters/player_cat.gd" id="1_dgsuv"]
 [ext_resource type="Texture2D" uid="uid://d4g3n3ynhg2rj" path="res://Art/Sprout Lands - Sprites - premium pack/Characters/Premium Charakter Spritesheet.png" id="2_wqyxv"]
 [ext_resource type="Script" path="res://Characters/Hitbox.gd" id="3_5v2m8"]
 [ext_resource type="Texture2D" uid="uid://ckwlyplvvb4vk" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Actions.png" id="3_m8reh"]
 [ext_resource type="Script" path="res://Characters/facing_hitbox.gd" id="4_0qva8"]
+[ext_resource type="Texture2D" uid="uid://dklditbboquvm" path="res://Art/Sprout Lands - Sprites - premium pack/Characters/Tools.png" id="4_2rwlf"]
 [ext_resource type="Script" path="res://Objects/Inventory.gd" id="5_48bm4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7hnq"]
@@ -163,8 +164,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_t6v3w"]
-resource_name = "shovel"
-length = 1.2
+resource_name = "shovel_down"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -172,25 +173,238 @@ tracks/0/path = NodePath("Action_Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 0]
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_kn0t2"]
+resource_name = "shovel_up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_sgnon"]
+resource_name = "axe_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_f5pin"]
+resource_name = "axe_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_rutnm"]
+resource_name = "axe_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_2pie8"]
+resource_name = "axe_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_0g4ni"]
+resource_name = "watering_can_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_uwreh"]
+resource_name = "watering_can_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_0v7yy"]
+resource_name = "watering_can_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_0wrdy"]
+resource_name = "watering_can_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_pwi2v"]
+resource_name = "hoe_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_nysfv"]
+resource_name = "hoe_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action_Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s8ur4"]
 _data = {
 "RESET": SubResource("Animation_xfjlh"),
+"axe_down": SubResource("Animation_sgnon"),
+"axe_left": SubResource("Animation_rutnm"),
+"axe_right": SubResource("Animation_2pie8"),
+"axe_up": SubResource("Animation_f5pin"),
+"hoe_left": SubResource("Animation_pwi2v"),
+"hoe_right": SubResource("Animation_nysfv"),
 "idle_down": SubResource("Animation_raekv"),
 "idle_left": SubResource("Animation_bo1t8"),
 "idle_right": SubResource("Animation_vajy8"),
 "idle_up": SubResource("Animation_4jwf1"),
-"shovel": SubResource("Animation_t6v3w"),
+"shovel_down": SubResource("Animation_t6v3w"),
+"shovel_up": SubResource("Animation_kn0t2"),
 "walk_down": SubResource("Animation_lo3jp"),
 "walk_left": SubResource("Animation_1tluc"),
 "walk_right": SubResource("Animation_tfq0o"),
-"walk_up": SubResource("Animation_ekvf1")
+"walk_up": SubResource("Animation_ekvf1"),
+"watering_can_down": SubResource("Animation_0g4ni"),
+"watering_can_left": SubResource("Animation_0v7yy"),
+"watering_can_right": SubResource("Animation_0wrdy"),
+"watering_can_up": SubResource("Animation_uwreh")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_utrog"]
+animation = &"axe_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xnx4t"]
+animation = &"axe_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xc86q"]
+animation = &"axe_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0rgw0"]
+animation = &"axe_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ytv2r"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_utrog")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_xnx4t")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_xc86q")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_0rgw0")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8f2nd"]
+animation = &"hoe_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_arunl"]
+animation = &"hoe_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_orb58"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_8f2nd")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_arunl")
+blend_point_1/pos = Vector2(1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rj7w8"]
 animation = &"idle_down"
@@ -217,6 +431,19 @@ min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8rvas"]
+animation = &"shovel_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eo0tp"]
+animation = &"shovel_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_yn8it"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_8rvas")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_eo0tp")
+blend_point_1/pos = Vector2(0, -1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_msrdk"]
 animation = &"walk_down"
 
@@ -241,8 +468,28 @@ blend_point_3/pos = Vector2(1, 0)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nsjwc"]
-animation = &"shovel"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6jtcv"]
+animation = &"watering_can_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kw3me"]
+animation = &"watering_can_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ub8l"]
+animation = &"watering_can_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w5cp0"]
+animation = &"watering_can_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_agnks"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6jtcv")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_kw3me")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_4ub8l")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_w5cp0")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k46fd"]
 
@@ -251,21 +498,39 @@ animation = &"shovel"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_76vfq"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ffi5"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jl5yr"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_305i0"]
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o1iry"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q54ti"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c11mt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i4wms"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rjtce"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_if6bm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sgnek"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hxhsw"]
+states/Axe/node = SubResource("AnimationNodeBlendSpace2D_ytv2r")
+states/Axe/position = Vector2(166, 240)
 states/End/position = Vector2(867, 100)
+states/Hoe/node = SubResource("AnimationNodeBlendSpace2D_orb58")
+states/Hoe/position = Vector2(467, 240)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_it16b")
 states/Idle/position = Vector2(369, 100)
+states/Shovel/node = SubResource("AnimationNodeBlendSpace2D_yn8it")
+states/Shovel/position = Vector2(317, 240)
 states/Start/position = Vector2(204, 100)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ypy66")
-states/Walk/position = Vector2(526, 100)
-states/shovel/node = SubResource("AnimationNodeAnimation_nsjwc")
-states/shovel/position = Vector2(369, 211)
-transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_k46fd"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_gm5nj"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_76vfq"), "Idle", "shovel", SubResource("AnimationNodeStateMachineTransition_7ffi5"), "shovel", "Idle", SubResource("AnimationNodeStateMachineTransition_305i0")]
+states/Walk/position = Vector2(369, 26)
+states/Watering_Can/node = SubResource("AnimationNodeBlendSpace2D_agnks")
+states/Watering_Can/position = Vector2(611, 240)
+transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_k46fd"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_gm5nj"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_76vfq"), "Idle", "Axe", SubResource("AnimationNodeStateMachineTransition_jl5yr"), "Axe", "Idle", SubResource("AnimationNodeStateMachineTransition_o1iry"), "Idle", "Shovel", SubResource("AnimationNodeStateMachineTransition_q54ti"), "Shovel", "Idle", SubResource("AnimationNodeStateMachineTransition_c11mt"), "Idle", "Hoe", SubResource("AnimationNodeStateMachineTransition_i4wms"), "Hoe", "Idle", SubResource("AnimationNodeStateMachineTransition_rjtce"), "Idle", "Watering_Can", SubResource("AnimationNodeStateMachineTransition_if6bm"), "Watering_Can", "Idle", SubResource("AnimationNodeStateMachineTransition_sgnek")]
+graph_offset = Vector2(-98, 50.6147)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vyy2j"]
 radius = 5.0
@@ -277,7 +542,6 @@ y_sort_enabled = true
 script = ExtResource("1_dgsuv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, -5)
 texture = ExtResource("2_wqyxv")
 hframes = 8
@@ -288,6 +552,15 @@ position = Vector2(0, -5)
 texture = ExtResource("3_m8reh")
 hframes = 2
 vframes = 12
+frame = 6
+
+[node name="Tools" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7, -3)
+texture = ExtResource("4_2rwlf")
+hframes = 6
+vframes = 6
+frame = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -304,8 +577,12 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_hxhsw")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Axe/blend_position = Vector2(0.546691, -0.0220264)
+parameters/Hoe/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0.0355805, 0.314978)
+parameters/Shovel/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(-0.0786517, -0.121145)
+parameters/Watering_Can/blend_position = Vector2(0, 0)
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape")]
 script = ExtResource("3_5v2m8")
@@ -326,4 +603,5 @@ facing_down = Vector2(0, 8)
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("5_48bm4")
 
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
