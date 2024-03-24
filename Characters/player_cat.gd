@@ -7,12 +7,14 @@ enum EQUIPMENT { AXE, SHOVEL, HOE, WATERINGCAN, HAND }
 @export var move_speed : float = 80
 @export var starting_direction : Vector2 = Vector2(0, 1)
 
-@onready var anim_tree = $AnimationTree
+@onready var tile_map : TileMap = get_node("/root/GameLevel/TileMap")
+@onready var anim_tree : AnimationTree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
 
 var velo_multiplicator : float = 1.0
 var tool_in_use : bool = false
 var current_equipment : EQUIPMENT = EQUIPMENT.HAND
+var top_ground_layer : int = 2
 
 signal facing_direction_change(facing : String)
 
@@ -90,7 +92,9 @@ func _input(_event):
 		velo_multiplicator = 1.0
 	
 	if Input.is_action_just_pressed("use"):
+				
 		if current_equipment == EQUIPMENT.HAND:
+			lay_tile()
 			return
 			
 		$Sprite2D.visible = false
@@ -145,3 +149,21 @@ func _on_animation_tree_animation_finished(anim_name):
 func use_equipped_tool():
 	pass
 	
+func get_mouse_pos():
+	return tile_map.local_to_map(get_global_mouse_position())
+
+func get_player_pos():
+	return tile_map.local_to_map(position)
+
+func lay_tile():
+	var soil_source_id = 5
+	var soil_atlas_coord : Vector2i = Vector2i(1, 1)
+	var current_tile = get_mouse_pos()
+	
+	var tile_data : TileData = tile_map.get_cell_tile_data(top_ground_layer, current_tile)
+
+	if tile_data:
+		if tile_data.get_custom_data("can_place_seeds"):
+			tile_map.set_cell(top_ground_layer, get_mouse_pos(), soil_source_id, soil_atlas_coord)
+		else:
+			print("Can't place seeds!")
