@@ -10,17 +10,23 @@ enum EQUIPMENT { AXE, SHOVEL, HOE, WATERINGCAN, HAND }
 @onready var tile_map : TileMap = get_node("/root/GameLevel/TileMap")
 @onready var anim_tree : AnimationTree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
+@onready var facing_direction : String = "S" # default direction
 
 var velo_multiplicator : float = 1.0
 var tool_in_use : bool = false
 var current_equipment : EQUIPMENT = EQUIPMENT.HAND
+var base_ground_layer : int = 1
 var top_ground_layer : int = 2
+var crop_layer : int = 3
+var max_distance : int = 2
+var custom_data_layer : String = "can_place_seeds"
 
 signal facing_direction_change(facing : String)
 
 func _ready():
 	update_animation_parameters(starting_direction)
 	$Action_Sprite.visible = false
+
 
 func _physics_process(_delta):
 	
@@ -65,12 +71,16 @@ func pick_new_state():
 func move_direction(input_direction : Vector2):
 	if (input_direction.x > 0.8):
 		emit_signal("facing_direction_change", "E")
+		facing_direction = "E"
 	if (input_direction.x < -0.8):
 		emit_signal("facing_direction_change", "W")
+		facing_direction = "W"
 	if (input_direction.y > 0.8):
 		emit_signal("facing_direction_change", "S")
+		facing_direction = "S"
 	if (input_direction.y < -0.8):
 		emit_signal("facing_direction_change", "N")
+		facing_direction = "N"
 
 func axe():
 	state_machine.travel("Axe")
@@ -80,6 +90,7 @@ func shovel():
 
 func hoe():
 	state_machine.travel("Hoe")
+	create_soil()
 
 func wateringcan():
 	state_machine.travel("Watering_Can")
@@ -94,7 +105,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("use"):
 				
 		if current_equipment == EQUIPMENT.HAND:
-			lay_tile()
+			hand()
 			return
 			
 		$Sprite2D.visible = false
@@ -124,6 +135,10 @@ func _input(_event):
 	if Input.is_action_just_pressed("inventory_space_4"):
 		print("Watering Can equipped!")
 		current_equipment = EQUIPMENT.WATERINGCAN
+		
+	if Input.is_action_just_pressed("inventory_space_5"):
+		print("Hand equipped!")
+		current_equipment = EQUIPMENT.HAND
 		
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "axe_up" or anim_name == "axe_down" or anim_name == "axe_left" or anim_name == "axe_right":
@@ -155,15 +170,57 @@ func get_mouse_pos():
 func get_player_pos():
 	return tile_map.local_to_map(position)
 
-func lay_tile():
+func check_difference(vector1 : Vector2i, vector2 : Vector2i):
+	var x_diff = abs(vector1.x - vector2.x)
+	var y_diff = abs(vector1.y - vector2.y)
+	
+	return x_diff + y_diff <= max_distance
+	
+# gets tiledata of the tile, the player is looking at
+func get_tile_beside(player_position : Vector2i):
+	if facing_direction == "N":
+		return Vector2i(player_position.x, player_position.y - 1)
+	if facing_direction == "E":
+		return Vector2i(player_position.x + 1, player_position.y)
+	if facing_direction == "S":
+		return Vector2i(player_position.x, player_position.y + 1)
+	if facing_direction == "W":
+		return Vector2i(player_position.x - 1, player_position.y)
+
+# creates soil, where the hoe is pointed at
+func create_soil():
+	var player_position = get_player_pos()
+	var tile = get_tile_beside(player_position)
+	
 	var soil_source_id = 5
-	var soil_atlas_coord : Vector2i = Vector2i(1, 1)
+	var soil_atlas_coord : Vector2i = Vector2i(0, 0)
+	
+	if tile_map.get_cell_tile_data(2, tile):
+		print("Can't create soil!")
+		return
+		
+	if get_tile_data(1, "can_place_soil", tile):
+		tile_map.set_cell(top_ground_layer, tile, soil_source_id, soil_atlas_coord)
+	else:
+		print("Can't create soil!")
+
+# Place, what is currently in players hand at mouseclick position
+func hand():
+	var seed_source_id = 6
+	var seed_atlas_coord : Vector2i = Vector2i(0, 1)
 	var current_tile = get_mouse_pos()
 	
-	var tile_data : TileData = tile_map.get_cell_tile_data(top_ground_layer, current_tile)
-
-	if tile_data:
-		if tile_data.get_custom_data("can_place_seeds"):
-			tile_map.set_cell(top_ground_layer, get_mouse_pos(), soil_source_id, soil_atlas_coord)
+	if get_tile_data(2, custom_data_layer, current_tile):
+		if check_difference(current_tile, get_player_pos()):
+			print("plant seeds")
+			tile_map.set_cell(crop_layer, current_tile, seed_source_id, seed_atlas_coord)
 		else:
 			print("Can't place seeds!")
+
+# returns tiledata
+func get_tile_data(layer, custom_data_layer, vector):
+	var tile_data : TileData = tile_map.get_cell_tile_data(layer, vector)
+	if tile_data:
+		return tile_data
+	else:
+		return false
