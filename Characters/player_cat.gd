@@ -12,14 +12,19 @@ enum EQUIPMENT { AXE, SHOVEL, HOE, WATERINGCAN, HAND }
 @onready var state_machine = anim_tree.get("parameters/playback")
 @onready var facing_direction : String = "S" # default direction
 
+@onready var game_level_class = get_node("/root/GameLevel")
+
 var velo_multiplicator : float = 1.0
 var tool_in_use : bool = false
 var current_equipment : EQUIPMENT = EQUIPMENT.HAND
-var base_ground_layer : int = 1
-var top_ground_layer : int = 2
-var crop_layer : int = 3
+var base_ground_layer : int = 2
+var top_ground_layer : int = 3
+var farm_ground_layer : int = 4
+var crop_layer : int = 5
 var max_distance : int = 2
-var custom_data_layer : String = "can_place_seeds"
+var seed_custom_data : String = "can_place_seeds"
+var soil_custom_data : String = "can_place_soil"
+var soil_tiles = []
 
 signal facing_direction_change(facing : String)
 
@@ -191,29 +196,28 @@ func get_tile_beside(player_position : Vector2i):
 func create_soil():
 	var player_position = get_player_pos()
 	var tile = get_tile_beside(player_position)
-	
-	var soil_source_id = 5
-	var soil_atlas_coord : Vector2i = Vector2i(0, 0)
-	
-	if tile_map.get_cell_tile_data(2, tile):
+		
+	if tile_map.get_cell_tile_data(top_ground_layer, tile):
 		print("Can't create soil!")
 		return
 		
-	if get_tile_data(1, "can_place_soil", tile):
-		tile_map.set_cell(top_ground_layer, tile, soil_source_id, soil_atlas_coord)
+	if get_tile_data(base_ground_layer, soil_custom_data, tile):
+		soil_tiles.append(tile)
+		tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)
 	else:
 		print("Can't create soil!")
 
 # Place, what is currently in players hand at mouseclick position
 func hand():
-	var seed_source_id = 6
-	var seed_atlas_coord : Vector2i = Vector2i(0, 1)
 	var current_tile = get_mouse_pos()
 	
-	if get_tile_data(2, custom_data_layer, current_tile):
+	if get_tile_data(farm_ground_layer, seed_custom_data, current_tile):
+		if get_tile_data(crop_layer, "crop_planted", current_tile):
+			print("Can't place seeds, the other plant must be harvested first")
+			return
 		if check_difference(current_tile, get_player_pos()):
 			print("plant seeds")
-			tile_map.set_cell(crop_layer, current_tile, seed_source_id, seed_atlas_coord)
+			game_level_class.growth_handler(current_tile, "corn")
 		else:
 			print("Can't place seeds!")
 
@@ -221,6 +225,6 @@ func hand():
 func get_tile_data(layer, custom_data_layer, vector):
 	var tile_data : TileData = tile_map.get_cell_tile_data(layer, vector)
 	if tile_data:
-		return tile_data
+		return tile_data.get_custom_data(custom_data_layer)
 	else:
 		return false
