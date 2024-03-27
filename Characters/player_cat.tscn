@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bk774ufcr67pd"]
+[gd_scene load_steps=72 format=3 uid="uid://bk774ufcr67pd"]
 
 [ext_resource type="Script" path="res://Characters/player_cat.gd" id="1_dgsuv"]
 [ext_resource type="Texture2D" uid="uid://d4g3n3ynhg2rj" path="res://Art/Sprout Lands - Sprites - premium pack/Characters/Premium Charakter Spritesheet.png" id="2_wqyxv"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ckwlyplvvb4vk" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Actions.png" id="3_m8reh"]
 [ext_resource type="Script" path="res://Characters/facing_hitbox.gd" id="4_0qva8"]
 [ext_resource type="Texture2D" uid="uid://dklditbboquvm" path="res://Art/Sprout Lands - Sprites - premium pack/Characters/Tools.png" id="4_2rwlf"]
-[ext_resource type="Script" path="res://Objects/Inventory.gd" id="5_48bm4"]
+[ext_resource type="Texture2D" uid="uid://cd31y1m5fkbvq" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Dialouge UI/menu.png" id="7_68vym"]
+[ext_resource type="PackedScene" uid="uid://cb3oq0xt8mto3" path="res://Scenes/inventory_ui.tscn" id="7_bo5nt"]
+[ext_resource type="PackedScene" uid="uid://yiykxgjn7fq5" path="res://Scenes/Inventory_Hotbar.tscn" id="9_ma37q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7hnq"]
 radius = 2.5
@@ -536,7 +538,7 @@ graph_offset = Vector2(-98, 50.6147)
 radius = 5.0
 height = 18.0
 
-[node name="PlayerCat" type="CharacterBody2D" groups=["player"]]
+[node name="PlayerCat" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_dgsuv")
@@ -601,8 +603,81 @@ facing_left = Vector2(-10, -4)
 facing_up = Vector2(0, -8)
 facing_down = Vector2(0, 8)
 
-[node name="Inventory" type="Node" parent="."]
-script = ExtResource("5_48bm4")
+[node name="InteractUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="InteractUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.470588, 0.631373, 0.345098, 1)
+
+[node name="Label" type="Label" parent="InteractUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "Press \"E\" to pick up
+"
+
+[node name="InventoryUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="InventoryUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -62.0
+offset_right = 118.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_68vym")
+
+[node name="Label" type="Label" parent="InventoryUI/TextureRect"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 35.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 6
+text = "Inventory"
+
+[node name="Inventory_UI" parent="InventoryUI/TextureRect" instance=ExtResource("7_bo5nt")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 230.0
+offset_bottom = 118.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="InventoryHotbar" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="InventoryHotbar" instance=ExtResource("9_ma37q")]
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]

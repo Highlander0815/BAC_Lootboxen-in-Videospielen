@@ -13,6 +13,9 @@ enum EQUIPMENT { AXE, SHOVEL, HOE, WATERINGCAN, HAND }
 @onready var facing_direction : String = "S" # default direction
 
 @onready var game_level_class = get_node("/root/GameLevel")
+@onready var interact_ui = $InteractUI
+@onready var inventory_ui = $InventoryUI
+@onready var inventory_hotbar = $InventoryHotbar
 
 var velo_multiplicator : float = 1.0
 var tool_in_use : bool = false
@@ -29,6 +32,9 @@ var soil_tiles = []
 signal facing_direction_change(facing : String)
 
 func _ready():
+	# Set this node as the Player node
+	Global.set_player_reference(self)
+	
 	update_animation_parameters(starting_direction)
 	$Action_Sprite.visible = false
 
@@ -101,6 +107,11 @@ func wateringcan():
 	state_machine.travel("Watering_Can")
 
 func _input(_event):
+	if Input.is_action_just_pressed("inventory"):
+		inventory_ui.visible = !inventory_ui.visible
+		# get_tree().paused = !get_tree().paused
+		inventory_hotbar.visible = !inventory_hotbar.visible
+	
 	if Input.is_action_pressed("run"):
 		velo_multiplicator = 1.25
 	
@@ -123,9 +134,9 @@ func _input(_event):
 		if current_equipment == EQUIPMENT.HOE:
 			hoe()
 		if current_equipment == EQUIPMENT.WATERINGCAN:
-			wateringcan()
+			wateringcan()		
 	
-	if Input.is_action_just_pressed("inventory_space_1"):
+	'if Input.is_action_just_pressed("inventory_space_1"):
 		print("Axe equipped!")
 		current_equipment = EQUIPMENT.AXE
 		
@@ -143,7 +154,7 @@ func _input(_event):
 		
 	if Input.is_action_just_pressed("inventory_space_5"):
 		print("Hand equipped!")
-		current_equipment = EQUIPMENT.HAND
+		current_equipment = EQUIPMENT.HAND'
 		
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "axe_up" or anim_name == "axe_down" or anim_name == "axe_left" or anim_name == "axe_right":
@@ -228,3 +239,24 @@ func get_tile_data(layer, custom_data_layer, vector):
 		return tile_data.get_custom_data(custom_data_layer)
 	else:
 		return false
+
+func use_hotbar_item(slot_index):
+	if slot_index < Global.hotbar_inventory.size():
+		var item = Global.hotbar_inventory[slot_index]
+		if item != null:
+			# Use item in slot
+			# Use item function here like apply_item_effect(item)
+			# Remove item
+			item["quantity"] -= 1
+			if item["quantity"] <= 0:
+				Global.hotbar_inventory[slot_index] = null
+				# Gloval.remove_item(item["item_type"], item["item_effect"])
+			Global.inventory_updated.emit()
+			
+# Hotbar shortcuts usage
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed:
+		for i in range(Global.hotbar_size):
+			if Input.is_action_just_pressed("hotbar_" + str(i + 1)):
+				use_hotbar_item(i)
+				break

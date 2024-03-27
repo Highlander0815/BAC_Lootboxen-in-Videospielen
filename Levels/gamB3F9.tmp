@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://mkepdva1y4bw"]
+[gd_scene load_steps=30 format=3 uid="uid://mkepdva1y4bw"]
 
 [ext_resource type="PackedScene" uid="uid://bk774ufcr67pd" path="res://Characters/player_cat.tscn" id="1_8rr7t"]
 [ext_resource type="Script" path="res://Levels/game_level.gd" id="1_i1vn7"]
@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://bambgfi3rwjm4" path="res://Art/Sprout Lands - Sprites - premium pack/Tilesets/ground tiles/New tiles/Darker_Soil_Ground_Tiles.png" id="11_xp2mn"]
 [ext_resource type="PackedScene" uid="uid://pf4c03i43j1u" path="res://Levels/house.tscn" id="12_mw25h"]
 [ext_resource type="PackedScene" uid="uid://bsxwlgd5lyrmh" path="res://Objects/Grass_Biom_Things/Apple_Tree.tscn" id="12_u246n"]
-[ext_resource type="PackedScene" uid="uid://bcpjgwkeb21we" path="res://Scenes/Inventory_Item.tscn" id="18_106q5"]
-[ext_resource type="Texture2D" uid="uid://b6tluek5ldqgt" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/apple_item.png" id="19_v2nmd"]
+[ext_resource type="PackedScene" uid="uid://c0ahmdhkq64cr" path="res://Objects/Items/Apple_Pickable.tscn" id="13_waobi"]
+[ext_resource type="PackedScene" uid="uid://bmu0osechwbhd" path="res://UI/resource_display.tscn" id="14_shdan"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qw4p2"]
 texture = ExtResource("2_38dhn")
@@ -4090,6 +4090,8 @@ sources/6 = SubResource("TileSetAtlasSource_rvffn")
 sources/7 = SubResource("TileSetAtlasSource_1a1oq")
 sources/8 = SubResource("TileSetAtlasSource_d4mdq")
 
+[sub_resource type="CurveTexture" id="CurveTexture_nmp4f"]
+
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_i1vn7")
@@ -4103,7 +4105,6 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(605, 365)
-zoom = Vector2(0.7, 0.7)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -4136,11 +4137,20 @@ layer_6/tile_data = PackedInt32Array(1310738, 4, 0, 1376274, 4, 1, 1441810, 4, 1
 [node name="Cow" parent="." instance=ExtResource("8_s7kue")]
 position = Vector2(376, 138)
 
+[node name="Cow2" parent="." instance=ExtResource("8_s7kue")]
+position = Vector2(413, 280)
+
 [node name="Chest" parent="." instance=ExtResource("9_22wuv")]
 position = Vector2(439, 324)
 
+[node name="Chest2" parent="." instance=ExtResource("9_22wuv")]
+position = Vector2(308, 156)
+
 [node name="Chicken" parent="." instance=ExtResource("10_u0177")]
 position = Vector2(276, 278)
+
+[node name="Chicken2" parent="." instance=ExtResource("10_u0177")]
+position = Vector2(364, 301)
 
 [node name="house" parent="." instance=ExtResource("12_mw25h")]
 y_sort_enabled = true
@@ -4150,28 +4160,17 @@ position = Vector2(544, 224)
 y_sort_enabled = true
 position = Vector2(524, 294)
 
-[node name="Inventory_Item" parent="." instance=ExtResource("18_106q5")]
-position = Vector2(535, 360)
-item_type = "Consumable"
-item_name = "Apple"
-item_texture = ExtResource("19_v2nmd")
+[node name="Apple_Pickable" parent="." instance=ExtResource("13_waobi")]
+position = Vector2(513, 309)
 
-[node name="Inventory_Item2" parent="." instance=ExtResource("18_106q5")]
-position = Vector2(551, 384)
-item_type = "Consumable"
-item_name = "Apple"
-item_texture = ExtResource("19_v2nmd")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Inventory_Item3" parent="." instance=ExtResource("18_106q5")]
-position = Vector2(570, 361)
-item_type = "Consumable"
-item_name = "Apple"
-item_texture = ExtResource("19_v2nmd")
+[node name="ResourceDisplay" parent="CanvasLayer" instance=ExtResource("14_shdan")]
 
-[node name="Inventory_Item4" parent="." instance=ExtResource("18_106q5")]
-position = Vector2(501, 379)
-item_type = "Consumable"
-item_name = "Apple"
-item_texture = ExtResource("19_v2nmd")
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(585, 361)
+scale = Vector2(1, 9)
+color = Color(0.411765, 0.411765, 0.411765, 1)
+texture = SubResource("CurveTexture_nmp4f")
 
 [connection signal="timeout" from="Crop_Timer" to="." method="_on_timer_timeout"]
