@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Inventory_Item.gd" id="1_mxjhf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0af6j"]
-radius = 6.08276
+radius = 7.0
 
 [node name="Inventory_Item" type="Node2D" groups=["Items"]]
 script = ExtResource("1_mxjhf")

@@ -1,21 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvn3lniff0yc0"]
+[gd_scene load_steps=5 format=3 uid="uid://cvn3lniff0yc0"]
 
 [ext_resource type="Script" path="res://Scripts/inventory_slot.gd" id="1_y4v4b"]
 [ext_resource type="Texture2D" uid="uid://wlomfgipdf3p" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_r4pko"]
+[ext_resource type="FontFile" uid="uid://cde5ciph3xywr" path="res://Roboto/Roboto-Regular.ttf" id="3_anu7a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_anmkn"]
 
 [node name="Inventory_Slot" type="Control"]
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 3
 anchor_left = 0.000868056
 anchor_top = 0.00154321
 anchor_right = 0.0225694
 anchor_bottom = 0.0401235
+offset_right = 5.14984e-05
+offset_bottom = -2.86102e-05
 script = ExtResource("1_y4v4b")
 metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
+layout_mode = 1
 offset_right = 25.0
 offset_bottom = 25.0
 texture = ExtResource("2_r4pko")
@@ -46,25 +50,28 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_anmkn")
 [node name="DetailsPanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -12.0
-offset_top = -26.0
-offset_right = 38.0
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 36.0
 offset_bottom = -1.0
 color = Color(0.666667, 0.47451, 0.34902, 1)
 
 [node name="ColorRect" type="ColorRect" parent="DetailsPanel"]
 layout_mode = 0
-offset_left = 0.5
+offset_left = 1.0
 offset_top = 1.0
-offset_right = 48.5
-offset_bottom = 24.0
+offset_right = 45.0
+offset_bottom = 18.0
 color = Color(0.909804, 0.811765, 0.65098, 1)
 
 [node name="ItemName" type="Label" parent="DetailsPanel/ColorRect"]
 layout_mode = 1
-offset_right = 30.0
-offset_bottom = 9.0
-theme_override_font_sizes/font_size = 6
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 13.0
+offset_bottom = 6.0
+theme_override_fonts/font = ExtResource("3_anu7a")
+theme_override_font_sizes/font_size = 4
 text = "NAME"
 
 [node name="ItemType" type="Label" parent="DetailsPanel/ColorRect"]
@@ -72,11 +79,13 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -4.5
-offset_right = 24.0
-offset_bottom = 4.5
+offset_left = 1.0
+offset_top = -2.5
+offset_right = 11.0
+offset_bottom = 2.5
 grow_vertical = 2
-theme_override_font_sizes/font_size = 6
+theme_override_fonts/font = ExtResource("3_anu7a")
+theme_override_font_sizes/font_size = 4
 text = "TYPE"
 
 [node name="ItemEffect" type="Label" parent="DetailsPanel/ColorRect"]
@@ -84,27 +93,30 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -9.0
-offset_right = 34.0
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = -1.0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 6
+theme_override_fonts/font = ExtResource("3_anu7a")
+theme_override_font_sizes/font_size = 4
 text = "EFFECT"
 
 [node name="UsagePanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -12.0
-offset_top = -39.0
-offset_right = 38.0
+offset_left = -17.0
+offset_top = -18.0
+offset_right = 42.0
 offset_bottom = -1.0
 color = Color(0.666667, 0.47451, 0.34902, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="UsagePanel"]
 layout_mode = 0
-offset_left = 0.5
+offset_left = 1.0
 offset_top = 1.0
-offset_right = 48.5
-offset_bottom = 37.0
+offset_right = 58.0
+offset_bottom = 16.0
 color = Color(0.909804, 0.811765, 0.65098, 1)
 
 [node name="UseButton" type="Button" parent="UsagePanel/ColorRect2"]
@@ -112,28 +124,30 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 0.5
-offset_top = -18.0
-offset_right = 22.5
-offset_bottom = -2.0
+offset_left = 0.999999
+offset_top = -6.5
+offset_right = 16.0
+offset_bottom = 6.5
 grow_vertical = 2
-theme_override_font_sizes/font_size = 5
+theme_override_fonts/font = ExtResource("3_anu7a")
+theme_override_font_sizes/font_size = 4
 text = "Use"
 
 [node name="DropButton" type="Button" parent="UsagePanel/ColorRect2"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.5
-offset_top = -18.0
-offset_right = -1.5
-offset_bottom = -2.0
-grow_horizontal = 0
+offset_left = -11.5
+offset_top = -6.5
+offset_right = 5.5
+offset_bottom = 6.5
+grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 5
+theme_override_fonts/font = ExtResource("3_anu7a")
+theme_override_font_sizes/font_size = 4
 text = "Drop"
 
 [node name="AssignButton" type="Button" parent="UsagePanel/ColorRect2"]
@@ -143,17 +157,19 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -47.5
-offset_right = -1.5
-offset_bottom = 16.0
+offset_left = -22.0
+offset_top = -6.5
+offset_right = -1.0
+offset_bottom = 6.5
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 5
+theme_override_fonts/font = ExtResource("3_anu7a")
+theme_override_font_sizes/font_size = 4
 text = "Assign"
 
+[connection signal="gui_input" from="ItemButton" to="." method="_on_item_button_gui_input"]
 [connection signal="mouse_entered" from="ItemButton" to="." method="_on_item_button_mouse_entered"]
 [connection signal="mouse_exited" from="ItemButton" to="." method="_on_item_button_mouse_exited"]
-[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]
 [connection signal="pressed" from="UsagePanel/ColorRect2/UseButton" to="." method="_on_use_button_pressed"]
 [connection signal="pressed" from="UsagePanel/ColorRect2/DropButton" to="." method="_on_drop_button_pressed"]
 [connection signal="pressed" from="UsagePanel/ColorRect2/AssignButton" to="." method="_on_assign_button_pressed"]

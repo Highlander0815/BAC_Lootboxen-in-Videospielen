@@ -8,6 +8,11 @@ extends Control
 @onready var item_effect = $DetailsPanel/ColorRect/ItemEffect
 @onready var usage_panel = $UsagePanel
 @onready var assign_button = $UsagePanel/ColorRect2/AssignButton
+@onready var outer_border = $NinePatchRect
+
+# Signals
+signal drag_start(slot)
+signal drag_end()
 
 # Slot item
 var item = null
@@ -25,10 +30,6 @@ func _on_item_button_mouse_entered():
 
 func _on_item_button_mouse_exited():
 	details_panel.visible = false
-
-func _on_item_button_pressed():
-	if item != null:
-		usage_panel.visible = !usage_panel.visible
 
 func set_empty():
 	icon.texture = null
@@ -76,3 +77,21 @@ func _on_assign_button_pressed():
 			Global.add_item(item, true)
 			is_assigned = true
 		update_assignment_status()
+
+
+func _on_item_button_gui_input(event):
+	if event is InputEventMouseButton:
+		# Usage panel
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():			
+			if item != null:
+				details_panel.visible = false
+				usage_panel.visible = !usage_panel.visible
+		# Dragging item
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.is_pressed():
+				outer_border.modulate = Color(1, 1, 0)
+				drag_start.emit(self)
+			else:
+				outer_border.modulate = Color(1, 1, 1)
+				drag_end.emit()
+
