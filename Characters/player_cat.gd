@@ -245,12 +245,12 @@ func use_hotbar_item(slot_index):
 		var item = Global.hotbar_inventory[slot_index]
 		if item != null:
 			# Use item in slot
-			# Use item function here like apply_item_effect(item)
+			# Use item function here like apply_item_rarity(item)
 			# Remove item
 			item["quantity"] -= 1
 			if item["quantity"] <= 0:
 				Global.hotbar_inventory[slot_index] = null
-				# Gloval.remove_item(item["item_type"], item["item_effect"])
+				# Gloval.remove_item(item["item_type"], item["item_rarity"])
 			Global.inventory_updated.emit()
 			
 # Hotbar shortcuts usage
@@ -260,3 +260,4 @@ func _unhandled_input(event):
 			if Input.is_action_just_pressed("hotbar_" + str(i + 1)):
 				use_hotbar_item(i)
 				break
+

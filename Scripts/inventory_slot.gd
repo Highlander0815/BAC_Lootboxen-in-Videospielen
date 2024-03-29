@@ -5,7 +5,7 @@ extends Control
 @onready var details_panel = $DetailsPanel
 @onready var item_name = $DetailsPanel/ColorRect/ItemName
 @onready var item_type = $DetailsPanel/ColorRect/ItemType
-@onready var item_effect = $DetailsPanel/ColorRect/ItemEffect
+@onready var item_rarity = $DetailsPanel/ColorRect/ItemRarity
 @onready var usage_panel = $UsagePanel
 @onready var assign_button = $UsagePanel/ColorRect2/AssignButton
 @onready var outer_border = $NinePatchRect
@@ -41,10 +41,10 @@ func set_item(new_item):
 	quantity_label.text = str(new_item["quantity"])
 	item_name.text = str(item["item_name"])
 	item_type.text = str(item["item_type"])
-	if item["item_effect"] != "":
-		item_effect.text = str("+ ", item["item_effect"])
+	if item["item_rarity"] != "":
+		item_rarity.text = str("Rarity: ", item["item_rarity"])
 	else:
-		item_effect.text = ""
+		item_rarity.text = ""
 	update_assignment_status()
 
 func _on_drop_button_pressed():
@@ -53,13 +53,10 @@ func _on_drop_button_pressed():
 		var drop_offset = Vector2(0, 10)
 		drop_offset = drop_offset.rotated(Global.player_node.rotation)
 		Global.drop_item(item, drop_position + drop_offset)
-		Global.remove_item(item["item_type"], item["item_effect"])
-		Global.remove_hotbar_item(item["item_type"], item["item_effect"])
+		Global.remove_item(item["item_type"], item["item_rarity"])
+		Global.remove_hotbar_item(item["item_type"], item["item_rarity"])
 		usage_panel.visible = false
 
-
-func _on_use_button_pressed():
-	pass # Replace with function body.
 
 func update_assignment_status():
 	is_assigned = Global.is_item_assigned_to_hotbar(item)
@@ -71,7 +68,7 @@ func update_assignment_status():
 func _on_assign_button_pressed():
 	if item != null:
 		if is_assigned:
-			Global.unassign_hotbar_item(item["item_type"], item["item_effect"])
+			Global.unassign_hotbar_item(item["item_type"], item["item_rarity"])
 			is_assigned = false
 		else:
 			Global.add_item(item, true)

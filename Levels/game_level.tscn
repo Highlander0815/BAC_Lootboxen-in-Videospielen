@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://pf4c03i43j1u" path="res://Levels/house.tscn" id="12_mw25h"]
 [ext_resource type="PackedScene" uid="uid://bsxwlgd5lyrmh" path="res://Objects/Grass_Biom_Things/Apple_Tree.tscn" id="12_u246n"]
 [ext_resource type="PackedScene" uid="uid://bcpjgwkeb21we" path="res://Scenes/Inventory_Item.tscn" id="18_106q5"]
-[ext_resource type="Texture2D" uid="uid://b6tluek5ldqgt" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/apple_item.png" id="19_v2nmd"]
+[ext_resource type="Texture2D" uid="uid://b6tluek5ldqgt" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Fruits/apple_item.png" id="19_v2nmd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qw4p2"]
 texture = ExtResource("2_38dhn")
@@ -4716,23 +4716,27 @@ position = Vector2(535, 360)
 item_type = "Consumable"
 item_name = "Apple"
 item_texture = ExtResource("19_v2nmd")
+item_rarity = "1"
 
 [node name="Inventory_Item2" parent="." instance=ExtResource("18_106q5")]
 position = Vector2(551, 384)
 item_type = "Consumable"
 item_name = "Apple"
 item_texture = ExtResource("19_v2nmd")
+item_rarity = "1"
 
 [node name="Inventory_Item3" parent="." instance=ExtResource("18_106q5")]
 position = Vector2(570, 361)
 item_type = "Consumable"
 item_name = "Apple"
 item_texture = ExtResource("19_v2nmd")
+item_rarity = "1"
 
 [node name="Inventory_Item4" parent="." instance=ExtResource("18_106q5")]
 position = Vector2(501, 379)
 item_type = "Consumable"
 item_name = "Apple"
 item_texture = ExtResource("19_v2nmd")
+item_rarity = "1"
 
 [connection signal="timeout" from="Crop_Timer" to="." method="_on_timer_timeout"]

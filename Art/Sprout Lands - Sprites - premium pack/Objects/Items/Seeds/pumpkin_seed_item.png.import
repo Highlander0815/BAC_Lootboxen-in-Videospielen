@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6tluek5ldqgt"
-path="res://.godot/imported/apple_item.png-aed147fd9e6c8bb465d3a5260faf9b01.ctex"
+uid="uid://b077k3v7eg8ah"
+path="res://.godot/imported/pumpkin_seed_item.png-da97c00a86308fe4878ef718c2e871a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/apple_item.png"
-dest_files=["res://.godot/imported/apple_item.png-aed147fd9e6c8bb465d3a5260faf9b01.ctex"]
+source_file="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Seeds/pumpkin_seed_item.png"
+dest_files=["res://.godot/imported/pumpkin_seed_item.png-da97c00a86308fe4878ef718c2e871a4.ctex"]
 
 [params]
 

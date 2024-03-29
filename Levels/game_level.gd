@@ -30,8 +30,34 @@ func plant_growth(tile_map_pos, level, atlas_coord):
 		plant_growth(tile_map_pos, level,  new_atlas)
 
 func growth_handler(tile_map_pos, plant : String):
-	if plant == "corn":
+	if plant == "Corn Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 1))
+	if plant == "Carrot Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 2))
+	if plant == "Cauliflower Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 3))
+	if plant == "Tomato Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 4))
+	if plant == "Aubergine Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 5))
+	if plant == "Blue Poppy Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 6))
+	if plant == "Cabbage Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 7))
+	if plant == "Wheat Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 8))
+	if plant == "Pumpkin Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 9))
+	if plant == "White Radish Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 10))
+	if plant == "Artichoke Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 11))
+	if plant == "Purple Radish Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 12))
+	if plant == "Star Fruit Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 13))
+	if plant == "Cucumber Seeds":
+		plant_growth(tile_map_pos, 0, Vector2i(0, 14))
 
 
 func _on_timer_timeout():

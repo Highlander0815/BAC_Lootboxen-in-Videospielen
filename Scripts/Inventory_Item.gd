@@ -5,7 +5,7 @@ extends Node2D
 @export var item_type = ""
 @export var item_name = ""
 @export var item_texture : Texture
-@export var item_effect = ""
+@export var item_rarity = ""
 var scene_path = "res://Scenes/Inventory_Item.tscn"
 
 # Scene-Tree Node reference
@@ -30,7 +30,7 @@ func pickup_item():
 		"item_type" : item_type,
 		"item_name" : item_name,
 		"item_texture" : item_texture,
-		"item_effect" : item_effect,
+		"item_rarity" : item_rarity,
 		"scene_path" : scene_path
 	}
 	if Global.player_node:
@@ -51,5 +51,5 @@ func _on_area_2d_body_exited(body):
 func set_item_data(data):
 	item_type = data["item_type"]
 	item_name = data["item_name"]
-	item_effect = data["item_effect"]
+	item_rarity = data["item_rarity"]
 	item_texture = data["item_texture"]

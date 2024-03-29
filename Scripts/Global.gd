@@ -30,7 +30,7 @@ func add_item(item, to_hotbar = false):
 	# Add to inventory
 	if not added_to_hotbar:
 		for i in range(inventory.size()):
-			if inventory[i] != null and inventory[i]["item_type"] == item["item_type"] and inventory[i]["item_effect"] == item["item_effect"]:
+			if inventory[i] != null and inventory[i]["item_type"] == item["item_type"] and inventory[i]["item_rarity"] == item["item_rarity"]:
 				inventory[i]["quantity"] += item["quantity"]
 				inventory_updated.emit()
 				return true
@@ -40,10 +40,10 @@ func add_item(item, to_hotbar = false):
 				return true
 			return false
 	
-# Removes an item from the inventory based on type and effect
-func remove_item(item_type, item_effect):
+# Removes an item from the inventory based on type and rarity
+func remove_item(item_type, item_rarity):
 	for i in range(inventory.size()):
-		if inventory[i] != null and inventory[i]["item_type"] == item_type and inventory[i]["item_effect"] == item_effect:
+		if inventory[i] != null and inventory[i]["item_type"] == item_type and inventory[i]["item_rarity"] == item_rarity:
 			inventory[i]["quantity"] -= 1
 			if inventory[i]["quantity"] <= 0:
 				inventory[i] = null
@@ -87,9 +87,9 @@ func add_hotbar_item(item):
 	return false
 
 # Removes an item from the hotbar
-func remove_hotbar_item(item_type, item_effect):
+func remove_hotbar_item(item_type, item_rarity):
 	for i in range(hotbar_inventory.size()):
-		if hotbar_inventory[i] != null and hotbar_inventory[i]["item_type"] == item_type and hotbar_inventory[i]["item_effect"] == item_effect:
+		if hotbar_inventory[i] != null and hotbar_inventory[i]["item_type"] == item_type and hotbar_inventory[i]["item_rarity"] == item_rarity:
 			if hotbar_inventory[i]["quantity"] <= 0:
 				hotbar_inventory[i] = null
 			inventory_updated.emit()
@@ -97,9 +97,9 @@ func remove_hotbar_item(item_type, item_effect):
 	return false
 
 # Unassign hotbar item
-func unassign_hotbar_item(item_type, item_effect):
+func unassign_hotbar_item(item_type, item_rarity):
 	for i in range(hotbar_inventory.size()):
-		if hotbar_inventory[i] != null and hotbar_inventory[i]["item_type"] == item_type and hotbar_inventory[i]["item_effect"] == item_effect:
+		if hotbar_inventory[i] != null and hotbar_inventory[i]["item_type"] == item_type and hotbar_inventory[i]["item_rarity"] == item_rarity:
 			hotbar_inventory[i] = null
 			inventory_updated.emit()
 			return true
