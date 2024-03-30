@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyfl0pgsokonp"
-path="res://.godot/imported/blue_cabbage_seed_item.png-cb8e036d53b62d072538cdefc944a0af.ctex"
+uid="uid://bs13md1eowlyk"
+path="res://.godot/imported/blue_poppy_item.png-76befe7e14438e45e8af73edfef9c0bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Seeds/blue_cabbage_seed_item.png"
-dest_files=["res://.godot/imported/blue_cabbage_seed_item.png-cb8e036d53b62d072538cdefc944a0af.ctex"]
+source_file="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/blue_poppy_item.png"
+dest_files=["res://.godot/imported/blue_poppy_item.png-76befe7e14438e45e8af73edfef9c0bf.ctex"]
 
 [params]
 

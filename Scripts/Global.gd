@@ -30,7 +30,7 @@ func add_item(item, to_hotbar = false):
 	# Add to inventory
 	if not added_to_hotbar:
 		for i in range(inventory.size()):
-			if inventory[i] != null and inventory[i]["item_type"] == item["item_type"] and inventory[i]["item_rarity"] == item["item_rarity"]:
+			if inventory[i] != null and inventory[i]["item_type"] == item["item_type"] and inventory[i]["item_name"] == item["item_name"]:
 				inventory[i]["quantity"] += item["quantity"]
 				inventory_updated.emit()
 				return true
@@ -38,12 +38,12 @@ func add_item(item, to_hotbar = false):
 				inventory[i] = item
 				inventory_updated.emit()
 				return true
-			return false
+		return false
 	
 # Removes an item from the inventory based on type and rarity
-func remove_item(item_type, item_rarity):
+func remove_item(item_type, item_name):
 	for i in range(inventory.size()):
-		if inventory[i] != null and inventory[i]["item_type"] == item_type and inventory[i]["item_rarity"] == item_rarity:
+		if inventory[i] != null and inventory[i]["item_type"] == item_type and inventory[i]["item_name"] == item_name:
 			inventory[i]["quantity"] -= 1
 			if inventory[i]["quantity"] <= 0:
 				inventory[i] = null
@@ -87,9 +87,9 @@ func add_hotbar_item(item):
 	return false
 
 # Removes an item from the hotbar
-func remove_hotbar_item(item_type, item_rarity):
+func remove_hotbar_item(item_type, item_name):
 	for i in range(hotbar_inventory.size()):
-		if hotbar_inventory[i] != null and hotbar_inventory[i]["item_type"] == item_type and hotbar_inventory[i]["item_rarity"] == item_rarity:
+		if hotbar_inventory[i] != null and hotbar_inventory[i]["item_type"] == item_type and hotbar_inventory[i]["item_name"] == item_name:
 			if hotbar_inventory[i]["quantity"] <= 0:
 				hotbar_inventory[i] = null
 			inventory_updated.emit()

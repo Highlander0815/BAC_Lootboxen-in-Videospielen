@@ -17,6 +17,8 @@ enum EQUIPMENT { AXE, SHOVEL, HOE, WATERINGCAN, HAND }
 @onready var inventory_ui = $InventoryUI
 @onready var inventory_hotbar = $InventoryHotbar
 
+@onready var current_slot : int = 0
+
 var velo_multiplicator : float = 1.0
 var tool_in_use : bool = false
 var current_equipment : EQUIPMENT = EQUIPMENT.HAND
@@ -28,6 +30,7 @@ var max_distance : int = 2
 var seed_custom_data : String = "can_place_seeds"
 var soil_custom_data : String = "can_place_soil"
 var soil_tiles = []
+var can_use_action = true
 
 signal facing_direction_change(facing : String)
 
@@ -110,6 +113,10 @@ func _input(_event):
 	if Input.is_action_just_pressed("inventory"):
 		inventory_ui.visible = !inventory_ui.visible
 		# get_tree().paused = !get_tree().paused
+		if inventory_ui.visible:
+			can_use_action = false
+		else:
+			can_use_action = true
 		inventory_hotbar.visible = !inventory_hotbar.visible
 	
 	if Input.is_action_pressed("run"):
@@ -118,8 +125,7 @@ func _input(_event):
 	if Input.is_action_just_released("run"):
 		velo_multiplicator = 1.0
 	
-	if Input.is_action_just_pressed("use"):
-				
+	if Input.is_action_just_pressed("use") and can_use_action:
 		if current_equipment == EQUIPMENT.HAND:
 			hand()
 			return
@@ -219,18 +225,27 @@ func create_soil():
 		print("Can't create soil!")
 
 # Place, what is currently in players hand at mouseclick position
+# This function will be rewritten, so it only harvests ready plants
+# Planting seeds or using tools and items will be handled elsewhere
 func hand():
 	var current_tile = get_mouse_pos()
 	
-	if get_tile_data(farm_ground_layer, seed_custom_data, current_tile):
-		if get_tile_data(crop_layer, "crop_planted", current_tile):
-			print("Can't place seeds, the other plant must be harvested first")
-			return
-		if check_difference(current_tile, get_player_pos()):
-			print("plant seeds")
-			game_level_class.growth_handler(current_tile, "corn")
-		else:
-			print("Can't place seeds!")
+	var current_item = Global.hotbar_inventory[current_slot]
+	
+	if current_item != null and current_item["item_type"] == "Seed":	
+		if get_tile_data(farm_ground_layer, seed_custom_data, current_tile):
+			if get_tile_data(crop_layer, "crop_planted", current_tile):
+				print("Can't place seeds, the other plant must be harvested first")
+				return
+			if check_difference(current_tile, get_player_pos()):
+				print("plant seeds")
+				
+				# Pass the name of the item hold here!
+				game_level_class.growth_handler(current_tile, current_item["item_name"])
+				Global.remove_item(current_item["item_type"], current_item["item_name"])
+				Global.remove_hotbar_item(current_item["item_type"], current_item["item_name"])
+			else:
+				print("Can't place seeds!")
 
 # returns tiledata
 func get_tile_data(layer, custom_data_layer, vector):
@@ -239,6 +254,9 @@ func get_tile_data(layer, custom_data_layer, vector):
 		return tile_data.get_custom_data(custom_data_layer)
 	else:
 		return false
+
+func select_hotbar_item(slot_index):
+	current_slot = slot_index
 
 func use_hotbar_item(slot_index):
 	if slot_index < Global.hotbar_inventory.size():
@@ -250,14 +268,14 @@ func use_hotbar_item(slot_index):
 			item["quantity"] -= 1
 			if item["quantity"] <= 0:
 				Global.hotbar_inventory[slot_index] = null
-				# Gloval.remove_item(item["item_type"], item["item_rarity"])
+				Global.remove_item(item["item_type"], item["item_name"])
 			Global.inventory_updated.emit()
-			
+	
 # Hotbar shortcuts usage
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
 		for i in range(Global.hotbar_size):
 			if Input.is_action_just_pressed("hotbar_" + str(i + 1)):
-				use_hotbar_item(i)
+				select_hotbar_item(i)
 				break
 

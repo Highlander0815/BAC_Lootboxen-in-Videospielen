@@ -23,7 +23,7 @@ func _ready():
 	pass
 
 func _on_body_entered(body):
-	if body.name == "PlayerCat": # Replace with your character's node name or use groups/tags
+	if body.name == "PlayerCat":
 		var inventory = body.find_child("Inventory")
 		if (inventory):
 			inventory.add_resources(resource_type, 1)

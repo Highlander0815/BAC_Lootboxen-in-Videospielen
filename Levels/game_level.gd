@@ -7,7 +7,7 @@ class_name game_level
 
 var crop_layer : int = 5
 var crops_source_id : int = 6
-var final_seed_level : int = 4
+var final_seed_level : int = 3
 
 
 func plant_growth(tile_map_pos, level, atlas_coord):
@@ -24,6 +24,7 @@ func plant_growth(tile_map_pos, level, atlas_coord):
 		var new_atlas : Vector2i
 		if atlas_coord.x == 2 and atlas_coord.y == 1:
 			new_atlas = Vector2i(3, 0)
+			level -= 1
 		else:
 			new_atlas = Vector2i(atlas_coord.x + 1, atlas_coord.y)
 		

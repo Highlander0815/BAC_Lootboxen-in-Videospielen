@@ -53,3 +53,9 @@ func set_item_data(data):
 	item_name = data["item_name"]
 	item_rarity = data["item_rarity"]
 	item_texture = data["item_texture"]
+
+func initiate_items(type, iname, rarity, texture):
+	item_type = type
+	item_name = iname
+	item_rarity = rarity
+	item_texture = texture
