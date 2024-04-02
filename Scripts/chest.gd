@@ -9,6 +9,7 @@ class_name lootbox
 @onready var item_data = ItemData.new()
 @onready var area = $Area2D/CollisionShape2D
 @onready var items = get_tree().get_nodes_in_group("Item_Group")
+@onready var colshape = $Chest_Body/CollisionShape2D
 
 
 var seeds
@@ -90,6 +91,8 @@ func spawn_items():
 		alpha -= 0.05
 		await get_tree().create_timer(0.1).timeout
 		modulate.a = alpha
+		if modulate.a <= 0.5:
+			colshape.disabled = true
 		if modulate.a <= 0:
 			queue_free()
 			break
