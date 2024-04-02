@@ -9,6 +9,7 @@ extends Control
 @onready var usage_panel = $UsagePanel
 @onready var assign_button = $UsagePanel/ColorRect2/AssignButton
 @onready var outer_border = $NinePatchRect
+@onready var border = $Border
 
 # Signals
 signal drag_start(slot)
@@ -22,6 +23,9 @@ var is_assigned = false
 # Set index
 func set_slot_index(new_index):
 	slot_index = new_index
+
+func get_slot_index():
+	return slot_index
 
 func _on_item_button_mouse_entered():
 	if item != null:
@@ -92,3 +96,8 @@ func _on_item_button_gui_input(event):
 				outer_border.modulate = Color(1, 1, 1)
 				drag_end.emit()
 
+func highlight_current_slot():
+	border.visible = true
+
+func stop_highlighting():
+	border.visible = false

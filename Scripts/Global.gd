@@ -5,6 +5,7 @@ var inventory = []
 
 # Custom signals
 signal inventory_updated
+signal highlight(current_slot)
 
 var player_node : Node = null
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
@@ -130,3 +131,6 @@ func swap_hotbar_items(index1, index2):
 	hotbar_inventory[index2] = temp
 	inventory_updated.emit()
 	return true
+
+func highlight_slot(current_slot):
+	highlight.emit(current_slot)

@@ -265,6 +265,7 @@ func get_tile_data(layer, custom_data_layer, vector):
 
 func select_hotbar_item(slot_index):
 	current_slot = slot_index
+	Global.highlight_slot(slot_index)
 
 func use_hotbar_item(slot_index):
 	if slot_index < Global.hotbar_inventory.size():

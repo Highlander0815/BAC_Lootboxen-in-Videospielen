@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvn3lniff0yc0"]
+[gd_scene load_steps=6 format=3 uid="uid://cvn3lniff0yc0"]
 
 [ext_resource type="Script" path="res://Scripts/inventory_slot.gd" id="1_y4v4b"]
+[ext_resource type="Texture2D" uid="uid://cjiwtfmm6v8kr" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/white_frame.png" id="2_75fbc"]
 [ext_resource type="Texture2D" uid="uid://wlomfgipdf3p" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_r4pko"]
 [ext_resource type="FontFile" uid="uid://cde5ciph3xywr" path="res://Roboto/Roboto-Regular.ttf" id="3_anu7a"]
 
@@ -17,6 +18,16 @@ offset_right = 5.14984e-05
 offset_bottom = -2.86102e-05
 script = ExtResource("1_y4v4b")
 metadata/_edit_use_anchors_ = true
+
+[node name="Border" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 29.0
+offset_bottom = 29.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_75fbc")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1

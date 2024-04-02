@@ -7,6 +7,7 @@ var dragged_slot = null
 
 func _ready():
 	Global.inventory_updated.connect(_update_hotbar_ui)
+	Global.highlight.connect(_highlight_slots)
 	_update_hotbar_ui()
 
 func _update_hotbar_ui():
@@ -54,7 +55,7 @@ func get_slot_under_mouse() -> Control:
 
 func get_slot_index(slot : Control) -> int:
 	for i in range(hotbar_container.get_child_count()):
-		if hotbar_container.get_child(i) == slot:		
+		if hotbar_container.get_child(i) == slot:
 			# Valid slot found
 			return i
 	# Invalid slot
@@ -70,3 +71,10 @@ func drop_slot(slot1 : Control, slot2 : Control):
 		if Global.swap_hotbar_items(slot1_index, slot2_index):
 			print("Dropping slot items: ", slot1, slot2_index)
 			_update_hotbar_ui()
+
+func _highlight_slots(current_slot):
+	for slot in hotbar_container.get_children():
+		if slot.get_slot_index() == current_slot:
+			slot.highlight_current_slot()
+		else:
+			slot.stop_highlighting()
