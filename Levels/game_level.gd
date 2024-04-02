@@ -4,11 +4,33 @@ class_name game_level
 
 @onready var tile_map : TileMap = $TileMap
 @onready var crop_timer : Timer = $Crop_Timer
+@onready var items = get_tree().get_nodes_in_group("Item_Group")
+@onready var item_data = ItemData.new()
 
 var crop_layer : int = 5
 var crops_source_id : int = 6
 var final_seed_level : int = 3
+var vegetables
 
+var plant_register = {
+	"(4, 0)" :  "Corn",
+	"(3, 2)" : "Carrot",
+	"(3, 3)" : "Cauliflower",
+	"(3, 4)" : "Tomato",
+	"(3, 5)" : "Aubergine",
+	"(3, 6)" : "Blue Poppy",
+	"(3, 7)" : "Cabbage",
+	"(3, 8)" : "Wheat",
+	"(3, 9)" : "Pumpkin",
+	"(3, 10)" : "White Radish",
+	"(3, 11)" : "Artichoke",
+	"(3, 12)" : "Purple Radish",
+	"(3, 13)" : "Star Fruit",
+	"(3, 14)" : "Cucumber"
+}
+
+func _ready():
+	vegetables = item_data.get_vegetables()
 
 func plant_growth(tile_map_pos, level, atlas_coord):
 	# plant seedling/update texture on growth
@@ -60,6 +82,40 @@ func growth_handler(tile_map_pos, plant : String):
 	if plant == "Cucumber Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 14))
 
+func harvest_crop(tile_map_pos, item_position):
+	# removing the crop tile
+	var data = get_plant_data(tile_map_pos)
+	tile_map.erase_cell(crop_layer, tile_map_pos)
+
+	spawn_item(data, item_position)
+
+# get information about plant via atlas coord
+func get_plant_data(tile_map_pos):
+	var atlas_coord = tile_map.get_cell_atlas_coords(5, tile_map_pos)
+	
+	# get plant name
+	var plant_name = plant_register[str(atlas_coord)]
+
+	# get plant data
+	var plant_data
+	for item in vegetables:
+		if item.item_name == str(plant_name):
+			plant_data = item
+	
+	return plant_data
+
+func spawn_item(data, item_position):
+	var item_scene = preload("res://Scenes/Inventory_Item.tscn")
+	var item_instance = item_scene.instantiate()
+	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["texture"])
+	item_instance.global_position = item_position
+	items[0].add_child(item_instance)
+
+func is_crop_mature(tile_map_pos) -> bool:
+	var tile_data = tile_map.get_cell_tile_data(crop_layer, tile_map_pos)
+	if tile_data:
+		return tile_data.get_custom_data("Matured")
+	return false
 
 func _on_timer_timeout():
 	pass # Replace with function body.

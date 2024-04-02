@@ -232,6 +232,7 @@ func hand():
 	
 	var current_item = Global.hotbar_inventory[current_slot]
 	
+	# Plant Seeds
 	if current_item != null and current_item["item_type"] == "Seed":	
 		if get_tile_data(farm_ground_layer, seed_custom_data, current_tile):
 			if get_tile_data(crop_layer, "crop_planted", current_tile):
@@ -246,6 +247,13 @@ func hand():
 				Global.remove_hotbar_item(current_item["item_type"], current_item["item_name"])
 			else:
 				print("Can't place seeds!")
+
+	# Harvest Plants
+	if current_item == null and check_difference(current_tile, get_player_pos()):
+		if game_level_class.is_crop_mature(current_tile):
+			print("Harvesting mature crop")
+			game_level_class.harvest_crop(current_tile, position)
+			return
 
 # returns tiledata
 func get_tile_data(layer, custom_data_layer, vector):
