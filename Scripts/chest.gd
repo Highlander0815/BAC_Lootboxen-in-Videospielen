@@ -46,6 +46,11 @@ func _on_area_2d_body_entered(body):
 	if body.name == "PlayerCat":
 		player_in_range = true
 
+func _on_area_2d_body_exited(body):
+	if body.name == "PlayerCat":
+		player_in_range = false
+
+
 func random_seed_generator():
 	var lucky_number = randi_range(1, 100)
 	if lucky_number <= 2:
@@ -103,3 +108,5 @@ func spawn_item(data, item_position):
 	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["texture"])
 	item_instance.global_position = item_position
 	items[0].add_child(item_instance)
+
+

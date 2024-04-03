@@ -4753,8 +4753,6 @@ layer_6/tile_data = PackedInt32Array(1310738, 4, 0, 1376274, 4, 1, 1441810, 4, 1
 
 [node name="Crop_Timer" type="Timer" parent="."]
 
-[node name="Items" type="Node2D" parent="." groups=["Item_Group"]]
-
 [node name="Cow" parent="." instance=ExtResource("8_s7kue")]
 position = Vector2(376, 138)
 
@@ -4775,5 +4773,8 @@ position = Vector2(540, 280)
 [node name="Shop" parent="." instance=ExtResource("18_mbd70")]
 y_sort_enabled = true
 position = Vector2(303, 218)
+
+[node name="Items" type="Node2D" parent="." groups=["Item_Group"]]
+y_sort_enabled = true
 
 [connection signal="timeout" from="Crop_Timer" to="." method="_on_timer_timeout"]

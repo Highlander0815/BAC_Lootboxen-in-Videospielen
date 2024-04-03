@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcpjgwkeb21we"]
+[gd_scene load_steps=4 format=3 uid="uid://bcpjgwkeb21we"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory_Item.gd" id="1_mxjhf"]
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="2_krbdf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0af6j"]
 radius = 7.0
 
 [node name="Inventory_Item" type="Node2D" groups=["Items"]]
-z_index = -1
 script = ExtResource("1_mxjhf")
 item_rarity = null
 
@@ -16,6 +16,7 @@ item_rarity = null
 shape = SubResource("CircleShape2D_0af6j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+script = ExtResource("2_krbdf")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
