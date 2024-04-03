@@ -14,10 +14,18 @@ var player_node : Node = null
 var hotbar_size = 5
 var hotbar_inventory = []
 
+var wallet : int = 0
+
+
 func _ready():
 	# Initializes the inventory with 30 slots (spread over 9 blocks per row)
 	inventory.resize(32)
 	hotbar_inventory.resize(hotbar_size)
+	Shop.item_sold.connect(_on_item_sold)
+
+func _on_item_sold(total_coins):
+	wallet += total_coins
+	print("Total Coins: ", wallet)
 
 # Adds an item to the inventory, returns true if successful
 func add_item(item, to_hotbar = false):
