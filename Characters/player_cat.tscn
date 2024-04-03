@@ -539,7 +539,7 @@ radius = 5.0
 height = 18.0
 
 [node name="PlayerCat" type="CharacterBody2D" groups=["Player"]]
-z_index = 1
+z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_dgsuv")
 

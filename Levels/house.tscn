@@ -7,7 +7,7 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1b6gi"]
 texture = ExtResource("1_t2kjw")
 1:0/0 = 0
-1:0/0/y_sort_origin = 4
+1:0/0/y_sort_origin = 5
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 2, -8, 2, -8, 8, 8, 8)
@@ -28,7 +28,7 @@ texture = ExtResource("1_t2kjw")
 0:1/0/physics_layer_0/angular_velocity = 0.0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, 2, 8, 2, 8, 8, 4, 8)
 1:1/0 = 0
-1:1/0/y_sort_origin = 4
+1:1/0/y_sort_origin = 5
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2, 8, 2, 8, 8, -8, 8)
