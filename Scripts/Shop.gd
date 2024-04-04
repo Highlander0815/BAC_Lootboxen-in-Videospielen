@@ -33,15 +33,14 @@ func _on_shop_area_body_exited(body):
 func sell_items():
 	var total_coins = 0
 	for item in items_in_shop:
-		total_coins += 2
+		total_coins += item.get("item_value")
 		item.queue_free() # Remove the item from the scene
 
+	#emit_signal("item_sold", total_coins)
 	item_sold.emit(total_coins)
 
-
 func _on_shop_area_area_entered(area):
-	print(area.owner.get_groups())
-	if area.owner.is_in_group("sellable"):
+	if area.owner.get("item_sellable"):
 		items_in_shop.append(area.owner)
 
 

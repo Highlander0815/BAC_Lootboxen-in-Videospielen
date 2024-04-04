@@ -105,7 +105,7 @@ func spawn_items():
 func spawn_item(data, item_position):
 	var item_scene = preload("res://Scenes/Inventory_Item.tscn")
 	var item_instance = item_scene.instantiate()
-	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["texture"])
+	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["texture"], data["item_value"], data["item_sellable"])
 	item_instance.global_position = item_position
 	items[0].add_child(item_instance)
 

@@ -16,12 +16,17 @@ var hotbar_inventory = []
 
 var wallet : int = 0
 
-
 func _ready():
 	# Initializes the inventory with 30 slots (spread over 9 blocks per row)
 	inventory.resize(32)
 	hotbar_inventory.resize(hotbar_size)
-	Shop.item_sold.connect(_on_item_sold)
+	# Connect to Shop Node to receive the value of sold items
+	var shop = get_shop()
+	if shop:
+		shop.connect("item_sold", _on_item_sold)
+
+func get_shop():
+	return get_tree().get_first_node_in_group("Shop")
 
 func _on_item_sold(total_coins):
 	wallet += total_coins

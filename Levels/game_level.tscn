@@ -4770,7 +4770,7 @@ position = Vector2(544, 224)
 y_sort_enabled = true
 position = Vector2(540, 280)
 
-[node name="Shop" parent="." instance=ExtResource("18_mbd70")]
+[node name="Shop" parent="." groups=["Shop"] instance=ExtResource("18_mbd70")]
 y_sort_enabled = true
 position = Vector2(303, 218)
 

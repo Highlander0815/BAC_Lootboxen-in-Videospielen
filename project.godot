@@ -18,7 +18,6 @@ config/icon="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Egg_item.png"
 [autoload]
 
 Global="*res://Scripts/Global.gd"
-Shop="*res://Scripts/Shop.gd"
 
 [display]
 

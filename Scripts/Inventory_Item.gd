@@ -1,11 +1,13 @@
 @tool
 extends Node2D
 
-# Item detaisl for editor window
-@export var item_type = ""
-@export var item_name = ""
+# Item details for editor window
+@export var item_type : String = ""
+@export var item_name : String = ""
 @export var item_texture : Texture
-@export var item_rarity = ""
+@export var item_rarity : String = ""
+@export var item_sellable : bool = false
+@export var item_value : int = 0
 var scene_path = "res://Scenes/Inventory_Item.tscn"
 
 # Scene-Tree Node reference
@@ -31,7 +33,9 @@ func pickup_item():
 		"item_name" : item_name,
 		"item_texture" : item_texture,
 		"item_rarity" : item_rarity,
-		"scene_path" : scene_path
+		"scene_path" : scene_path,
+		"sellable" : item_sellable,
+		"value" : item_value
 	}
 	if Global.player_node:
 		Global.add_item(item, false)
@@ -53,9 +57,13 @@ func set_item_data(data):
 	item_name = data["item_name"]
 	item_rarity = data["item_rarity"]
 	item_texture = data["item_texture"]
-
-func initiate_items(type, iname, rarity, texture):
+	item_sellable = data["sellable"]
+	item_value = data["value"]
+	
+func initiate_items(type, iname, rarity, texture, value, sellable):
 	item_type = type
 	item_name = iname
 	item_rarity = rarity
 	item_texture = texture
+	item_sellable = sellable
+	item_value = value
