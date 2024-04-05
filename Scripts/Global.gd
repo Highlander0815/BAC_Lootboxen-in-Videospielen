@@ -7,6 +7,8 @@ var inventory = []
 signal inventory_updated
 signal highlight(current_slot)
 signal spent(amount)
+signal update_coins(total_coins)
+signal update_silver_ingots(total_silver)
 
 var player_node : Node = null
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
@@ -43,8 +45,12 @@ func get_shop():
 	
 func _on_item_sold(total_coins):
 	coins += total_coins
+	update_coins.emit(coins)
 	print("Total Coins: ", coins)
-	
+
+func _on_premium_updated():
+	update_silver_ingots.emit(silver_ingots)
+
 func get_ui():
 	return get_tree().get_first_node_in_group("UI")
 

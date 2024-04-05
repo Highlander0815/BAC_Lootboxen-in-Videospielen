@@ -53,7 +53,7 @@ func _on_area_2d_body_exited(body):
 
 func random_seed_generator():
 	var lucky_number = randi_range(1, 100)
-	if lucky_number <= 2:
+	if lucky_number <= 1:
 		return get_seeds_by_rarity(4)
 	elif lucky_number <= 20:
 		return get_seeds_by_rarity(3)
