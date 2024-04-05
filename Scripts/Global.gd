@@ -6,31 +6,54 @@ var inventory = []
 # Custom signals
 signal inventory_updated
 signal highlight(current_slot)
+signal spent(amount)
 
 var player_node : Node = null
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
+@onready var items = get_tree().get_nodes_in_group("Item_Group")
 
 # Hotbar Items
 var hotbar_size = 5
 var hotbar_inventory = []
 
-var wallet : int = 0
+var inventory_size = 8
+
+# Fake Money
+var wallet : float = 0.0
+# Ingame Currency
+var coins : int = 0
+# Ingame Premium Currency
+var silver_ingots : int = 0
 
 func _ready():
-	# Initializes the inventory with 30 slots (spread over 9 blocks per row)
-	inventory.resize(32)
+	# Initializes the inventory with 8 slots (8 blocks per row, 4 rows)
+	inventory.resize(inventory_size)
 	hotbar_inventory.resize(hotbar_size)
 	# Connect to Shop Node to receive the value of sold items
 	var shop = get_shop()
 	if shop:
 		shop.connect("item_sold", _on_item_sold)
+	
+	var ui = get_ui()
+	if ui:
+		ui.connect("update_wallet", _on_update_wallet)
 
 func get_shop():
 	return get_tree().get_first_node_in_group("Shop")
-
+	
 func _on_item_sold(total_coins):
-	wallet += total_coins
-	print("Total Coins: ", wallet)
+	coins += total_coins
+	print("Total Coins: ", coins)
+	
+func get_ui():
+	return get_tree().get_first_node_in_group("UI")
+
+func _on_update_wallet(new_wallet):
+	wallet = new_wallet
+	print("Wallet: ", wallet)
+
+func money_spent(amount):
+	spent.emit(amount)
 
 # Adds an item to the inventory, returns true if successful
 func add_item(item, to_hotbar = false):
@@ -52,8 +75,10 @@ func add_item(item, to_hotbar = false):
 				inventory[i] = item
 				inventory_updated.emit()
 				return true
-		return false
-	
+
+		print("Inventory Full")
+		spawn_item(item, player_node.position)
+
 # Removes an item from the inventory based on type and rarity
 func remove_item(item_type, item_name):
 	for i in range(inventory.size()):
@@ -147,3 +172,10 @@ func swap_hotbar_items(index1, index2):
 
 func highlight_slot(current_slot):
 	highlight.emit(current_slot)
+
+func spawn_item(data, item_position):
+	var item_scene = preload("res://Scenes/Inventory_Item.tscn")
+	var item_instance = item_scene.instantiate()
+	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["item_texture"], data["item_value"], data["item_sellable"])
+	item_instance.global_position = item_position
+	items[0].add_child(item_instance)

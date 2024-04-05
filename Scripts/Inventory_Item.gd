@@ -34,8 +34,8 @@ func pickup_item():
 		"item_texture" : item_texture,
 		"item_rarity" : item_rarity,
 		"scene_path" : scene_path,
-		"sellable" : item_sellable,
-		"value" : item_value
+		"item_sellable" : item_sellable,
+		"item_value" : item_value
 	}
 	if Global.player_node:
 		Global.add_item(item, false)
@@ -57,8 +57,8 @@ func set_item_data(data):
 	item_name = data["item_name"]
 	item_rarity = data["item_rarity"]
 	item_texture = data["item_texture"]
-	item_sellable = data["sellable"]
-	item_value = data["value"]
+	item_sellable = data["item_sellable"]
+	item_value = data["item_value"]
 	
 func initiate_items(type, iname, rarity, texture, value, sellable):
 	item_type = type

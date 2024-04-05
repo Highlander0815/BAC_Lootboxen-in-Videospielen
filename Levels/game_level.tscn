@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://mkepdva1y4bw"]
+[gd_scene load_steps=31 format=3 uid="uid://mkepdva1y4bw"]
 
 [ext_resource type="PackedScene" uid="uid://bk774ufcr67pd" path="res://Characters/player_cat.tscn" id="1_8rr7t"]
 [ext_resource type="Script" path="res://Levels/game_level.gd" id="1_i1vn7"]
 [ext_resource type="Texture2D" uid="uid://bfybhpxgkllof" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="2_38dhn"]
+[ext_resource type="PackedScene" uid="uid://cv34r3mko121" path="res://Scenes/UI.tscn" id="3_v41ka"]
 [ext_resource type="Texture2D" uid="uid://blfed8yyjy2rd" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Hills.png" id="3_yei6g"]
 [ext_resource type="Texture2D" uid="uid://nh7ks0h1v0te" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt.png" id="4_50ysu"]
 [ext_resource type="Texture2D" uid="uid://c5u5vn8bqxpm0" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="5_xdo8d"]
@@ -4714,6 +4715,8 @@ sources/9 = SubResource("TileSetAtlasSource_mrh6j")
 y_sort_enabled = true
 script = ExtResource("1_i1vn7")
 
+[node name="UI" parent="." groups=["UI"] instance=ExtResource("3_v41ka")]
+
 [node name="PlayerCat" parent="." instance=ExtResource("1_8rr7t")]
 z_index = 0
 position = Vector2(605, 365)
@@ -4758,6 +4761,18 @@ position = Vector2(376, 138)
 
 [node name="Chest" parent="." instance=ExtResource("9_22wuv")]
 position = Vector2(574, 350)
+
+[node name="Chest4" parent="." instance=ExtResource("9_22wuv")]
+position = Vector2(544, 379)
+
+[node name="Chest5" parent="." instance=ExtResource("9_22wuv")]
+position = Vector2(574, 377)
+
+[node name="Chest2" parent="." instance=ExtResource("9_22wuv")]
+position = Vector2(524, 350)
+
+[node name="Chest3" parent="." instance=ExtResource("9_22wuv")]
+position = Vector2(551, 350)
 
 [node name="Chicken" parent="." instance=ExtResource("10_u0177")]
 position = Vector2(276, 278)
