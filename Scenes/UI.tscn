@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_m2ct3"]
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_wvuc4"]
-[ext_resource type="StyleBox" uid="uid://diuql2kyholh7" path="res://Objects/Items/Resources/UI.tres" id="3_obbvj"]
+[ext_resource type="StyleBox" uid="uid://f8liy304o13r" path="res://Resources/UI_Shop_Tab.tres" id="3_xrwsm"]
 [ext_resource type="Texture2D" uid="uid://btv6b3g8j5iqd" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/coins.png" id="4_2axuy"]
 [ext_resource type="Texture2D" uid="uid://cygeam32bkwsb" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/silver_ingot.png" id="4_glv6y"]
 
@@ -75,9 +75,9 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
-theme_override_styles/normal = ExtResource("3_obbvj")
-theme_override_styles/hover = ExtResource("3_obbvj")
-theme_override_styles/pressed = ExtResource("3_obbvj")
+theme_override_styles/normal = ExtResource("3_xrwsm")
+theme_override_styles/hover = ExtResource("3_xrwsm")
+theme_override_styles/pressed = ExtResource("3_xrwsm")
 text = "+"
 
 [node name="Add_Info" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]

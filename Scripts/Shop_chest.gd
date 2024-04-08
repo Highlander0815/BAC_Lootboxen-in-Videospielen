@@ -1,14 +1,14 @@
 extends Sprite2D
 
+class_name lootbox
 
 @onready var particles = $CPUParticles2D
 @onready var light = $PointLight2D
 @onready var animation = $AnimationTree
 @onready var state_machine = animation.get("parameters/playback")
 @onready var item_data = ItemData.new()
-@onready var area = $Area2D/CollisionShape2D
-@onready var items = get_tree().get_nodes_in_group("Item_Group")
-@onready var colshape = $Chest_Body/CollisionShape2D
+@onready var items = $"../Items"
+@onready var button = $Button
 
 
 var seeds
@@ -19,12 +19,6 @@ var fade_out_timer = 0.0 # Tracks the progress of the fade-out
 
 func _ready():
 	seeds = item_data.get_seeds()
-
-func _process(_delta):
-	if player_in_range and Input.is_action_just_pressed("interact"):
-		player_in_range = false
-		area.disabled = true
-		await spawn_items()
 
 func open_chest():
 	state_machine.travel("opening")	
@@ -40,14 +34,6 @@ func open_chest():
 		rewards.append(reward)
 	
 	return rewards
-
-func _on_area_2d_body_entered(body):
-	if body.name == "PlayerCat":
-		player_in_range = true
-
-func _on_area_2d_body_exited(body):
-	if body.name == "PlayerCat":
-		player_in_range = false
 
 
 func random_seed_generator():
@@ -80,33 +66,24 @@ func get_seeds_by_rarity(rarity):
 	return filtered_seeds[random_index]
 
 func spawn_items():
+	button.disabled = true
 	var rewards = await open_chest()
 	await get_tree().create_timer(2.0).timeout
-	
+
 	# Define position of items
-	var position_array = [Vector2(position.x -15, position.y + 5), Vector2(position.x, position.y + 8), Vector2(position.x + 15, position.y + 5)]
+	var position_array = [Vector2(global_position.x -15, global_position.y + 5), Vector2(global_position.x, global_position.y + 8), Vector2(global_position.x + 15, global_position.y + 5)]
 	
 	# Instantiate and spawn Items from chest
 	for i in range(0, 3):
 		spawn_item(rewards[i], position_array[i])
-	
-	var alpha = 1.0
-	while true:
-		alpha -= 0.05
-		await get_tree().create_timer(0.1).timeout
-		modulate.a = alpha
-		if modulate.a <= 0.5:
-			colshape.disabled = true
-		if modulate.a <= 0:
-			queue_free()
-			break
 
 func spawn_item(data, item_position):
 	var item_scene = preload("res://Scenes/Inventory_Item.tscn")
 	var item_instance = item_scene.instantiate()
 	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["texture"], data["item_value"], data["item_sellable"])
 	item_instance.global_position = item_position
-	items[0].add_child(item_instance)
+	items.add_child(item_instance)
 
 
-
+func _on_button_pressed():
+	await spawn_items()

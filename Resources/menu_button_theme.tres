@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://dks70jg0pj3nw"]
 
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="1_3u6af"]
-[ext_resource type="StyleBox" uid="uid://diuql2kyholh7" path="res://Objects/Items/Resources/UI.tres" id="1_g1vud"]
+[ext_resource type="StyleBox" uid="uid://diuql2kyholh7" path="res://Resources/UI.tres" id="1_g1vud"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvula"]
 bg_color = Color(0.341176, 0.447059, 0.592157, 1)

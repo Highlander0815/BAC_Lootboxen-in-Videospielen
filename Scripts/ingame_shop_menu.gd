@@ -9,10 +9,10 @@ func resume():
 func pause():
 	get_tree().paused = true
 
-func testEsc():
-	if Input.is_action_just_pressed("Pause") and !get_tree().paused == false:
+func open_shop_menu():
+	if Input.is_action_just_pressed("shop_menu") and !get_tree().paused == false:
 		pause()
-	elif Input.is_action_just_pressed("Pause") and get_tree().paused == true:
+	elif Input.is_action_just_pressed("shop_menu") and get_tree().paused == true:
 		resume()
 
 func _on_quit_pressed():
@@ -23,4 +23,4 @@ func _on_resume_pressed():
 	visible = false
 
 func _process(_delta):
-	testEsc()
+	open_shop_menu()

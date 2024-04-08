@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bsxwlgd5lyrmh"]
 
 [ext_resource type="Texture2D" uid="uid://cgsd58ef6vsgm" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Basic_Grass_Biom_things.png" id="1_nogyk"]
-[ext_resource type="Script" path="res://Objects/Grass_Biom_Things/Apple_Tree.gd" id="1_v4oe6"]
+[ext_resource type="Script" path="res://Scripts/Apple_Tree.gd" id="1_v4oe6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7xjew"]
 texture = ExtResource("1_nogyk")
