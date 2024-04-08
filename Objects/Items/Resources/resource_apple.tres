@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ResourceItem" load_steps=3 format=3 uid="uid://bn5rw7ee1u1of"]
-
-[ext_resource type="Script" path="res://Objects/Items/Resources/resource_item.gd" id="1_0t3to"]
-[ext_resource type="Texture2D" uid="uid://b6tluek5ldqgt" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Fruits/apple_item.png" id="2_w3ibh"]
-
-[resource]
-script = ExtResource("1_0t3to")
-display_name = "Apple"
-texture = ExtResource("2_w3ibh")

@@ -4,7 +4,6 @@ enum TREE_STATE { EMPTY, RIPE }
 
 var player_entered = false
 var current_state : TREE_STATE = TREE_STATE.EMPTY
-var apple = preload("res://Objects/Items/Apple_Pickable.tscn")
 
 @export var launch_speed : float = 100
 @export var launch_duration : float = 0.25
@@ -38,15 +37,14 @@ func _input(_event):
 		$AppleTree_Ripe.visible = false
 		
 		for i in range(3):
-			var apple_instance = apple.instantiate()
-			apple_instance.position = position # + Vector2(randi_range(-10, 10), randi_range(-10, 10))
-			get_parent().add_child(apple_instance)
+			# Instantiate 3 apples
+			
 			var direction : Vector2 = Vector2(
 				randf_range(-5.0, 5.0),
 				randf_range(-5.0, 5.0)
 			).normalized()
 			
-			apple_instance.launch(direction * launch_speed, launch_duration)
+			print(direction)
 			
 		timer.start(5)
 

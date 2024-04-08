@@ -161,6 +161,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("inventory_space_5"):
 		print("Hand equipped!")
 		current_equipment = EQUIPMENT.HAND'
+
 		
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "axe_up" or anim_name == "axe_down" or anim_name == "axe_left" or anim_name == "axe_right":

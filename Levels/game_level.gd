@@ -6,6 +6,8 @@ class_name game_level
 @onready var crop_timer : Timer = $Crop_Timer
 @onready var items = get_tree().get_nodes_in_group("Item_Group")
 @onready var item_data = ItemData.new()
+@onready var pause_menu = $CanvasLayer/PauseMenu
+var paused = false
 
 var crop_layer : int = 5
 var crops_source_id : int = 6
@@ -31,6 +33,19 @@ var plant_register = {
 
 func _ready():
 	vegetables = item_data.get_vegetables()
+
+func _physics_process(_delta):
+	if Input.is_action_just_pressed("Pause"):
+		open_Pause_Menu()
+
+func open_Pause_Menu():
+	if paused:
+		pause_menu.hide()
+	else:
+		pause_menu.show()
+		get_tree().paused = true
+		
+	paused != paused
 
 func plant_growth(tile_map_pos, level, atlas_coord):
 	# plant seedling/update texture on growth

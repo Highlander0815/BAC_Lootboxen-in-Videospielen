@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="1_x4bgj"]
 [ext_resource type="Texture2D" uid="uid://gs4y12spdv84" path="res://Art/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Wooden House.png" id="2_7ar7c"]
-[ext_resource type="PackedScene" uid="uid://di1ruj7ad2oil" path="res://Objects/Door_Double.tscn" id="3_65g88"]
+[ext_resource type="PackedScene" uid="uid://di1ruj7ad2oil" path="res://Scenes/Door_Double.tscn" id="3_65g88"]
 [ext_resource type="PackedScene" uid="uid://bu40r28yv7nb8" path="res://Objects/Interior/desk_medium.tscn" id="4_8l03a"]
 [ext_resource type="PackedScene" uid="uid://cp3174ae3necp" path="res://Objects/Interior/dresser.tscn" id="5_ann3m"]
 [ext_resource type="PackedScene" uid="uid://bbrjy1uoeea7h" path="res://Objects/Interior/painting_3.tscn" id="6_siocq"]

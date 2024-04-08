@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://pf4c03i43j1u"]
 
 [ext_resource type="Texture2D" uid="uid://boga1wldvv17d" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="1_t2kjw"]
-[ext_resource type="Script" path="res://Levels/house.gd" id="1_xfebx"]
-[ext_resource type="PackedScene" uid="uid://c2hx651fm136q" path="res://Objects/door.tscn" id="2_1mjmt"]
+[ext_resource type="Script" path="res://Scripts/house.gd" id="1_xfebx"]
+[ext_resource type="PackedScene" uid="uid://c2hx651fm136q" path="res://Scenes/door.tscn" id="2_1mjmt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1b6gi"]
 texture = ExtResource("1_t2kjw")
