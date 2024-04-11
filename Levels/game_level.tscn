@@ -62,4 +62,5 @@ y_sort_enabled = true
 visible = false
 
 [node name="Ingame_Shop_Menu" parent="CanvasLayer" instance=ExtResource("5_mf2p3")]
+process_mode = 3
 visible = false

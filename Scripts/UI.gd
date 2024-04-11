@@ -14,9 +14,17 @@ var wallet : float = 0.00:
 		_update_wallet_label()
 
 func _ready():
+	_on_coins_updated(Global.coins)
+	_on_premium_updated(Global.silver_ingots)
 	_update_wallet_label()
 	Global.connect("update_coins", _on_coins_updated)
 	Global.connect("update_silver_ingots", _on_premium_updated)
+	Global.connect("update_global_wallet", _on_wallet_updated)
+	Global.ui_ready()
+
+func _on_wallet_updated(new_wallet):
+	wallet = new_wallet
+	_update_wallet_label()
 
 func _update_wallet_label():
 	wallet_label.text = "%.2f" % wallet

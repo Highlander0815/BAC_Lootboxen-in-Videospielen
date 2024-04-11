@@ -1,16 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://86relsmuivyy"]
+[gd_scene load_steps=13 format=3 uid="uid://86relsmuivyy"]
 
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="1_6bed7"]
 [ext_resource type="Script" path="res://Scripts/ingame_shop_menu.gd" id="1_o6ud7"]
 [ext_resource type="PackedScene" uid="uid://jug116nt63n0" path="res://Scenes/Shop_chest.tscn" id="2_3km5u"]
 [ext_resource type="Texture2D" uid="uid://cygeam32bkwsb" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/silver_ingot.png" id="2_ci1wr"]
-[ext_resource type="StyleBox" uid="uid://f8liy304o13r" path="res://Resources/UI_Shop_Tab.tres" id="4_nq56j"]
+[ext_resource type="StyleBox" uid="uid://itw4mk7p60l1" path="res://Resources/ingame_shop_menu_close_button.tres" id="4_0mqg4"]
+[ext_resource type="StyleBox" uid="uid://c7vgnsn8i6mt2" path="res://Resources/ingame_shop_menu_tab_panel.tres" id="5_afyy3"]
+[ext_resource type="Texture2D" uid="uid://bqwx5h658nha2" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/silver_ingot.png" id="6_i3p6w"]
+[ext_resource type="StyleBox" uid="uid://b6hj7ani16g17" path="res://Resources/ingame_shop_menu_tab_btn.tres" id="6_qce5s"]
+[ext_resource type="Theme" uid="uid://c62jkc2qefg03" path="res://Resources/Shop_ingot_buttons.tres" id="7_6hwvq"]
+[ext_resource type="StyleBox" uid="uid://d3at7x83pfeaw" path="res://Resources/ingame_shop_menu_tab_btn_selected.tres" id="7_50dkc"]
 
-[node name="Ingame_Shop_Menu" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cw4sl"]
+
+[sub_resource type="Theme" id="Theme_afmjv"]
+TabContainer/font_sizes/font_size = 8
+TabContainer/fonts/font = ExtResource("1_6bed7")
+TabContainer/styles/panel = ExtResource("5_afyy3")
+TabContainer/styles/tab_disabled = ExtResource("6_qce5s")
+TabContainer/styles/tab_focus = ExtResource("7_50dkc")
+TabContainer/styles/tab_hovered = ExtResource("7_50dkc")
+TabContainer/styles/tab_selected = ExtResource("7_50dkc")
+TabContainer/styles/tab_unselected = ExtResource("6_qce5s")
+TabContainer/styles/tabbar_background = null
+
+[node name="Ingame_Shop_Menu" type="Control" groups=["IngameShop"]]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o6ud7")
@@ -29,20 +49,41 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cw4sl")
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+layout_mode = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.941176)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_6bed7")
 theme_override_font_sizes/font_size = 8
 text = "Premium Shop"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 4
+theme_override_styles/normal = ExtResource("4_0mqg4")
+theme_override_styles/hover = ExtResource("4_0mqg4")
+theme_override_styles/pressed = ExtResource("4_0mqg4")
+theme_override_styles/disabled = ExtResource("4_0mqg4")
+theme_override_styles/focus = ExtResource("4_0mqg4")
+text = "X"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -50,6 +91,7 @@ alignment = 1
 
 [node name="Premium_Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 10
 theme_override_fonts/font = ExtResource("1_6bed7")
 theme_override_font_sizes/font_size = 4
 text = "Silver:"
@@ -68,32 +110,222 @@ texture = ExtResource("2_ci1wr")
 
 [node name="TabContainer" type="TabContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_6bed7")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/tab_selected = ExtResource("4_nq56j")
-theme_override_styles/tab_hovered = ExtResource("4_nq56j")
-theme_override_styles/tab_unselected = ExtResource("4_nq56j")
+size_flags_vertical = 3
+theme = SubResource("Theme_afmjv")
 tab_alignment = 1
 
-[node name="Seed Boxes" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+[node name="Seed Box" type="TabBar" parent="PanelContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Seed Boxes"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Seed Box"]
 layout_mode = 2
+offset_left = 118.0
+offset_top = 18.0
+offset_right = 118.0
+offset_bottom = 18.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Chest" parent="PanelContainer/VBoxContainer/TabContainer/Seed Boxes/PanelContainer" instance=ExtResource("2_3km5u")]
+[node name="Shop_Chest" parent="PanelContainer/VBoxContainer/TabContainer/Seed Box/PanelContainer" instance=ExtResource("2_3km5u")]
 texture_filter = 1
 position = Vector2(-2, 50)
 scale = Vector2(2.5, 2.5)
 
-[node name="Items" type="Node" parent="PanelContainer/VBoxContainer/TabContainer/Seed Boxes/PanelContainer"]
+[node name="Items" type="Node" parent="PanelContainer/VBoxContainer/TabContainer/Seed Box/PanelContainer"]
 
-[node name="Inventory" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+[node name="Inventory" type="TabBar" parent="PanelContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Silver Ingots" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/Inventory"]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 19.0
+offset_right = 229.0
+offset_bottom = 78.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 12
+text = "Increase your inventory space by 4 slots!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Price_invspace" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 12
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+texture = ExtResource("2_ci1wr")
+
+[node name="btn_add_inv_space" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 8
+text = "Buy"
+
+[node name="Silver Ingots" type="TabBar" parent="PanelContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
+
+[node name="Gridcontainer" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots"]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 209.0
+offset_bottom = 102.0
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer"]
+layout_mode = 2
+
+[node name="tiny_pack_tex" type="TextureRect" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_i3p6w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 8
+text = "Tiny Pack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_buy_tiny" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme = ExtResource("7_6hwvq")
+theme_override_font_sizes/font_size = 6
+text = "1,99 €"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="small_pack_tex" type="TextureRect" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_i3p6w")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 8
+text = "Medium Pack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_buy_small" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme = ExtResource("7_6hwvq")
+theme_override_font_sizes/font_size = 6
+text = "7,99 €"
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="medium_pack_tex" type="TextureRect" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_i3p6w")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 8
+text = "Small Pack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_buy_medium" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme = ExtResource("7_6hwvq")
+theme_override_font_sizes/font_size = 6
+text = "19,99 €"
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer4"]
+layout_mode = 2
+
+[node name="large_pack_tex" type="TextureRect" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_i3p6w")
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer4/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer4/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 8
+text = "Large Pack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_buy_large" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer4/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme = ExtResource("7_6hwvq")
+theme_override_font_sizes/font_size = 6
+text = "49,99 €"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/btn_add_inv_space" to="." method="_on_btn_add_inv_space_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer/HBoxContainer/VBoxContainer/btn_buy_tiny" to="." method="_on_btn_buy_tiny_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2/HBoxContainer/VBoxContainer2/btn_buy_small" to="." method="_on_btn_buy_small_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer/VBoxContainer3/btn_buy_medium" to="." method="_on_btn_buy_medium_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer4/HBoxContainer/VBoxContainer4/btn_buy_large" to="." method="_on_btn_buy_large_pressed"]

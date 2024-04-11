@@ -9,6 +9,7 @@ signal highlight(current_slot)
 signal spent(amount)
 signal update_coins(total_coins)
 signal update_silver_ingots(total_silver)
+signal update_global_wallet(wallet)
 
 var player_node : Node = null
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
@@ -25,24 +26,32 @@ var wallet : float = 0.0
 # Ingame Currency
 var coins : int = 0
 # Ingame Premium Currency
-var silver_ingots : int = 0
+var silver_ingots : int = 50
 
 func _ready():
 	# Initializes the inventory with 8 slots (8 blocks per row, 4 rows)
 	inventory.resize(inventory_size)
 	hotbar_inventory.resize(hotbar_size)
 	# Connect to Shop Node to receive the value of sold items
+
+func ui_ready():
 	var shop = get_shop()
 	if shop:
 		shop.connect("item_sold", _on_item_sold)
-	
 	var ui = get_ui()
 	if ui:
 		ui.connect("update_wallet", _on_update_wallet)
+	var ingame_shop = get_ingame_shop()
+	if ingame_shop:
+		ingame_shop.connect("update_shop_wallet", _on_update_wallet)
+		ingame_shop.connect("update_ingots", _on_update_ingots)
 
 func get_shop():
 	return get_tree().get_first_node_in_group("Shop")
-	
+
+func get_ingame_shop():
+	return get_tree().get_first_node_in_group("IngameShop")
+
 func _on_item_sold(total_coins):
 	coins += total_coins
 	update_coins.emit(coins)
@@ -51,12 +60,20 @@ func _on_item_sold(total_coins):
 func _on_premium_updated():
 	update_silver_ingots.emit(silver_ingots)
 
+func _on_wallet_updated():
+	update_global_wallet.emit(wallet)
+
 func get_ui():
 	return get_tree().get_first_node_in_group("UI")
 
 func _on_update_wallet(new_wallet):
 	wallet = new_wallet
-	print("Wallet: ", wallet)
+	_on_wallet_updated()
+	print("Global Wallet: ", wallet)
+
+func _on_update_ingots(new_ingots):
+	silver_ingots = new_ingots
+	_on_premium_updated()
 
 func money_spent(amount):
 	spent.emit(amount)

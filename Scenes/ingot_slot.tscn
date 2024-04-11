@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://25jknw4dix7w"]
+
+[ext_resource type="Script" path="res://Scripts/ingot_slot.gd" id="1_idsai"]
+[ext_resource type="Texture2D" uid="uid://cygeam32bkwsb" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/silver_ingot.png" id="1_u8if2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8bqt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxc74"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivmqh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2e2rk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiv55"]
+
+[node name="Ingot_Slot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idsai")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_u8if2")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w8bqt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rxc74")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ivmqh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2e2rk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uiv55")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

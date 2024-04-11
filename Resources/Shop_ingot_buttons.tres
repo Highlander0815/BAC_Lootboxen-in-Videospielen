@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c62jkc2qefg03"]
+
+[ext_resource type="StyleBox" uid="uid://b415nwq0dkxre" path="res://Resources/Shop_Menu_Style_Box.tres" id="1_ppt0k"]
+
+[resource]
+Button/styles/disabled = ExtResource("1_ppt0k")
+Button/styles/focus = ExtResource("1_ppt0k")
+Button/styles/hover = ExtResource("1_ppt0k")
+Button/styles/normal = ExtResource("1_ppt0k")
+Button/styles/pressed = ExtResource("1_ppt0k")
