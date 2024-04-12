@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://86relsmuivyy"]
+[gd_scene load_steps=15 format=3 uid="uid://86relsmuivyy"]
 
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="1_6bed7"]
 [ext_resource type="Script" path="res://Scripts/ingame_shop_menu.gd" id="1_o6ud7"]
@@ -23,6 +23,17 @@ TabContainer/styles/tab_hovered = ExtResource("7_50dkc")
 TabContainer/styles/tab_selected = ExtResource("7_50dkc")
 TabContainer/styles/tab_unselected = ExtResource("6_qce5s")
 TabContainer/styles/tabbar_background = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8tus"]
+bg_color = Color(0.556863, 0.690196, 0.396078, 0.901961)
+border_color = Color(0.337255, 0.396078, 0.376471, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_4htyh"]
+Panel/styles/panel = SubResource("StyleBoxFlat_a8tus")
 
 [node name="Ingame_Shop_Menu" type="Control" groups=["IngameShop"]]
 layout_mode = 3
@@ -250,7 +261,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_6bed7")
 theme_override_font_sizes/font_size = 8
-text = "Medium Pack"
+text = "Small Pack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -281,7 +292,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_6bed7")
 theme_override_font_sizes/font_size = 8
-text = "Small Pack"
+text = "Medium Pack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -323,9 +334,46 @@ theme = ExtResource("7_6hwvq")
 theme_override_font_sizes/font_size = 6
 text = "49,99 €"
 
+[node name="InfoMessage" type="Panel" parent="."]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_4htyh")
+
+[node name="Prompt" type="Label" parent="InfoMessage"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="InfoMessage"]
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/btn_add_inv_space" to="." method="_on_btn_add_inv_space_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer/HBoxContainer/VBoxContainer/btn_buy_tiny" to="." method="_on_btn_buy_tiny_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2/HBoxContainer/VBoxContainer2/btn_buy_small" to="." method="_on_btn_buy_small_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer/VBoxContainer3/btn_buy_medium" to="." method="_on_btn_buy_medium_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer4/HBoxContainer/VBoxContainer4/btn_buy_large" to="." method="_on_btn_buy_large_pressed"]
+[connection signal="timeout" from="InfoMessage/Timer" to="." method="_on_timer_timeout"]
