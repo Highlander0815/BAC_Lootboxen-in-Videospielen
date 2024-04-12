@@ -13,10 +13,11 @@ signal update_global_wallet(wallet)
 
 var tile_map : TileMap
 var farm_ground_layer = 4
+var farm_level = 0
 var soil_tiles = []
 
-var farm_array_start = [Vector2i(3, 38)]
-var farm_array_end = [Vector2i(8, 41)]
+var farm_x = [3, 9, -4, 2, -11, -5]
+var farm_y = [38, 41, 44]
 
 var player_node : Node = null
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
@@ -34,7 +35,7 @@ var max_inventory_size = 32
 # Fake Money
 var wallet : float = 0.0
 # Ingame Currency
-var coins : int = 50
+var coins : int = 5000
 # Ingame Premium Currency
 var silver_ingots : int = 0
 
@@ -230,7 +231,39 @@ func _on_update_farmland(new_coins):
 	coins = new_coins
 	update_coins.emit(coins)
 	
-	for x in range(3, 9):
-		for y in range(38, 41):
-			soil_tiles.append(Vector2i(x, y))
-			tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)
+	match farm_level:
+		0:
+			for x in range(farm_x[0], farm_x[1]):
+				for y in range(farm_y[0], farm_y[1]):
+					soil_tiles.append(Vector2i(x, y))
+					tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)
+		1:
+			for x in range(farm_x[0], farm_x[1]):
+				for y in range(farm_y[1], farm_y[2]):
+					soil_tiles.append(Vector2i(x, y))
+					tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)
+		2:
+			for x in range(farm_x[2], farm_x[3]):
+				for y in range(farm_y[0], farm_y[1]):
+					soil_tiles.append(Vector2i(x, y))
+					tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)
+		3:
+			for x in range(farm_x[2], farm_x[3]):
+				for y in range(farm_y[1], farm_y[2]):
+					soil_tiles.append(Vector2i(x, y))
+					tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)
+		4:
+			for x in range(farm_x[4], farm_x[5]):
+				for y in range(farm_y[0], farm_y[1]):
+					soil_tiles.append(Vector2i(x, y))
+					tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)
+		5:
+			for x in range(farm_x[4], farm_x[5]):
+				for y in range(farm_y[1], farm_y[2]):
+					soil_tiles.append(Vector2i(x, y))
+					tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)
+		6:
+			tile_map.erase_cell(6, Vector2i(-9, 36))
+			tile_map.erase_cell(6, Vector2i(-8, 36))
+			
+	farm_level += 1

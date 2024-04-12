@@ -14,7 +14,7 @@ signal update_ingots
 signal update_farmland
 
 var inv_space_price = 10
-var farmland_price = 50
+var farmland_price = 25
 
 func _ready():
 	InfoMessage.hide()
@@ -118,7 +118,7 @@ func show_prompt(text, duration = 3.0):
 func _on_timer_timeout():
 	InfoMessage.hide()
 
-
+# handle farmland shop
 func _on_btn_add_farmland_pressed():
 	if farmland_price <= 2000:
 		if Global.coins >= farmland_price:

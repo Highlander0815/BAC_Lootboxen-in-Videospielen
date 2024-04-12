@@ -27,7 +27,7 @@ color = Color(0, 0, 0, 0.501961)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -36.0
+offset_left = -42.0
 offset_bottom = 25.0
 grow_horizontal = 0
 color = Color(0, 0, 0, 0.501961)
@@ -110,17 +110,20 @@ size_flags_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
+size_flags_vertical = 4
 
 [node name="Coins_Amount" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "0"
 
 [node name="Coins_Label" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(11, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "Coins"
@@ -128,19 +131,26 @@ text = "Coins"
 [node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 texture = ExtResource("4_2axuy")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer2/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 
 [node name="Premium_Amount" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "0"
 
 [node name="Premium_Label" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(11, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "Silver"
@@ -148,6 +158,8 @@ text = "Silver"
 [node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
 texture = ExtResource("4_glv6y")
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/add_money" to="." method="_on_add_money_pressed"]
