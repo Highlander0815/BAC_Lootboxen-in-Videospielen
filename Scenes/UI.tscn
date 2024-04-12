@@ -112,42 +112,42 @@ size_flags_horizontal = 0
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 2
-texture = ExtResource("4_2axuy")
-
-[node name="Coins_Label" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_wvuc4")
-theme_override_font_sizes/font_size = 4
-text = "Coins:"
-
 [node name="Coins_Amount" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "0"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer2/VBoxContainer"]
+[node name="Coins_Label" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 2
-texture = ExtResource("4_glv6y")
-
-[node name="Premium_Label" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
+size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
-text = "Silver:"
+text = "Coins"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("4_2axuy")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer2/VBoxContainer"]
+layout_mode = 2
 
 [node name="Premium_Amount" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "0"
+
+[node name="Premium_Label" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wvuc4")
+theme_override_font_sizes/font_size = 4
+text = "Silver"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("4_glv6y")
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/add_money" to="." method="_on_add_money_pressed"]

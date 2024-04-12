@@ -30,7 +30,7 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(169, 633)
 zoom = Vector2(0.7, 0.7)
 
-[node name="TileMap" parent="." instance=ExtResource("4_diq4y")]
+[node name="TileMap" parent="." groups=["TileMap"] instance=ExtResource("4_diq4y")]
 
 [node name="Cow" parent="." instance=ExtResource("8_s7kue")]
 position = Vector2(888, 549)

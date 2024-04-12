@@ -10,6 +10,7 @@ extends Node2D
 @export var item_value : int = 0
 var scene_path = "res://Scenes/Shop_Item.tscn"
 
+
 # Scene-Tree Node reference
 @onready var icon_sprite = $Sprite2D
 

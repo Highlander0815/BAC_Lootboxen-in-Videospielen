@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://86relsmuivyy"]
+[gd_scene load_steps=18 format=3 uid="uid://86relsmuivyy"]
 
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="1_6bed7"]
 [ext_resource type="Script" path="res://Scripts/ingame_shop_menu.gd" id="1_o6ud7"]
@@ -10,6 +10,22 @@
 [ext_resource type="StyleBox" uid="uid://b6hj7ani16g17" path="res://Resources/ingame_shop_menu_tab_btn.tres" id="6_qce5s"]
 [ext_resource type="Theme" uid="uid://c62jkc2qefg03" path="res://Resources/Shop_ingot_buttons.tres" id="7_6hwvq"]
 [ext_resource type="StyleBox" uid="uid://d3at7x83pfeaw" path="res://Resources/ingame_shop_menu_tab_btn_selected.tres" id="7_50dkc"]
+[ext_resource type="Texture2D" uid="uid://btv6b3g8j5iqd" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/coins.png" id="9_ogxl4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lba4u"]
+bg_color = Color(0.329412, 0.34902, 0.34902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.207843, 0.215686, 0.219608, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_1m0td"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_lba4u")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cw4sl"]
 
@@ -24,7 +40,7 @@ TabContainer/styles/tab_selected = ExtResource("7_50dkc")
 TabContainer/styles/tab_unselected = ExtResource("6_qce5s")
 TabContainer/styles/tabbar_background = null
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8tus"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pskm"]
 bg_color = Color(0.556863, 0.690196, 0.396078, 0.901961)
 border_color = Color(0.337255, 0.396078, 0.376471, 1)
 corner_radius_top_left = 2
@@ -33,7 +49,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="Theme" id="Theme_4htyh"]
-Panel/styles/panel = SubResource("StyleBoxFlat_a8tus")
+Panel/styles/panel = SubResource("StyleBoxFlat_8pskm")
 
 [node name="Ingame_Shop_Menu" type="Control" groups=["IngameShop"]]
 layout_mode = 3
@@ -60,11 +76,12 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_1m0td")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_cw4sl")
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer"]
 layout_mode = 2
-color = Color(0.196078, 0.196078, 0.196078, 0.941176)
+color = Color(0.278431, 0.290196, 0.294118, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -128,18 +145,43 @@ tab_alignment = 1
 [node name="Seed Box" type="TabBar" parent="PanelContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Seed Box"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 6
+text = "Open one Chest for 10 ingots"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Seed Box"]
-layout_mode = 2
-offset_left = 118.0
-offset_top = 18.0
-offset_right = 118.0
-offset_bottom = 18.0
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Shop_Chest" parent="PanelContainer/VBoxContainer/TabContainer/Seed Box/PanelContainer" instance=ExtResource("2_3km5u")]
+z_index = 1
 texture_filter = 1
-position = Vector2(-2, 50)
+position = Vector2(30, 27)
 scale = Vector2(2.5, 2.5)
 
 [node name="Items" type="Node" parent="PanelContainer/VBoxContainer/TabContainer/Seed Box/PanelContainer"]
@@ -189,6 +231,60 @@ size_flags_vertical = 4
 texture = ExtResource("2_ci1wr")
 
 [node name="btn_add_inv_space" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 8
+text = "Buy"
+
+[node name="Farmland" type="TabBar" parent="PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/Farmland"]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 19.0
+offset_right = 229.0
+offset_bottom = 78.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 12
+text = "Buy more fertile farmland 
+to cultivate your plants better!
+Higher price means more farmland."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Price_farmland" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 12
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+texture = ExtResource("9_ogxl4")
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="btn_add_farmland" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -335,6 +431,7 @@ theme_override_font_sizes/font_size = 6
 text = "49,99 €"
 
 [node name="InfoMessage" type="Panel" parent="."]
+y_sort_enabled = true
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 1
 anchors_preset = 8
@@ -372,6 +469,7 @@ autowrap_mode = 2
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/btn_add_inv_space" to="." method="_on_btn_add_inv_space_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer/btn_add_farmland" to="." method="_on_btn_add_farmland_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer/HBoxContainer/VBoxContainer/btn_buy_tiny" to="." method="_on_btn_buy_tiny_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2/HBoxContainer/VBoxContainer2/btn_buy_small" to="." method="_on_btn_buy_small_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer/VBoxContainer3/btn_buy_medium" to="." method="_on_btn_buy_medium_pressed"]

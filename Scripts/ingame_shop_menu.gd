@@ -2,20 +2,25 @@ extends Control
 
 @onready var premium_label = $PanelContainer/VBoxContainer/HBoxContainer/Premium_Amount
 @onready var Items = $"PanelContainer/VBoxContainer/TabContainer/Seed Box/PanelContainer/Items"
+@onready var Chest = $"PanelContainer/VBoxContainer/TabContainer/Seed Box/PanelContainer/Shop_Chest"
 @onready var timer = $InfoMessage/Timer
 @onready var InfoMessage = $InfoMessage
 @onready var Prompt = $InfoMessage/Prompt
-
+@onready var Chest_Container = $"PanelContainer/VBoxContainer/TabContainer/Seed Box/PanelContainer"
+@onready var farmland_label = $PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer/HBoxContainer/Price_farmland
 
 signal update_shop_wallet
 signal update_ingots
+signal update_farmland
 
 var inv_space_price = 10
+var farmland_price = 50
 
 func _ready():
 	InfoMessage.hide()
 	premium_label.text = str(Global.silver_ingots)
 	%Price_invspace.text = str(inv_space_price)
+	farmland_label.text = str(farmland_price)
 
 func resume():
 	get_tree().paused = false
@@ -41,6 +46,14 @@ func _on_resume_pressed():
 
 func _process(_delta):
 	open_shop_menu()
+	var items = Items.get_children()
+	if !$"PanelContainer/VBoxContainer/TabContainer/Seed Box".visible and items != null:
+		
+		for i in items:
+			i.hide()
+	elif $"PanelContainer/VBoxContainer/TabContainer/Seed Box".visible and items != null:
+		for i in items:
+			i.show()
 
 
 # Price_invspace
@@ -95,7 +108,6 @@ func _on_btn_buy_large_pressed():
 
 func show_prompt(text, duration = 3.0):
 	# Set the message
-	print(text)
 	Prompt.text = text
 	# Start the timer with the specified duration
 	timer.start(duration)
@@ -105,3 +117,18 @@ func show_prompt(text, duration = 3.0):
 
 func _on_timer_timeout():
 	InfoMessage.hide()
+
+
+func _on_btn_add_farmland_pressed():
+	if farmland_price <= 2000:
+		if Global.coins >= farmland_price:
+			update_farmland.emit(Global.coins - farmland_price)
+			
+			farmland_price *= 2
+			farmland_label.text = str(farmland_price)
+			
+			show_prompt("Congratulations on your new farmland! Happy farming!")
+		else:
+			show_prompt("You don't have enough coins for buying new farmland.")
+	else:
+		show_prompt("Wow, you bought all the available farmland on this small island!")

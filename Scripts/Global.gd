@@ -11,22 +11,32 @@ signal update_coins(total_coins)
 signal update_silver_ingots(total_silver)
 signal update_global_wallet(wallet)
 
+var tile_map : TileMap
+var farm_ground_layer = 4
+var soil_tiles = []
+
+var farm_array_start = [Vector2i(3, 38)]
+var farm_array_end = [Vector2i(8, 41)]
+
 var player_node : Node = null
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
-@onready var items = get_tree().get_nodes_in_group("Item_Group")
+var items
+
+
 
 # Hotbar Items
 var hotbar_size = 5
 var hotbar_inventory = []
 
 var inventory_size = 8
+var max_inventory_size = 32
 
 # Fake Money
 var wallet : float = 0.0
 # Ingame Currency
-var coins : int = 0
+var coins : int = 50
 # Ingame Premium Currency
-var silver_ingots : int = 50
+var silver_ingots : int = 0
 
 func _ready():
 	# Initializes the inventory with 8 slots (8 blocks per row, 4 rows)
@@ -35,6 +45,8 @@ func _ready():
 	# Connect to Shop Node to receive the value of sold items
 
 func ui_ready():
+	tile_map = get_tree().get_first_node_in_group("TileMap")
+	items = get_tree().get_nodes_in_group("Item_Group")
 	var shop = get_shop()
 	if shop:
 		shop.connect("item_sold", _on_item_sold)
@@ -45,6 +57,11 @@ func ui_ready():
 	if ingame_shop:
 		ingame_shop.connect("update_shop_wallet", _on_update_wallet)
 		ingame_shop.connect("update_ingots", _on_update_ingots)
+		ingame_shop.connect("update_farmland", _on_update_farmland)
+
+	var shop_chest = get_chest()
+	if shop_chest:
+		shop_chest.connect("update_chest_ingots", _on_update_ingots)
 
 func get_shop():
 	return get_tree().get_first_node_in_group("Shop")
@@ -52,10 +69,12 @@ func get_shop():
 func get_ingame_shop():
 	return get_tree().get_first_node_in_group("IngameShop")
 
+func get_chest():
+	return get_tree().get_first_node_in_group("ShopChest")
+
 func _on_item_sold(total_coins):
 	coins += total_coins
 	update_coins.emit(coins)
-	print("Total Coins: ", coins)
 
 func _on_premium_updated():
 	update_silver_ingots.emit(silver_ingots)
@@ -115,8 +134,11 @@ func remove_item(item_type, item_name):
 	
 # Increases inventory size dynamically
 func increase_inventory_size(extra_slots):
-	inventory.resize(inventory.size() + extra_slots)
-	inventory_updated.emit()
+	if inventory_size < max_inventory_size:
+		inventory.resize(inventory.size() + extra_slots)
+		inventory_updated.emit()
+	else:
+		print("Maximum inventory size reached")
 
 func set_player_reference(player):
 	player_node = player
@@ -201,4 +223,14 @@ func spawn_item(data, item_position):
 	var item_instance = item_scene.instantiate()
 	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["item_texture"], data["item_value"], data["item_sellable"])
 	item_instance.global_position = item_position
+	print(items)
 	items[0].add_child(item_instance)
+
+func _on_update_farmland(new_coins):
+	coins = new_coins
+	update_coins.emit(coins)
+	
+	for x in range(3, 9):
+		for y in range(38, 41):
+			soil_tiles.append(Vector2i(x, y))
+			tile_map.set_cells_terrain_connect(farm_ground_layer, soil_tiles, 3, 0)

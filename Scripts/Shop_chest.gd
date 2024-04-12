@@ -9,7 +9,11 @@ class_name lootbox
 @onready var item_data = ItemData.new()
 @onready var items = $"../Items"
 @onready var button = $Button
+@onready var InfoMessage = $InfoMessage
+@onready var Prompt = $InfoMessage/Prompt
+@onready var timer = $InfoMessage/Timer
 
+signal update_chest_ingots
 
 var seeds
 var player_in_range = false
@@ -18,12 +22,14 @@ var fade_out_duration = 2.0 # Duration of the fade-out in seconds
 var fade_out_timer = 0.0 # Tracks the progress of the fade-out
 
 func _ready():
+	InfoMessage.hide()
 	seeds = item_data.get_seeds()
 
 func open_chest():
 	state_machine.travel("opening")	
 	await get_tree().create_timer(0.5).timeout
 	light.enabled = true
+	print("light enabled: ", light.enabled)
 	await get_tree().create_timer(0.2).timeout
 	particles.emitting = true
 	
@@ -82,8 +88,32 @@ func spawn_item(data, item_position):
 	var item_instance = item_scene.instantiate()
 	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["texture"], data["item_value"], data["item_sellable"])
 	item_instance.global_position = item_position
+	item_instance.z_index = 1
 	items.add_child(item_instance)
 
 
 func _on_button_pressed():
-	await spawn_items()
+	if Global.silver_ingots >= 10:
+		update_chest_ingots.emit(Global.silver_ingots - 10)
+		await spawn_items()
+		await get_tree().create_timer(4.0).timeout
+		reset_chest()
+	else:
+		show_prompt("Sry, you don't have enough silver ingots to buy a chest...")
+	
+func reset_chest():
+	light.enabled = false
+	particles.emitting = false
+	state_machine.travel("Idle")
+	button.disabled = false
+
+func show_prompt(text, duration = 3.0):
+	# Set the message
+	Prompt.text = text
+	# Start the timer with the specified duration
+	timer.start(duration)
+	# Show the panel
+	InfoMessage.show()
+
+func _on_timer_timeout():
+	InfoMessage.hide()
