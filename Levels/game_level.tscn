@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://mkepdva1y4bw"]
+[gd_scene load_steps=14 format=3 uid="uid://mkepdva1y4bw"]
 
 [ext_resource type="PackedScene" uid="uid://bk774ufcr67pd" path="res://Characters/player_cat.tscn" id="1_8rr7t"]
 [ext_resource type="Script" path="res://Levels/game_level.gd" id="1_i1vn7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jltog6jfm7v4" path="res://Characters/chicken.tscn" id="10_u0177"]
 [ext_resource type="PackedScene" uid="uid://pf4c03i43j1u" path="res://Scenes/house.tscn" id="12_mw25h"]
 [ext_resource type="PackedScene" uid="uid://bsxwlgd5lyrmh" path="res://Scenes/Apple_Tree.tscn" id="12_u246n"]
+[ext_resource type="PackedScene" uid="uid://bqo57qq2coiwh" path="res://Scenes/leaderboard.tscn" id="13_v8sdo"]
 [ext_resource type="PackedScene" uid="uid://brifydgdfcdpv" path="res://Scenes/Shop.tscn" id="18_mbd70"]
 
 [node name="GameLevel" type="Node2D"]
@@ -65,5 +66,7 @@ y_sort_enabled = true
 visible = false
 
 [node name="Ingame_Shop_Menu" parent="CanvasLayer" instance=ExtResource("5_mf2p3")]
-process_mode = 3
+visible = false
+
+[node name="Leaderboard" parent="CanvasLayer" instance=ExtResource("13_v8sdo")]
 visible = false

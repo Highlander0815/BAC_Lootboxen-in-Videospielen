@@ -32,9 +32,11 @@ func pause():
 	get_tree().paused = true
 
 func open_shop_menu():
-	if Input.is_action_just_pressed("shop_menu") and !get_tree().paused == false:
+	if Input.is_action_just_pressed("shop_menu") and get_tree().paused == false:
+		show()
 		pause()
 	elif Input.is_action_just_pressed("shop_menu") and get_tree().paused == true:
+		hide()
 		resume()
 
 func _on_resume_pressed():

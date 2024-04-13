@@ -32,6 +32,7 @@ var hotbar_inventory = []
 var inventory_size = 8
 var max_inventory_size = 32
 
+var wallet_total : float = 0.0
 # Fake Money
 var wallet : float = 0.0
 # Ingame Currency
@@ -102,7 +103,7 @@ func get_ui():
 func _on_update_wallet(new_wallet):
 	wallet = new_wallet
 	_on_wallet_updated()
-	print("Global Wallet: ", wallet)
+	print(wallet_total)
 
 func _on_update_ingots(new_ingots):
 	silver_ingots = new_ingots

@@ -5,10 +5,6 @@ class_name game_level
 @onready var tile_map : TileMap = $TileMap
 @onready var items = get_tree().get_nodes_in_group("Item_Group")
 @onready var item_data = ItemData.new()
-@onready var pause_menu = $CanvasLayer/PauseMenu
-@onready var shop_menu = $CanvasLayer/Ingame_Shop_Menu
-var paused = false
-var shop_open = false
 
 var crop_layer : int = 5
 var crops_source_id : int = 6
@@ -36,24 +32,7 @@ func _ready():
 	vegetables = item_data.get_vegetables()
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("Pause"):
-		open_Pause_Menu()
-	if Input.is_action_just_pressed("shop_menu"):
-		open_premium_shop()
-
-func open_Pause_Menu():
-	if paused:
-		pause_menu.hide()
-	else:
-		pause_menu.show()
-		get_tree().paused = true
-
-func open_premium_shop():
-	if shop_open:
-		shop_menu.hide()
-	else:
-		shop_menu.show()
-		get_tree().paused = true
+	pass
 
 func plant_growth(tile_map_pos, level, atlas_coord):
 	# plant seedling/update texture on growth
