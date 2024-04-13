@@ -17,6 +17,7 @@
 script = ExtResource("1_ul3b7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 script = ExtResource("2_2endu")
 
 [node name="Button" type="Button" parent="."]

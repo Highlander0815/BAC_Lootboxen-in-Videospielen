@@ -16,8 +16,8 @@ var farm_ground_layer = 4
 var farm_level = 0
 var soil_tiles = []
 
-var farm_x = [3, 9, -4, 2, -11, -5]
-var farm_y = [38, 41, 44]
+var farm_x = [3, 9, -4, 2, -11, -5, -4, 2]
+var farm_y = [38, 41, 44, 30, 36]
 
 var player_node : Node = null
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
@@ -37,7 +37,7 @@ var wallet : float = 0.0
 # Ingame Currency
 var coins : int = 5000
 # Ingame Premium Currency
-var silver_ingots : int = 0
+var silver_ingots : int = 100
 
 func _ready():
 	# Initializes the inventory with 8 slots (8 blocks per row, 4 rows)
@@ -60,9 +60,13 @@ func ui_ready():
 		ingame_shop.connect("update_ingots", _on_update_ingots)
 		ingame_shop.connect("update_farmland", _on_update_farmland)
 
-	var shop_chest = get_chest()
-	if shop_chest:
-		shop_chest.connect("update_chest_ingots", _on_update_ingots)
+	var shop_chest_premium = get_premium_chest()
+	if shop_chest_premium:
+		shop_chest_premium.connect("update_chest_ingots", _on_update_ingots)
+	
+	var shop_chest_basic = get_basic_chest()
+	if shop_chest_basic:
+		shop_chest_basic.connect("update_chest_coins", _on_update_coins)
 
 func get_shop():
 	return get_tree().get_first_node_in_group("Shop")
@@ -70,12 +74,21 @@ func get_shop():
 func get_ingame_shop():
 	return get_tree().get_first_node_in_group("IngameShop")
 
-func get_chest():
-	return get_tree().get_first_node_in_group("ShopChest")
+func get_premium_chest():
+	return get_tree().get_first_node_in_group("ShopChestPremium")
 
-func _on_item_sold(total_coins):
-	coins += total_coins
+func get_basic_chest():
+	return get_tree().get_first_node_in_group("ShopChestBasic")
+
+func _on_update_coins(new_coins):
+	coins = new_coins
 	update_coins.emit(coins)
+
+func _on_item_sold(total_coins, total_ingots):
+	coins += total_coins
+	silver_ingots += total_ingots
+	update_coins.emit(coins)
+	update_silver_ingots.emit(silver_ingots)
 
 func _on_premium_updated():
 	update_silver_ingots.emit(silver_ingots)

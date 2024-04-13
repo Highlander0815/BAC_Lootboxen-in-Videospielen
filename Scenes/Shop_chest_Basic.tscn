@@ -1,8 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://jug116nt63n0"]
+[gd_scene load_steps=24 format=3 uid="uid://bheeihrnwqfii"]
 
-[ext_resource type="Texture2D" uid="uid://c65b2hk1ahqgp" path="res://Art/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Chest.png" id="1_bp22c"]
-[ext_resource type="Script" path="res://Scripts/Shop_chest.gd" id="2_wlb8s"]
-[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="3_n827g"]
+[ext_resource type="Texture2D" uid="uid://c65b2hk1ahqgp" path="res://Art/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Chest.png" id="1_3ynhi"]
+[ext_resource type="Script" path="res://Scripts/Shop_chest_basic.gd" id="2_pcltj"]
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="3_fq1u7"]
 
 [sub_resource type="Animation" id="Animation_sp7ox"]
 resource_name = "Idle"
@@ -103,13 +103,13 @@ corner_radius_bottom_left = 2
 [sub_resource type="Theme" id="Theme_pfyu6"]
 Panel/styles/panel = SubResource("StyleBoxFlat_a8tus")
 
-[node name="Shop_Chest" type="Sprite2D" groups=["ShopChest"]]
+[node name="Shop_Chest_Basic" type="Sprite2D" groups=["ShopChest"]]
 light_mask = 3
 position = Vector2(0, 1)
-texture = ExtResource("1_bp22c")
+texture = ExtResource("1_3ynhi")
 hframes = 5
 vframes = 2
-script = ExtResource("2_wlb8s")
+script = ExtResource("2_pcltj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -160,6 +160,11 @@ offset_left = -8.0
 offset_top = -6.0
 offset_right = 8.0
 offset_bottom = 8.0
+tooltip_text = "Drop rates:
+Rarity 1: 35%
+Rarity 2: 55%
+Rarity 3: 9%
+Rarity 4: 0.5%"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mwp6d")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_uv4fs")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_q0f81")
@@ -197,7 +202,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_n827g")
+theme_override_fonts/font = ExtResource("3_fq1u7")
 theme_override_font_sizes/font_size = 4
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://brifydgdfcdpv"]
+[gd_scene load_steps=29 format=3 uid="uid://brifydgdfcdpv"]
 
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="1_x4bgj"]
 [ext_resource type="Texture2D" uid="uid://gs4y12spdv84" path="res://Art/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Wooden House.png" id="2_7ar7c"]
+[ext_resource type="PackedScene" uid="uid://dyck2vr8a43fm" path="res://Characters/npc_cat.tscn" id="2_hayru"]
 [ext_resource type="PackedScene" uid="uid://di1ruj7ad2oil" path="res://Scenes/Door_Double.tscn" id="3_65g88"]
 [ext_resource type="PackedScene" uid="uid://bu40r28yv7nb8" path="res://Scenes/Interior/desk_medium.tscn" id="4_8l03a"]
 [ext_resource type="PackedScene" uid="uid://cp3174ae3necp" path="res://Scenes/Interior/dresser.tscn" id="5_ann3m"]
@@ -160,6 +161,10 @@ sources/0 = SubResource("TileSetAtlasSource_4a4eg")
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_x4bgj")
+
+[node name="NPCCat" parent="." instance=ExtResource("2_hayru")]
+z_index = 0
+position = Vector2(105, 58)
 
 [node name="Shop_TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

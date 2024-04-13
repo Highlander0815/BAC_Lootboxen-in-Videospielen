@@ -1,19 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv34r3mko121"]
+[gd_scene load_steps=6 format=3 uid="uid://cv34r3mko121"]
 
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_m2ct3"]
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_wvuc4"]
-[ext_resource type="StyleBox" uid="uid://bs5nyu6in5clj" path="res://Resources/btn_add_money.tres" id="3_ri0mq"]
+[ext_resource type="Theme" uid="uid://bk543d3o4vys" path="res://Resources/UI_add_money.tres" id="3_t80r5"]
 [ext_resource type="Texture2D" uid="uid://btv6b3g8j5iqd" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/coins.png" id="4_2axuy"]
 [ext_resource type="Texture2D" uid="uid://cygeam32bkwsb" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/silver_ingot.png" id="4_glv6y"]
-
-[sub_resource type="Theme" id="Theme_4xv8f"]
-Button/font_sizes/font_size = 4
-Button/fonts/font = ExtResource("2_wvuc4")
-Button/styles/disabled = ExtResource("3_ri0mq")
-Button/styles/focus = ExtResource("3_ri0mq")
-Button/styles/hover = ExtResource("3_ri0mq")
-Button/styles/normal = ExtResource("3_ri0mq")
-Button/styles/pressed = ExtResource("3_ri0mq")
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_m2ct3")
@@ -82,7 +73,7 @@ layout_mode = 2
 [node name="add_money" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = SubResource("Theme_4xv8f")
+theme = ExtResource("3_t80r5")
 text = "+"
 
 [node name="Add_Info" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]

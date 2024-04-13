@@ -1,6 +1,6 @@
 extends Sprite2D
 
-class_name lootbox
+class_name lootbox_basic
 
 @onready var particles = $CPUParticles2D
 @onready var light = $PointLight2D
@@ -13,7 +13,7 @@ class_name lootbox
 @onready var Prompt = $InfoMessage/Prompt
 @onready var timer = $InfoMessage/Timer
 
-signal update_chest_ingots
+signal update_chest_coins
 
 var seeds
 var player_in_range = false
@@ -35,12 +35,12 @@ func open_chest():
 
 
 func random_seed_generator():
-	var lucky_number = randi_range(1, 100)
-	if lucky_number <= 1:
+	var lucky_number = randf_range(0.0, 99.0)
+	if lucky_number <= 0.5:
 		return get_seeds_by_rarity(4)
-	elif lucky_number <= 20:
+	elif lucky_number <= 9.5:
 		return get_seeds_by_rarity(3)
-	elif lucky_number <= 70:
+	elif lucky_number <= 55.0:
 		return get_seeds_by_rarity(2)
 	else:
 		return get_seeds_by_rarity(1)
@@ -74,14 +74,14 @@ func spawn_items():
 	
 	# Define position of items
 	var position_array = [Vector2(global_position.x -15, global_position.y + 5), Vector2(global_position.x, global_position.y + 8), Vector2(global_position.x + 15, global_position.y + 5)]
-
+	
 	# Instantiate and spawn Items from chest
 	for i in range(0, 3):
 		spawn_item(rewards[i], position_array[i])
-	
+
 	await open_chest()
 	await get_tree().create_timer(2.0).timeout
-
+		
 	for item in items.get_children():
 		item.get_child(0).visible = true
 
@@ -96,13 +96,13 @@ func spawn_item(data, item_position):
 
 
 func _on_button_pressed():
-	if Global.silver_ingots >= 5:
-		update_chest_ingots.emit(Global.silver_ingots - 5)
+	if Global.coins >= 5:
+		update_chest_coins.emit(Global.coins - 5)
 		await spawn_items()
 		await get_tree().create_timer(4.0).timeout
 		reset_chest()
 	else:
-		show_prompt("Sry, you don't have enough silver ingots to buy a chest...")
+		show_prompt("Sry, you don't have enough coins to buy a chest...")
 	
 func reset_chest():
 	light.enabled = false

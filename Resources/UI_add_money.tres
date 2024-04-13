@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bk543d3o4vys"]
+
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="1_qf07x"]
+[ext_resource type="StyleBox" uid="uid://bs5nyu6in5clj" path="res://Resources/btn_add_money.tres" id="2_swsf6"]
+
+[resource]
+Button/font_sizes/font_size = 4
+Button/fonts/font = ExtResource("1_qf07x")
+Button/styles/disabled = ExtResource("2_swsf6")
+Button/styles/focus = ExtResource("2_swsf6")
+Button/styles/hover = ExtResource("2_swsf6")
+Button/styles/normal = ExtResource("2_swsf6")
+Button/styles/pressed = ExtResource("2_swsf6")
