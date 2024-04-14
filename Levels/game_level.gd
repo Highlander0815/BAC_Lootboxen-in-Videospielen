@@ -34,12 +34,15 @@ func _ready():
 func _physics_process(_delta):
 	pass
 
-func plant_growth(tile_map_pos, level, atlas_coord):
+func plant_growth(tile_map_pos, level, atlas_coord, time):
 	# plant seedling/update texture on growth
 	tile_map.set_cell(crop_layer, tile_map_pos, crops_source_id, atlas_coord)
 	
-	# After 5s grow bigger
-	await get_tree().create_timer(5.0).timeout
+	# After time seconds grow bigger
+	if Global.well:
+		time *= 0.8
+		print(time)
+	await get_tree().create_timer(time).timeout
 	
 	if level == final_seed_level:
 		return
@@ -52,37 +55,37 @@ func plant_growth(tile_map_pos, level, atlas_coord):
 		else:
 			new_atlas = Vector2i(atlas_coord.x + 1, atlas_coord.y)
 		
-		plant_growth(tile_map_pos, level,  new_atlas)
+		plant_growth(tile_map_pos, level, new_atlas, time)
 
 func growth_handler(tile_map_pos, plant : String):
 	if plant == "Corn Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 1))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 1), 30.0)
 	if plant == "Carrot Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 2))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 2), 30.0)
 	if plant == "Cauliflower Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 3))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 3), 60.0)
 	if plant == "Tomato Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 4))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 4), 30.0)
 	if plant == "Aubergine Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 5))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 5), 30.0)
 	if plant == "Blue Poppy Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 6))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 6), 90.0)
 	if plant == "Cabbage Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 7))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 7), 20.0)
 	if plant == "Wheat Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 8))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 8), 20.0)
 	if plant == "Pumpkin Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 9))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 9), 60.0)
 	if plant == "White Radish Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 10))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 10), 30.0)
 	if plant == "Artichoke Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 11))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 11), 60.0)
 	if plant == "Purple Radish Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 12))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 12), 60.0)
 	if plant == "Star Fruit Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 13))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 13), 90.0)
 	if plant == "Cucumber Seeds":
-		plant_growth(tile_map_pos, 0, Vector2i(0, 14))
+		plant_growth(tile_map_pos, 0, Vector2i(0, 14), 30.0)
 
 func harvest_crop(tile_map_pos, item_position):
 	# removing the crop tile

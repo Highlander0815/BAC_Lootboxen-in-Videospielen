@@ -10,10 +10,12 @@ extends Control
 @onready var InfoMessage = $InfoMessage
 @onready var Prompt = $InfoMessage/Prompt
 @onready var farmland_label = $PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer/HBoxContainer/Price_farmland
+@onready var well_structure_btn = $PanelContainer/VBoxContainer/TabContainer/Structure/PanelContainer/VBoxContainer/Button
 
 signal update_shop_wallet
 signal update_ingots
 signal update_farmland
+signal well_bought
 
 var inv_space_price = 10
 var farmland_price = 25
@@ -165,3 +167,16 @@ func _on_info_basic_pressed():
 
 func _on_info_premium_pressed():
 	show_prompt("Drop rates:\nRarity 1: 30%\nRarity 2: 50%\nRarity 3: 19%\nRarity 4: 1%")
+
+
+func _on_button_pressed():
+	if Global.silver_ingots >= 50:
+		update_ingots.emit(Global.silver_ingots - 50)
+		well_structure_btn.disabled = true
+		well_structure_btn.text = "sold"
+		Global.well = true
+		well_bought.emit()
+		
+		show_prompt("You just bought access to the well!")
+	else:
+		show_prompt("You don't have enough silver ingots for buying new farmland.")

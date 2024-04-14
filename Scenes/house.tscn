@@ -1,8 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://pf4c03i43j1u"]
+[gd_scene load_steps=16 format=3 uid="uid://pf4c03i43j1u"]
 
 [ext_resource type="Texture2D" uid="uid://boga1wldvv17d" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="1_t2kjw"]
 [ext_resource type="Script" path="res://Scripts/house.gd" id="1_xfebx"]
 [ext_resource type="PackedScene" uid="uid://c2hx651fm136q" path="res://Scenes/door.tscn" id="2_1mjmt"]
+[ext_resource type="PackedScene" uid="uid://ddxjux8y651yw" path="res://Scenes/Interior/Bed_blue.tscn" id="3_syl7b"]
+[ext_resource type="PackedScene" uid="uid://x5f43k5w5alp" path="res://Scenes/Interior/desk_small.tscn" id="4_u1i8g"]
+[ext_resource type="PackedScene" uid="uid://cywjf1fltv6wf" path="res://Scenes/Interior/clock_3.tscn" id="5_0gd8y"]
+[ext_resource type="PackedScene" uid="uid://dlweiq5c2p2qo" path="res://Scenes/Interior/chair_right.tscn" id="6_c7sxc"]
+[ext_resource type="PackedScene" uid="uid://cp3174ae3necp" path="res://Scenes/Interior/dresser.tscn" id="7_62pvl"]
+[ext_resource type="PackedScene" uid="uid://crhclou7kuptt" path="res://Scenes/Interior/Carpet_small_blue.tscn" id="8_vxdla"]
+[ext_resource type="PackedScene" uid="uid://dtjft2n4sn0f0" path="res://Scenes/Interior/plant_potted_3.tscn" id="9_emq3w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1b6gi"]
 texture = ExtResource("1_t2kjw")
@@ -166,7 +173,7 @@ layer_0/z_index = -1
 layer_0/tile_data = PackedInt32Array(196609, 65536, 2, 196610, 65536, 2, 196611, 65536, 2, 131073, 65536, 2, 131074, 65536, 2, 131075, 65536, 2, 131076, 65536, 2, 131077, 65536, 2, 196612, 65536, 2, 196613, 65536, 2, 262149, 65536, 2, 262148, 65536, 2, 262146, 65536, 2, 262147, 65536, 2, 327685, 65536, 2, 262145, 65536, 2, 327681, 65536, 2, 327682, 65536, 2, 327683, 65536, 2, 327684, 65536, 2, 327686, 65536, 2, 262150, 65536, 2, 196614, 65536, 2, 131078, 65536, 2, 393221, 65536, 2, 393217, 65536, 2, 393218, 65536, 2, 393219, 65536, 2, 393220, 65536, 2, 393222, 65536, 2)
 layer_1/name = "Walls"
 layer_1/y_sort_enabled = true
-layer_1/tile_data = PackedInt32Array(131072, 0, 2, 196608, 0, 2, 262144, 0, 2, 327680, 0, 2, 65536, 0, 1, 65543, 131072, 1, 131079, 131072, 2, 196615, 131072, 2, 262151, 131072, 2, 327687, 131072, 2, 393216, 0, 3, 393217, 65536, 3, 393218, 65536, 0, 393219, 65536, 3, 393220, 65536, 0, 393222, 65536, 3, 393223, 131072, 3, 65537, 65536, 1, 65538, 65536, 1, 65542, 65536, 1, 65539, 65536, 1, 65540, 65536, 1, 65541, 65536, 1)
+layer_1/tile_data = PackedInt32Array(131072, 0, 2, 196608, 0, 2, 262144, 0, 2, 327680, 0, 2, 65536, 0, 1, 65543, 131072, 1, 131079, 131072, 2, 196615, 131072, 2, 262151, 131072, 2, 327687, 131072, 2, 393216, 0, 3, 393217, 65536, 3, 393218, 65536, 0, 393219, 65536, 3, 393220, 65536, 0, 393222, 65536, 3, 393223, 131072, 3, 65537, 65536, 1, 65538, 65536, 0, 65542, 65536, 1, 65539, 65536, 1, 65540, 65536, 1, 65541, 65536, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -174,6 +181,30 @@ layer_1/tile_data = PackedInt32Array(131072, 0, 2, 196608, 0, 2, 262144, 0, 2, 3
 position = Vector2(64, 68.5)
 shape = SubResource("RectangleShape2D_r3sp8")
 debug_color = Color(0, 0.65098, 0.0352941, 0.419608)
+
+[node name="Sprite2D" parent="." instance=ExtResource("3_syl7b")]
+position = Vector2(104, 29)
+
+[node name="Sprite2D3" parent="." instance=ExtResource("4_u1i8g")]
+position = Vector2(35, 45)
+
+[node name="Sprite2D2" parent="." instance=ExtResource("5_0gd8y")]
+position = Vector2(87, 25)
+
+[node name="Sprite2D4" parent="." instance=ExtResource("6_c7sxc")]
+position = Vector2(22, 43)
+
+[node name="Sprite2D5" parent="." instance=ExtResource("7_62pvl")]
+position = Vector2(58, 29)
+
+[node name="CarpetTest" parent="." instance=ExtResource("8_vxdla")]
+position = Vector2(80, 54)
+
+[node name="CarpetTest2" parent="." instance=ExtResource("8_vxdla")]
+position = Vector2(80, 97)
+
+[node name="Sprite2D6" parent="." instance=ExtResource("9_emq3w")]
+position = Vector2(32, 32)
 
 [node name="Door" parent="." instance=ExtResource("2_1mjmt")]
 position = Vector2(88, 104)

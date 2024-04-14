@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwf24pxqlykat"]
+
+[ext_resource type="Script" path="res://Scripts/welcome_screen.gd" id="1_nqdda"]
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_iif6q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvwjl"]
+bg_color = Color(0.552941, 0.694118, 0.364706, 0.901961)
+
+[sub_resource type="Theme" id="Theme_u51u3"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_nvwjl")
+
+[node name="WelcomeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_nqdda")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.5
+offset_top = -56.5
+offset_right = 279.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_u51u3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_iif6q")
+theme_override_font_sizes/font_size = 6
+text = "Welcome"
+
+[node name="Introduction" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_iif6q")
+theme_override_font_sizes/font_size = 6
+text = "Hi!
+Thank you for playing this game. 
+It is part of my bachelor's thesis and its purpose is to simulate loot box mechanics. 
+Feel free to test every function and do not hesitate to spend some \"money\". ;)"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Name" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iif6q")
+theme_override_font_sizes/font_size = 6
+text = "Enter your name:"
+
+[node name="Name_Input" type="LineEdit" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iif6q")
+theme_override_font_sizes/font_size = 6
+placeholder_text = "Adventurer_638251"
+max_length = 25
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_iif6q")
+theme_override_font_sizes/font_size = 8
+text = "Start your Journey"
+
+[connection signal="text_submitted" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/Name_Input" to="." method="_on_name_input_text_submitted"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

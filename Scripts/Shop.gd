@@ -15,10 +15,12 @@ func _process(_delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "PlayerCat":
 		$Roof.visible = false
+		$shop_dialog.show()
 
 func _on_area_2d_body_exited(body):
 	if body.name == "PlayerCat":
 		$Roof.visible = true
+		$shop_dialog.hide()
 
 func _on_shop_area_body_entered(body):
 	if body.name == "PlayerCat":

@@ -20,10 +20,11 @@ var farm_x = [3, 9, -4, 2, -11, -5, -4, 2]
 var farm_y = [38, 41, 44, 30, 36]
 
 var player_node : Node = null
+var player_name : String = ""
+var player_points : int = 3517
+
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
 var items
-
-
 
 # Hotbar Items
 var hotbar_size = 5
@@ -36,9 +37,12 @@ var wallet_total : float = 0.0
 # Fake Money
 var wallet : float = 0.0
 # Ingame Currency
-var coins : int = 5000
+var coins : int = 20
 # Ingame Premium Currency
 var silver_ingots : int = 100
+
+# Structure toggles
+var well = false
 
 func _ready():
 	# Initializes the inventory with 8 slots (8 blocks per row, 4 rows)
@@ -60,6 +64,7 @@ func ui_ready():
 		ingame_shop.connect("update_shop_wallet", _on_update_wallet)
 		ingame_shop.connect("update_ingots", _on_update_ingots)
 		ingame_shop.connect("update_farmland", _on_update_farmland)
+		ingame_shop.connect("well_bought", _on_well_bought)
 
 	var shop_chest_premium = get_premium_chest()
 	if shop_chest_premium:
@@ -240,6 +245,9 @@ func spawn_item(data, item_position):
 	item_instance.global_position = item_position
 	print(items)
 	items[0].add_child(item_instance)
+
+func _on_well_bought():
+	tile_map.set_cell(6, Vector2i(0, 35),15, Vector2i(0, 0))
 
 func _on_update_farmland(new_coins):
 	coins = new_coins

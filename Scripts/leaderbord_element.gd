@@ -18,14 +18,14 @@ func deferred_init():
 		initialize_labels(lb_rank, lb_player, lb_points)
 
 func initialize_labels(rank, player, points):
-	rank_label.text = str(rank)
-	player_label.text = str(player)
-	points_label.text = str(points)
+	rank_label.text = rank
+	player_label.text = player
+	points_label.text = points
 
 func set_variables(rank, player, points):
-	lb_rank = rank
-	lb_player = player
-	lb_points = points
+	lb_rank = str(rank)
+	lb_player = str(player)
+	lb_points = str(points)
 	
 	if is_inside_tree():
 		initialize_labels(lb_rank, lb_player, lb_points)

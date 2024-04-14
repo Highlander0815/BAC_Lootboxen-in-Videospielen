@@ -16,19 +16,20 @@
 
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(-1, -1)
 script = ExtResource("1_i1vn7")
 
 [node name="UI" parent="." groups=["UI"] instance=ExtResource("3_v41ka")]
 
 [node name="PlayerCat" parent="." instance=ExtResource("1_8rr7t")]
 z_index = 0
-position = Vector2(169, 633)
+position = Vector2(152, 581)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCat"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(169, 633)
+position = Vector2(152, 581)
 zoom = Vector2(0.7, 0.7)
 
 [node name="TileMap" parent="." groups=["TileMap"] instance=ExtResource("4_diq4y")]
@@ -39,11 +40,14 @@ layer_6/tile_data = PackedInt32Array(3211330, 131076, 3, 3211329, 131076, 3, 321
 [node name="Cow" parent="." instance=ExtResource("8_s7kue")]
 position = Vector2(888, 549)
 
-[node name="Chest" parent="." instance=ExtResource("9_22wuv")]
-position = Vector2(95, 503)
-
 [node name="Chicken" parent="." instance=ExtResource("10_u0177")]
 position = Vector2(918, 584)
+
+[node name="Chest" parent="." instance=ExtResource("9_22wuv")]
+position = Vector2(139, 495)
+
+[node name="Chest2" parent="." instance=ExtResource("9_22wuv")]
+position = Vector2(1128, 349)
 
 [node name="house" parent="." instance=ExtResource("12_mw25h")]
 y_sort_enabled = true

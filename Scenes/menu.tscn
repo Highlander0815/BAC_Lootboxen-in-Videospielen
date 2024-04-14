@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bklwybuixu30l"]
+[gd_scene load_steps=7 format=3 uid="uid://bklwybuixu30l"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_twy2p"]
 [ext_resource type="Theme" uid="uid://dks70jg0pj3nw" path="res://Resources/menu_button_theme.tres" id="2_7jucj"]
 [ext_resource type="PackedScene" uid="uid://ctnsvcljd5nug" path="res://Levels/title_scene.tscn" id="2_nt87f"]
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_x1xm7"]
+[ext_resource type="PackedScene" uid="uid://bwf24pxqlykat" path="res://Scenes/welcome_screen.tscn" id="5_4fve3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgimo"]
 bg_color = Color(0.407843, 0.407843, 0.407843, 0.466667)
@@ -87,6 +88,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mgimo")
 text = "Farm Island
 A Loot Box Experience"
 horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WelcomeScreen" parent="CanvasLayer" instance=ExtResource("5_4fve3")]
+process_mode = 3
+visible = false
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

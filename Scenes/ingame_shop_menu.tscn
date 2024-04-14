@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://86relsmuivyy"]
+[gd_scene load_steps=24 format=3 uid="uid://86relsmuivyy"]
 
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="1_6bed7"]
 [ext_resource type="Script" path="res://Scripts/ingame_shop_menu.gd" id="1_o6ud7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Theme" uid="uid://bk543d3o4vys" path="res://Resources/UI_add_money.tres" id="9_34q2s"]
 [ext_resource type="Texture2D" uid="uid://btv6b3g8j5iqd" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/coins.png" id="9_ogxl4"]
 [ext_resource type="PackedScene" uid="uid://bheeihrnwqfii" path="res://Scenes/Shop_chest_Basic.tscn" id="9_xi6hs"]
+[ext_resource type="Texture2D" uid="uid://beikaabfdwdyy" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Water well.png" id="12_0b6ru"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lba4u"]
 bg_color = Color(0.329412, 0.34902, 0.34902, 1)
@@ -41,6 +42,8 @@ TabContainer/styles/tab_hovered = ExtResource("7_50dkc")
 TabContainer/styles/tab_selected = ExtResource("7_50dkc")
 TabContainer/styles/tab_unselected = ExtResource("6_qce5s")
 TabContainer/styles/tabbar_background = null
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fyxfh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37xnl"]
 bg_color = Color(0.917647, 0.882353, 0.470588, 1)
@@ -381,6 +384,48 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 8
 text = "Buy"
 
+[node name="Structure" type="TabBar" parent="PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Structure"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.0
+offset_right = 37.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fyxfh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Structure/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Structure/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 8
+text = "Well
+Reduce plant growth
+time by 20%"
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/VBoxContainer/TabContainer/Structure/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_0b6ru")
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Structure/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_6hwvq")
+theme_override_fonts/font = ExtResource("1_6bed7")
+theme_override_font_sizes/font_size = 8
+text = "Buy for 50 ingots"
+
 [node name="Silver Ingots" type="TabBar" parent="PanelContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
@@ -548,6 +593,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InfoMessage" type="Panel" parent="."]
+visible = false
 z_index = 1
 y_sort_enabled = true
 custom_minimum_size = Vector2(100, 70)
@@ -591,6 +637,7 @@ autowrap_mode = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Seed Box/HBoxContainer/Premium_Chest/HBoxContainer/Info_Premium" to="." method="_on_info_premium_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/btn_add_inv_space" to="." method="_on_btn_add_inv_space_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer/btn_add_farmland" to="." method="_on_btn_add_farmland_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Structure/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer/HBoxContainer/VBoxContainer/btn_buy_tiny" to="." method="_on_btn_buy_tiny_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer2/HBoxContainer/VBoxContainer2/btn_buy_small" to="." method="_on_btn_buy_small_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer/VBoxContainer3/btn_buy_medium" to="." method="_on_btn_buy_medium_pressed"]

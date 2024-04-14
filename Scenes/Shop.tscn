@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://brifydgdfcdpv"]
+[gd_scene load_steps=33 format=3 uid="uid://brifydgdfcdpv"]
 
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="1_x4bgj"]
 [ext_resource type="Texture2D" uid="uid://gs4y12spdv84" path="res://Art/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Wooden House.png" id="2_7ar7c"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://cqf57gj2wjey5" path="res://Scenes/Interior/plant_potted_2.tscn" id="20_cadm7"]
 [ext_resource type="PackedScene" uid="uid://cgjkrm7hxvvbs" path="res://Scenes/Interior/chair_left.tscn" id="21_3g3db"]
 [ext_resource type="PackedScene" uid="uid://bhopgncjrqvmg" path="res://Scenes/Interior/Carpet_small_green.tscn" id="21_tfbrc"]
+[ext_resource type="Texture2D" uid="uid://mio2egi72a4a" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Dialouge UI/dialog box small.png" id="23_6fbwd"]
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="24_xocnr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ndc6a"]
 texture = ExtResource("2_7ar7c")
@@ -159,6 +161,13 @@ texture = ExtResource("2_7ar7c")
 [sub_resource type="TileSet" id="TileSet_2e25c"]
 sources/0 = SubResource("TileSetAtlasSource_4a4eg")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5jii"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1napk"]
+line_spacing = 0.0
+font = ExtResource("24_xocnr")
+font_size = 6
+
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_x4bgj")
 
@@ -289,6 +298,42 @@ layer_0/tile_data = PackedInt32Array(327682, 262144, 2, 327683, 262144, 2, 32768
 layer_1/name = "Chimney"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(262146, 0, 4)
+
+[node name="shop_dialog" type="NinePatchRect" parent="."]
+visible = false
+z_index = 2
+texture_filter = 1
+offset_left = 113.0
+offset_top = 28.0
+offset_right = 225.0
+offset_bottom = 76.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("23_6fbwd")
+
+[node name="Container" type="PanelContainer" parent="shop_dialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -12.0
+offset_right = 49.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n5jii")
+
+[node name="Label" type="Label" parent="shop_dialog/Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Hi!
+If you want to sell vegetables, 
+just drop them in front of the desk!"
+label_settings = SubResource("LabelSettings_1napk")
+vertical_alignment = 1
 
 [connection signal="area_entered" from="Shop_Area" to="." method="_on_shop_area_area_entered"]
 [connection signal="area_exited" from="Shop_Area" to="." method="_on_shop_area_area_exited"]
