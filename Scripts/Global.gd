@@ -21,7 +21,7 @@ var farm_y = [38, 41, 44, 30, 36]
 
 var player_node : Node = null
 var player_name : String = ""
-var player_points : int = 3517
+var player_points : int = 0
 
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
 var items
@@ -39,7 +39,7 @@ var wallet : float = 0.0
 # Ingame Currency
 var coins : int = 20
 # Ingame Premium Currency
-var silver_ingots : int = 100
+var silver_ingots : int = 0
 
 # Structure toggles
 var well = false
@@ -65,6 +65,7 @@ func ui_ready():
 		ingame_shop.connect("update_ingots", _on_update_ingots)
 		ingame_shop.connect("update_farmland", _on_update_farmland)
 		ingame_shop.connect("well_bought", _on_well_bought)
+		ingame_shop.connect("update_exchange_coins", _on_update_coins)
 
 	var shop_chest_premium = get_premium_chest()
 	if shop_chest_premium:

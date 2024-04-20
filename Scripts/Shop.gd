@@ -40,7 +40,18 @@ func sell_items():
 		if item.get("item_rarity") == "4":
 			total_ingots += 1
 		item.queue_free() # Remove the item from the scene
-
+		
+	# Add points
+	for item in items_in_shop:
+		if item.get("item_rarity") == "1":
+			Global.player_points += 1
+		elif item.get("item_rarity") == "2":
+			Global.player_points += 4
+		elif item.get("item_rarity") == "3":
+			Global.player_points += 20
+		elif item.get("item_rarity") == "4":
+			Global.player_points += 100
+	
 	item_sold.emit(total_coins, total_ingots)
 
 func _on_shop_area_area_entered(area):

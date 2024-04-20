@@ -1,6 +1,6 @@
 extends Control
 
-class_name leaderboard_element_player
+class_name leaderboard_element
 
 @onready var rank_label = $HBoxContainer/Rank
 @onready var player_label = $HBoxContainer/Player

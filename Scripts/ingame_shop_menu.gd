@@ -11,13 +11,16 @@ extends Control
 @onready var Prompt = $InfoMessage/Prompt
 @onready var farmland_label = $PanelContainer/VBoxContainer/TabContainer/Farmland/MarginContainer/VBoxContainer/HBoxContainer/Price_farmland
 @onready var well_structure_btn = $PanelContainer/VBoxContainer/TabContainer/Structure/PanelContainer/VBoxContainer/Button
+@onready var exchange_text = $PanelContainer/VBoxContainer/TabContainer/Exchange/MarginContainer/VBoxContainer/exchange_text
 
 signal update_shop_wallet
 signal update_ingots
 signal update_farmland
 signal well_bought
+signal update_exchange_coins
 
-var inv_space_price = 10
+var UI_node
+var inv_space_price = 5
 var farmland_price = 25
 
 func _ready():
@@ -26,6 +29,7 @@ func _ready():
 	premium_label.text = str(Global.silver_ingots)
 	%Price_invspace.text = str(inv_space_price)
 	farmland_label.text = str(farmland_price)
+	UI_node = get_tree().get_first_node_in_group("UI")
 
 func resume():
 	get_tree().paused = false
@@ -36,9 +40,11 @@ func pause():
 func open_shop_menu():
 	if Input.is_action_just_pressed("shop_menu") and get_tree().paused == false:
 		show()
+		UI_node.hide()
 		pause()
 	elif Input.is_action_just_pressed("shop_menu") and get_tree().paused == true:
 		hide()
+		UI_node.show()
 		resume()
 
 func _on_resume_pressed():
@@ -180,3 +186,18 @@ func _on_button_pressed():
 		show_prompt("You just bought access to the well!")
 	else:
 		show_prompt("You don't have enough silver ingots for buying new farmland.")
+
+
+func _on_btn_exchange_pressed():
+	var change = int(exchange_text.text.strip_edges())
+
+	if change != null and change > 0:
+		if Global.silver_ingots >= change:
+			update_ingots.emit(Global.silver_ingots - change)
+			update_exchange_coins.emit(Global.coins + (change * 5))
+			premium_label.text = str(Global.silver_ingots)
+			show_prompt("Exchange completed!")
+		else:
+			show_prompt("Exchange failed, not enough silver ingots")
+	else:
+		show_prompt("Exchange failed, input invalid")

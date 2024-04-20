@@ -7,6 +7,9 @@ signal update_wallet
 @onready var wallet_label = %Amount
 @onready var coins_label = $Control/MarginContainer2/VBoxContainer/HBoxContainer/Coins_Amount
 @onready var premium_label = $Control/MarginContainer2/VBoxContainer/HBoxContainer2/Premium_Amount
+@onready var spent_label = $Control/MarginContainer/VBoxContainer/HBoxContainer3/spent_label
+
+var spent : float = 0.00
 
 var wallet : float = 0.00:
 	set(new_wallet):
@@ -30,8 +33,10 @@ func _update_wallet_label():
 	wallet_label.text = "%.2f" % wallet
 
 func _on_add_money_pressed():
-	wallet += 0.10
-	Global.wallet_total += 0.10
+	wallet += 0.40
+	spent += 0.40
+	Global.wallet_total += 0.40
+	spent_label.text = "%.2f" % spent
 	_on_money_added()
 
 func _on_money_spent(new_wallet):
