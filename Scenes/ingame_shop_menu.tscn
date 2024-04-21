@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://86relsmuivyy"]
+[gd_scene load_steps=23 format=3 uid="uid://86relsmuivyy"]
 
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="1_6bed7"]
 [ext_resource type="Script" path="res://Scripts/ingame_shop_menu.gd" id="1_o6ud7"]
 [ext_resource type="PackedScene" uid="uid://jug116nt63n0" path="res://Scenes/Shop_chest.tscn" id="2_3km5u"]
 [ext_resource type="Texture2D" uid="uid://cygeam32bkwsb" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/silver_ingot.png" id="2_ci1wr"]
-[ext_resource type="StyleBox" uid="uid://itw4mk7p60l1" path="res://Resources/ingame_shop_menu_close_button.tres" id="4_0mqg4"]
 [ext_resource type="StyleBox" uid="uid://c7vgnsn8i6mt2" path="res://Resources/ingame_shop_menu_tab_panel.tres" id="5_afyy3"]
 [ext_resource type="Texture2D" uid="uid://bqwx5h658nha2" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/silver_ingot.png" id="6_i3p6w"]
 [ext_resource type="StyleBox" uid="uid://b6hj7ani16g17" path="res://Resources/ingame_shop_menu_tab_btn.tres" id="6_qce5s"]
@@ -124,19 +123,6 @@ theme_override_font_sizes/font_size = 8
 text = "Premium Shop"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_6bed7")
-theme_override_font_sizes/font_size = 4
-theme_override_styles/normal = ExtResource("4_0mqg4")
-theme_override_styles/hover = ExtResource("4_0mqg4")
-theme_override_styles/pressed = ExtResource("4_0mqg4")
-theme_override_styles/disabled = ExtResource("4_0mqg4")
-theme_override_styles/focus = ExtResource("4_0mqg4")
-text = "X"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -718,7 +704,6 @@ autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="InfoMessage"]
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Seed Box/HBoxContainer/Basic_Chest/HBoxContainer/Info_Basic" to="." method="_on_info_basic_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Seed Box/HBoxContainer/Premium_Chest/HBoxContainer/Info_Premium" to="." method="_on_info_premium_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/btn_add_inv_space" to="." method="_on_btn_add_inv_space_pressed"]

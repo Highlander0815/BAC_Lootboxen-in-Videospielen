@@ -45,9 +45,10 @@ func open_shop_menu():
 	elif Input.is_action_just_pressed("shop_menu") and get_tree().paused == true:
 		hide()
 		UI_node.show()
+		on_resume()
 		resume()
 
-func _on_resume_pressed():
+func on_resume():
 	var loot = premium_Items.get_children()
 	var basic_loot = basic_Items.get_children()
 	if loot != null:

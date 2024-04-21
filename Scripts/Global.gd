@@ -22,6 +22,7 @@ var farm_y = [38, 41, 44, 30, 36]
 var player_node : Node = null
 var player_name : String = ""
 var player_points : int = 0
+var old_player_points : int = 0
 
 @onready var inventory_slot_scene = preload("res://Scenes/inventory_slot.tscn")
 var items
