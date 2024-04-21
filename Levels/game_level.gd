@@ -3,7 +3,6 @@ extends Node2D
 class_name game_level
 
 @onready var tile_map : TileMap = $TileMap
-@onready var infobox  = $CanvasLayer/HoverInfobox
 @onready var items = get_tree().get_nodes_in_group("Item_Group")
 @onready var item_data = ItemData.new()
 

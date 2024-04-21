@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://mkepdva1y4bw"]
+[gd_scene load_steps=14 format=3 uid="uid://mkepdva1y4bw"]
 
 [ext_resource type="PackedScene" uid="uid://bk774ufcr67pd" path="res://Characters/player_cat.tscn" id="1_8rr7t"]
 [ext_resource type="Script" path="res://Levels/game_level.gd" id="1_i1vn7"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cbsaalhuoxbrb" path="res://Characters/cow.tscn" id="8_s7kue"]
 [ext_resource type="PackedScene" uid="uid://bfgcr1sp43dvl" path="res://Scenes/chest.tscn" id="9_22wuv"]
 [ext_resource type="PackedScene" uid="uid://jltog6jfm7v4" path="res://Characters/chicken.tscn" id="10_u0177"]
-[ext_resource type="PackedScene" uid="uid://1nr1mejqfqhf" path="res://Scenes/hover_infobox.tscn" id="11_vrcry"]
 [ext_resource type="PackedScene" uid="uid://pf4c03i43j1u" path="res://Scenes/house.tscn" id="12_mw25h"]
 [ext_resource type="PackedScene" uid="uid://bsxwlgd5lyrmh" path="res://Scenes/Apple_Tree.tscn" id="12_u246n"]
 [ext_resource type="PackedScene" uid="uid://bqo57qq2coiwh" path="res://Scenes/leaderboard.tscn" id="13_v8sdo"]
@@ -66,8 +65,6 @@ position = Vector2(1024, 608)
 y_sort_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HoverInfobox" parent="CanvasLayer" instance=ExtResource("11_vrcry")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_fujic")]
 visible = false
