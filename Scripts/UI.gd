@@ -25,18 +25,21 @@ func _ready():
 	Global.connect("update_global_wallet", _on_wallet_updated)
 	Global.ui_ready()
 
+func _process(_delta):
+	_update_wallet_label()
+
 func _on_wallet_updated(new_wallet):
 	wallet = new_wallet
 	_update_wallet_label()
 
 func _update_wallet_label():
 	wallet_label.text = "%.2f" % wallet
+	spent = Global.player_spent
+	spent_label.text = "%.2f" % spent
 
 func _on_add_money_pressed():
 	wallet += 0.40
-	spent += 0.40
 	Global.wallet_total += 0.40
-	spent_label.text = "%.2f" % spent
 	_on_money_added()
 
 func _on_money_spent(new_wallet):

@@ -6,6 +6,8 @@ class_name game_level
 @onready var items = get_tree().get_nodes_in_group("Item_Group")
 @onready var item_data = ItemData.new()
 
+var elapsed_time = 0
+
 var crop_layer : int = 5
 var crops_source_id : int = 6
 var final_seed_level : int = 3
@@ -29,6 +31,7 @@ var plant_register = {
 }
 
 func _ready():
+	$Timer.start()
 	vegetables = item_data.get_vegetables()
 
 func _physics_process(_delta):
@@ -122,3 +125,12 @@ func is_crop_mature(tile_map_pos) -> bool:
 	if tile_data:
 		return tile_data.get_custom_data("Matured")
 	return false
+
+
+func _on_timer_timeout():
+	elapsed_time += 1
+	print("Elapsed Game time: ", elapsed_time)
+
+func _exit_tree():
+	$Timer.stop()
+	Global.timer = elapsed_time

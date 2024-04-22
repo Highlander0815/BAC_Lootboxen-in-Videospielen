@@ -22,6 +22,7 @@ signal update_exchange_coins
 var UI_node
 var inv_space_price = 5
 var farmland_price = 25
+var elapsed_time = 0
 
 func _ready():
 	InfoMessage.hide()
@@ -42,11 +43,13 @@ func open_shop_menu():
 		show()
 		UI_node.hide()
 		pause()
+		$GameTimer.start()
 	elif Input.is_action_just_pressed("shop_menu") and get_tree().paused == true:
 		hide()
 		UI_node.show()
 		on_resume()
 		resume()
+		$GameTimer.stop()
 
 func on_resume():
 	var loot = premium_Items.get_children()
@@ -105,6 +108,7 @@ func _on_btn_buy_tiny_pressed():
 		update_shop_wallet.emit(Global.wallet - 1.99)
 		update_ingots.emit(Global.silver_ingots + 5)
 		premium_label.text = str(Global.silver_ingots)
+		Global.player_spent += 1.99
 		show_prompt("Thank you for buying the tiny pack to support us a little.")
 	else:
 		show_prompt("You don't have enough money in your wallet...")
@@ -114,6 +118,7 @@ func _on_btn_buy_small_pressed():
 		update_shop_wallet.emit(Global.wallet - 7.99)
 		update_ingots.emit(Global.silver_ingots + 22)
 		premium_label.text = str(Global.silver_ingots)
+		Global.player_spent += 7.99
 		show_prompt("Thank you for buying the small pack to support us a little more.")
 	else:
 		show_prompt("You don't have enough money in your wallet...")
@@ -123,6 +128,7 @@ func _on_btn_buy_medium_pressed():
 		update_shop_wallet.emit(Global.wallet - 19.99)
 		update_ingots.emit(Global.silver_ingots + 55)
 		premium_label.text = str(Global.silver_ingots)
+		Global.player_spent += 19.99
 		show_prompt("Thank you for buying the medium pack to support us.")
 	else:
 		show_prompt("You don't have enough money in your wallet...")
@@ -132,6 +138,7 @@ func _on_btn_buy_large_pressed():
 		update_shop_wallet.emit(Global.wallet - 49.99)
 		update_ingots.emit(Global.silver_ingots + 138)
 		premium_label.text = str(Global.silver_ingots)
+		Global.player_spent += 49.99
 		show_prompt("Thank you for buying the large pack to support us like a boss!")
 	else:
 		show_prompt("You don't have enough money in your wallet...")
@@ -202,3 +209,12 @@ func _on_btn_exchange_pressed():
 			show_prompt("Exchange failed, not enough silver ingots")
 	else:
 		show_prompt("Exchange failed, input invalid")
+
+
+func _on_game_timer_timeout():
+	elapsed_time += 1
+	print("Elapsed Time: ", elapsed_time)
+
+func _exit_tree():
+	$GameTimer.stop()
+	Global.premium_timer = elapsed_time

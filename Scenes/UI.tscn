@@ -103,7 +103,7 @@ text = "+"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
-text = "Add 0.10 €"
+text = "Add 0.40 €"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control"]
 layout_mode = 1

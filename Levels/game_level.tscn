@@ -74,3 +74,8 @@ visible = false
 
 [node name="Leaderboard" parent="CanvasLayer" instance=ExtResource("13_v8sdo")]
 visible = false
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

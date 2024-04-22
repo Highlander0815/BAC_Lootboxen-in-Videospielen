@@ -704,6 +704,8 @@ autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="InfoMessage"]
 
+[node name="GameTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Seed Box/HBoxContainer/Basic_Chest/HBoxContainer/Info_Basic" to="." method="_on_info_basic_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Seed Box/HBoxContainer/Premium_Chest/HBoxContainer/Info_Premium" to="." method="_on_info_premium_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Inventory/MarginContainer/VBoxContainer/btn_add_inv_space" to="." method="_on_btn_add_inv_space_pressed"]
@@ -715,3 +717,4 @@ autowrap_mode = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer3/HBoxContainer/VBoxContainer3/btn_buy_medium" to="." method="_on_btn_buy_medium_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Silver Ingots/Gridcontainer/PanelContainer4/HBoxContainer/VBoxContainer4/btn_buy_large" to="." method="_on_btn_buy_large_pressed"]
 [connection signal="timeout" from="InfoMessage/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

@@ -21,6 +21,7 @@ var farm_y = [38, 41, 44, 30, 36]
 
 var player_node : Node = null
 var player_name : String = ""
+var player_spent : float = 0.0
 var player_points : int = 0
 var old_player_points : int = 0
 
@@ -44,6 +45,9 @@ var silver_ingots : int = 0
 
 # Structure toggles
 var well = false
+
+var timer = 0
+var premium_timer = 0
 
 func _ready():
 	# Initializes the inventory with 8 slots (8 blocks per row, 4 rows)
