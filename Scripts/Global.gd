@@ -114,7 +114,6 @@ func get_ui():
 func _on_update_wallet(new_wallet):
 	wallet = new_wallet
 	_on_wallet_updated()
-	print(wallet_total)
 
 func _on_update_ingots(new_ingots):
 	silver_ingots = new_ingots

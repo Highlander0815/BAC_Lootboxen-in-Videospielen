@@ -120,7 +120,7 @@ func _input(_event):
 		inventory_hotbar.visible = !inventory_hotbar.visible
 	
 	if Input.is_action_pressed("run"):
-		velo_multiplicator = 1.25
+		velo_multiplicator = 1.4
 	
 	if Input.is_action_just_released("run"):
 		velo_multiplicator = 1.0

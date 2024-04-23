@@ -99,7 +99,7 @@ func _on_button_pressed():
 	if Global.coins >= 5:
 		update_chest_coins.emit(Global.coins - 5)
 		await spawn_items()
-		await get_tree().create_timer(4.0).timeout
+		await get_tree().create_timer(2.5).timeout
 		reset_chest()
 	else:
 		show_prompt("Sry, you don't have enough coins to buy a chest...")

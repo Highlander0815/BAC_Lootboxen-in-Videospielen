@@ -1831,6 +1831,7 @@ texture = ExtResource("9_q6s8u")
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
 0:0/0 = 0
+0:0/0/y_sort_origin = -14
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 

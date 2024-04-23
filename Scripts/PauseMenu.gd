@@ -26,3 +26,8 @@ func _on_resume_pressed():
 
 func _process(_delta):
 	testEsc()
+
+func _on_controls_pressed():
+	hide()
+	resume()
+	$"../IntroScreen".show()

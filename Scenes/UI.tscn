@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv34r3mko121"]
+[gd_scene load_steps=8 format=3 uid="uid://cv34r3mko121"]
 
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_m2ct3"]
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_wvuc4"]
@@ -6,22 +6,40 @@
 [ext_resource type="Texture2D" uid="uid://btv6b3g8j5iqd" path="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/coins.png" id="4_2axuy"]
 [ext_resource type="Texture2D" uid="uid://cygeam32bkwsb" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/silver_ingot.png" id="4_glv6y"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biun6"]
+bg_color = Color(0.862745, 0.72549, 0.541176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.666667, 0.47451, 0.34902, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 1
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2m5iw"]
+bg_color = Color(0.862745, 0.72549, 0.541176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.666667, 0.47451, 0.34902, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 2.0
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_m2ct3")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 41.0
-offset_bottom = 32.0
-color = Color(0, 0, 0, 0.501961)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -42.0
-offset_bottom = 25.0
-grow_horizontal = 0
-color = Color(0, 0, 0, 0.501961)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -40,66 +58,79 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_biun6")
 
-[node name="spent_info" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="spent_info" type="Label" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "Spent: "
 metadata/_edit_use_anchors_ = true
 
-[node name="spent_label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="spent_label" type="Label" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "0.00"
 
-[node name="Euro" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Euro" type="Label" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "€"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer" groups=["UI"]]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/PanelContainer/VBoxContainer" groups=["UI"]]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Wallet_Info" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Wallet_Info" type="Label" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "Wallet: "
 metadata/_edit_use_anchors_ = true
 
-[node name="Amount" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Amount" type="Label" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "0.00"
 
-[node name="Euro" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Euro" type="Label" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "€"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 
-[node name="add_money" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="add_money" type="Button" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_t80r5")
 text = "+"
 
-[node name="Add_Info" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Add_Info" type="Label" parent="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
@@ -118,23 +149,30 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2m5iw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer2/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="Coins_Amount" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Coins_Amount" type="Label" parent="Control/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "0"
 
-[node name="Coins_Label" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Coins_Label" type="Label" parent="Control/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(11, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -142,26 +180,26 @@ theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "Coins"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 texture = ExtResource("4_2axuy")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer2/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer2/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="Premium_Amount" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
+[node name="Premium_Amount" type="Label" parent="Control/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "0"
 
-[node name="Premium_Label" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
+[node name="Premium_Label" type="Label" parent="Control/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(11, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -169,11 +207,11 @@ theme_override_fonts/font = ExtResource("2_wvuc4")
 theme_override_font_sizes/font_size = 4
 text = "Silver"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture = ExtResource("4_glv6y")
 
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/add_money" to="." method="_on_add_money_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/add_money" to="." method="_on_add_money_pressed"]

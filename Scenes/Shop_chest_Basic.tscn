@@ -160,11 +160,6 @@ offset_left = -8.0
 offset_top = -6.0
 offset_right = 8.0
 offset_bottom = 8.0
-tooltip_text = "Drop rates:
-Rarity 1: 35%
-Rarity 2: 55%
-Rarity 3: 9%
-Rarity 4: 0.5%"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mwp6d")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_uv4fs")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_q0f81")

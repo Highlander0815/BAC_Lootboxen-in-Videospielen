@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Bac_Game"
+config/version="1.0"
 run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Egg_item.png"
+config/icon="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/carrot_item.png"
 
 [autoload]
 
@@ -23,6 +24,7 @@ Global="*res://Scripts/Global.gd"
 
 window/stretch/mode="canvas_items"
 window/stretch/scale=4.0
+mouse_cursor/custom_image="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Mouse sprites/Triangle Mouse icon 1.png"
 
 [input]
 
@@ -119,3 +121,4 @@ leaderboard={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_s3tc_bptc=true

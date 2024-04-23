@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://vjvosyk7ytl5"]
+
+[ext_resource type="Script" path="res://Scripts/Intro_Screen.gd" id="1_266ca"]
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_5lbvb"]
+[ext_resource type="FontFile" uid="uid://cwe2wo0lk4sid" path="res://Roboto/Roboto-Bold.ttf" id="2_uc3ru"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvwjl"]
+bg_color = Color(0.552941, 0.694118, 0.364706, 0.901961)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Theme" id="Theme_u51u3"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_nvwjl")
+
+[node name="IntroScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_266ca")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.5
+offset_top = -56.5
+offset_right = 279.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_u51u3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_uc3ru")
+theme_override_font_sizes/font_size = 8
+text = "Controls"
+
+[node name="Introduction" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_5lbvb")
+theme_override_font_sizes/font_size = 6
+text = "Use \"WASD\" or Arrowkeys to move the character.
+Use the Mouse and \"Left Click\" to plant seeds and harvest matured crops.
+Use \"E\" to pick up items and open doors.
+Use \"I\" to open the inventory. 
+Add items to the hotbar by \"left clicking\" them and then hit \"Assign\". 
+Use \"1, 2, 3, 4 and 5\" to select hotbar items.
+Use \"Q\" to open the premium shop menu.
+Use \"L\" to open the leaderboard.
+Press \"Shift\" to run.
+Use \"Esc\" to pause the game.
+Find the Shop to sell your harvested crops on the eastern end of the island.
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_5lbvb")
+theme_override_font_sizes/font_size = 8
+text = "I got it!"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

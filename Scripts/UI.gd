@@ -5,9 +5,9 @@ class_name UI
 signal update_wallet
 
 @onready var wallet_label = %Amount
-@onready var coins_label = $Control/MarginContainer2/VBoxContainer/HBoxContainer/Coins_Amount
-@onready var premium_label = $Control/MarginContainer2/VBoxContainer/HBoxContainer2/Premium_Amount
-@onready var spent_label = $Control/MarginContainer/VBoxContainer/HBoxContainer3/spent_label
+@onready var coins_label = $Control/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/Coins_Amount
+@onready var premium_label = $Control/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer2/Premium_Amount
+@onready var spent_label = $Control/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer3/spent_label
 
 var spent : float = 0.00
 

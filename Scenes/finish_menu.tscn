@@ -44,11 +44,11 @@ grow_vertical = 2
 
 [node name="Title_Scene" parent="MarginContainer" instance=ExtResource("2_rbi40")]
 y_sort_enabled = true
-position = Vector2(127, 86)
+position = Vector2(153.5, 82.5)
 
 [node name="Camera2D" type="Camera2D" parent="MarginContainer"]
 z_index = 5
-position = Vector2(165, 126)
+position = Vector2(176.5, 103.5)
 zoom = Vector2(0.44, 0.44)
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
@@ -69,7 +69,7 @@ theme_override_fonts/font = ExtResource("4_qbi8e")
 theme_override_font_sizes/font_size = 16
 text = "
 Thank you very much for playing this game!
-Please copy this data into the survey.
+Please copy the data below into the survey at the end.
 
 "
 horizontal_alignment = 1
@@ -114,7 +114,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qbi8e")
 theme_override_font_sizes/font_size = 12
-text = "Player time (seconds):"
+text = "Played time (seconds):"
 horizontal_alignment = 2
 
 [node name="Time" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer3"]

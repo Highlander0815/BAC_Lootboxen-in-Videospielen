@@ -129,7 +129,6 @@ func is_crop_mature(tile_map_pos) -> bool:
 
 func _on_timer_timeout():
 	elapsed_time += 1
-	print("Elapsed Game time: ", elapsed_time)
 
 func _exit_tree():
 	$Timer.stop()
