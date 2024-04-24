@@ -25,3 +25,4 @@ func _on_name_input_text_submitted(text):
 	else:
 		Global.player_name = text
 	get_tree().change_scene_to_file("res://Levels/game_level.tscn")
+

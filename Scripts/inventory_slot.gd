@@ -61,7 +61,6 @@ func _on_drop_button_pressed():
 		Global.remove_hotbar_item(item["item_type"], item["item_name"])
 		usage_panel.visible = false
 
-
 func update_assignment_status():
 	is_assigned = Global.is_item_assigned_to_hotbar(item)
 	if is_assigned:

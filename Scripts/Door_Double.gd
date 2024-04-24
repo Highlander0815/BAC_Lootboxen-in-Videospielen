@@ -27,9 +27,12 @@ func closing_door():
 func _on_area_2d_body_entered(body):
 	if body.name == "PlayerCat":
 		player_entered = true
+		body.interact_ui.visible = true
 
-func _on_area_2d_body_exited(_body):
-	player_entered = false
+func _on_area_2d_body_exited(body):
+	if body.name == "PlayerCat":
+		player_entered = false
+		body.interact_ui.visible = false
 
 		
 func _input(_event):

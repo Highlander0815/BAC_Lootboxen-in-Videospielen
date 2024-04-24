@@ -180,6 +180,7 @@ func adjust_drop_position(position):
 
 # Drops an item at a specified position, adjusting for nearby items
 func drop_item(item_data, drop_position):
+	item_data["scene_path"] = "res://Scenes/Inventory_Item.tscn"
 	var item_scene = load(item_data["scene_path"])
 	var item_instance = item_scene.instantiate()
 	item_instance.set_item_data(item_data)
