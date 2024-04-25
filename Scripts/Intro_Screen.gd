@@ -1,6 +1,7 @@
 extends Control
 var counter = 0
 
+@onready var title = $MarginContainer/PanelContainer/VBoxContainer/Title
 @onready var button = $MarginContainer/PanelContainer/VBoxContainer/Button
 @onready var intro = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/Introduction
 @onready var help1 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_wallet
@@ -10,6 +11,7 @@ var counter = 0
 
 func _on_button_pressed():
 	if counter == 0:
+		title.text = "How to play"
 		intro.hide()
 		help1.show()
 	elif counter == 1:
@@ -23,6 +25,11 @@ func _on_button_pressed():
 		help4.show()
 		button.text = "Got it!"
 	elif counter >= 4:
-		hide()
 		help4.hide()
+		title.text = "Controls"
+		intro.show()
+		hide()
+	
 	counter += 1
+	if counter >= 5:
+		counter = 0
