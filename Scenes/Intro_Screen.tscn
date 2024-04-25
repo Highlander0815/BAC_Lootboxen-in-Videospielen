@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vjvosyk7ytl5"]
+[gd_scene load_steps=16 format=3 uid="uid://vjvosyk7ytl5"]
 
 [ext_resource type="Script" path="res://Scripts/Intro_Screen.gd" id="1_266ca"]
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_5lbvb"]
@@ -6,9 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://c6ib3ft6xhtqt" path="res://Art/Screenshots/help_wallet.png" id="4_ncw06"]
 [ext_resource type="Texture2D" uid="uid://pdtnm6y4w84a" path="res://Art/Screenshots/help_currency.png" id="5_66kqt"]
 [ext_resource type="Texture2D" uid="uid://bh6ax1tuqvg8c" path="res://Art/Screenshots/help_hotbar.png" id="6_cabr2"]
-[ext_resource type="Texture2D" uid="uid://cxsxcbyv75heu" path="res://Art/Screenshots/help_shop.png" id="7_21ngl"]
+[ext_resource type="Texture2D" uid="uid://gdusx1nq56fq" path="res://Art/Screenshots/help_shop.png" id="7_21ngl"]
+[ext_resource type="Texture2D" uid="uid://ncg1bkxp2hqy" path="res://Art/Screenshots/help_chest.png" id="8_5uks7"]
 [ext_resource type="FontFile" uid="uid://b475a0cp148tx" path="res://Roboto/Roboto-Italic.ttf" id="8_vh5cp"]
 [ext_resource type="FontFile" uid="uid://c4ro6uhxdb4cy" path="res://Roboto/Roboto-BoldItalic.ttf" id="9_07ikn"]
+[ext_resource type="Texture2D" uid="uid://cqrfb1e4k5ruv" path="res://Art/Screenshots/help_assign.png" id="10_181ci"]
+[ext_resource type="Texture2D" uid="uid://bmwu3sjdqnqr" path="res://Art/Screenshots/help_leaderboard.png" id="12_jjxo6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvwjl"]
 bg_color = Color(0.552941, 0.694118, 0.364706, 0.901961)
@@ -74,6 +77,7 @@ theme_override_font_sizes/font_size = 8
 text = "Controls"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(190, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ug8xw")
 
@@ -97,7 +101,7 @@ You can find the controls in the pause menu.
 horizontal_alignment = 1
 
 [node name="Introduction" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
-custom_minimum_size = Vector2(190, 96)
+custom_minimum_size = Vector2(190, 100)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_5lbvb")
 theme_override_fonts/bold_font = ExtResource("2_uc3ru")
@@ -117,6 +121,7 @@ Use [b][u]\"Q\"[/u][/b] to open the [b][u]premium shop menu[/u][/b].
 Use [b][u]\"L\"[/u][/b] to open the [b][u]leaderboard[/u][/b].
 Use [b][u]\"1, 2, 3, 4 and 5\"[/u][/b] to select hotbar items.
 Use [b][u]\"Esc\"[/u][/b] to [b][u]pause[/u][/b] the game.
+Use [b][u]\"Shift\"[/u][/b] to run.
 
 You can find the controls in the pause menu.[/center]"
 
@@ -132,17 +137,35 @@ custom_minimum_size = Vector2(176, 96)
 layout_mode = 2
 texture = ExtResource("5_66kqt")
 
+[node name="help_chest" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("8_5uks7")
+
+[node name="help_shop" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("7_21ngl")
+
+[node name="help_assign" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("10_181ci")
+
 [node name="help_hotbar" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
 visible = false
 custom_minimum_size = Vector2(176, 96)
 layout_mode = 2
 texture = ExtResource("6_cabr2")
 
-[node name="help_shop" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+[node name="help_leaderboard" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
 visible = false
-custom_minimum_size = Vector2(95.3, 83.5)
+custom_minimum_size = Vector2(176, 96)
 layout_mode = 2
-texture = ExtResource("7_21ngl")
+texture = ExtResource("12_jjxo6")
 
 [node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2

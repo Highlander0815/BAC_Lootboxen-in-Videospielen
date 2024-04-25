@@ -10,11 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Bac_Game"
+config/name="Farm Island - A Lootbox Experience"
 config/version="1.0"
 run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/carrot_item.png"
+config/macos_native_icon="res://Art/icon.icns"
+config/windows_native_icon="res://Art/icon.ico"
 
 [autoload]
 

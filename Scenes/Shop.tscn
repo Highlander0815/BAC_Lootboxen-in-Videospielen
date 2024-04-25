@@ -335,9 +335,12 @@ just drop them in front of the desk!"
 label_settings = SubResource("LabelSettings_1napk")
 vertical_alignment = 1
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Shop_Area" to="." method="_on_shop_area_area_entered"]
 [connection signal="area_exited" from="Shop_Area" to="." method="_on_shop_area_area_exited"]
 [connection signal="body_entered" from="Shop_Area" to="." method="_on_shop_area_body_entered"]
 [connection signal="body_exited" from="Shop_Area" to="." method="_on_shop_area_body_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

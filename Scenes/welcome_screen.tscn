@@ -73,7 +73,6 @@ theme_override_font_sizes/font_size = 6
 text = "Thank you for playing this game. 
 It is part of my bachelor's thesis and its purpose is to simulate loot box mechanics. 
 Feel free to test every function and do not hesitate to spend some \"money\". ;)
-You can always add some by pressing the \"+\" button.
 When you finished testing go to the Pause Menu (\"Esc\") and click Finish. 
 It will show you some data, where i kindly ask you to add it in the survey after the playtest."
 horizontal_alignment = 1

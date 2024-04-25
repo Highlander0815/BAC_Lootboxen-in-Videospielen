@@ -6,8 +6,11 @@ var counter = 0
 @onready var intro = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/Introduction
 @onready var help1 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_wallet
 @onready var help2 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_currency
-@onready var help3 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_hotbar
+@onready var help3 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_chest
 @onready var help4 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_shop
+@onready var help5 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_assign
+@onready var help6 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_hotbar
+@onready var help7 = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/help_leaderboard
 
 func _on_button_pressed():
 	if counter == 0:
@@ -23,13 +26,22 @@ func _on_button_pressed():
 	elif counter == 3:
 		help3.hide()
 		help4.show()
-		button.text = "Got it!"
-	elif counter >= 4:
+	elif counter == 4:
 		help4.hide()
+		help5.show()
+	elif counter == 5:
+		help5.hide()
+		help6.show()
+	elif counter == 6:
+		help6.hide()
+		help7.show()
+		button.text = "Got it!"
+	elif counter == 7:
+		help7.hide()
 		title.text = "Controls"
 		intro.show()
 		hide()
 	
 	counter += 1
-	if counter >= 5:
+	if counter >= 8:
 		counter = 0

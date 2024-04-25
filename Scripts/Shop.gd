@@ -3,6 +3,7 @@ extends Node2D
 var can_access_shop = false
 # Store references to items within the shop area
 var items_in_shop = []
+@onready var shop_dialog = $shop_dialog/Container/Label
 
 signal item_sold(total_coins, total_ingots)
 
@@ -53,6 +54,14 @@ func sell_items():
 			Global.player_points += 100
 	
 	item_sold.emit(total_coins, total_ingots)
+	
+	$Timer.start(5.0)
+	if total_ingots > 0:
+		shop_dialog.text = "Thank you! 
+		You got " + str(total_coins) + " coins and " + str(total_ingots) + " silver." 
+	else:
+		shop_dialog.text = "Thank you! 
+		You got " + str(total_coins) + " coins."
 
 func _on_shop_area_area_entered(area):
 	if area.owner.get("item_sellable"):
@@ -62,3 +71,9 @@ func _on_shop_area_area_entered(area):
 func _on_shop_area_area_exited(area):
 	if area.owner in items_in_shop:
 		items_in_shop.erase(area.owner)
+
+
+func _on_timer_timeout():
+	shop_dialog.text = "Hi!
+If you want to sell vegetables, 
+just drop them in front of the desk!" 

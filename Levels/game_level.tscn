@@ -24,13 +24,13 @@ script = ExtResource("1_i1vn7")
 
 [node name="PlayerCat" parent="." instance=ExtResource("1_8rr7t")]
 z_index = 0
-position = Vector2(152, 581)
+position = Vector2(158, 597)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCat"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(152, 581)
+position = Vector2(158, 597)
 zoom = Vector2(0.7, 0.7)
 
 [node name="TileMap" parent="." groups=["TileMap"] instance=ExtResource("4_diq4y")]

@@ -64,31 +64,31 @@ func plant_growth(tile_map_pos, level, atlas_coord, time):
 func growth_handler(tile_map_pos, plant : String):
 	if plant == "Corn Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 1), 15.0)
-	if plant == "Carrot Seeds":
+	elif plant == "Carrot Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 2), 15.0)
-	if plant == "Cauliflower Seeds":
+	elif plant == "Cauliflower Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 3), 30.0)
-	if plant == "Tomato Seeds":
+	elif plant == "Tomato Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 4), 15.0)
-	if plant == "Aubergine Seeds":
+	elif plant == "Aubergine Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 5), 15.0)
-	if plant == "Blue Poppy Seeds":
+	elif plant == "Blue Poppy Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 6), 45.0)
-	if plant == "Cabbage Seeds":
+	elif plant == "Cabbage Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 7), 10.0)
-	if plant == "Wheat Seeds":
+	elif plant == "Wheat Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 8), 10.0)
-	if plant == "Pumpkin Seeds":
+	elif plant == "Pumpkin Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 9), 30.0)
-	if plant == "White Radish Seeds":
+	elif plant == "White Radish Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 10), 15.0)
-	if plant == "Artichoke Seeds":
+	elif plant == "Artichoke Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 11), 30.0)
-	if plant == "Purple Radish Seeds":
+	elif plant == "Purple Radish Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 12), 30.0)
-	if plant == "Star Fruit Seeds":
+	elif plant == "Starfruit Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 13), 45.0)
-	if plant == "Cucumber Seeds":
+	elif plant == "Cucumber Seeds":
 		plant_growth(tile_map_pos, 0, Vector2i(0, 14), 15.0)
 
 func harvest_crop(tile_map_pos, item_position):
