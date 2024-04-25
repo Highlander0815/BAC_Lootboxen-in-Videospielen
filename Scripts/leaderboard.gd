@@ -2,18 +2,11 @@ extends Control
 
 @onready var leaderboard_list = $MarginContainer/PanelContainer/VBoxContainer/List
 
-var player_names = ["" ,"GiantChestnut", "Adventurer_1123095", "GreenGecko","LittleTangerine", "ShadyDeep", 
-"InnocentLazy", "FitEros", "StormCloud", "HellBeast", "LittleBig", "Adventurer_3451827", "DevilsHand", "Pea", 
-"Lazarus", "RandomName"]
-
 var player_data = [{"name" : "GiantChestnut", "points" : 126}, {"name" : "Adventurer_1123095", "points" : 105}, {"name" : "GreenGecko", "points" : 99}, 
 {"name" : "InnocentLazy", "points" : 88}, {"name" : "ShadyDeep", "points" : 76}, {"name" : "LittleTangerine", "points" : 61},
 {"name" : "HellBeast", "points" : 52}, {"name" : "StormCloud", "points" : 48}, {"name" : "FitEros", "points" : 33},
 {"name" : "DevilsHand", "points" : 19}, {"name" : "Adventurer_3451827", "points" : 12}, {"name" : "LittleBig", "points" : 8},
 {"name" : "Lazarus", "points" : 5}, {"name" : "RandomName", "points" : 0}, {"name" : "Pea", "points" : 0}]
-
-var random_points_above = [250, 205, 155, 40, 35, 20, 5]
-var random_points_below = [5, 20, 30, 45, 55, 80, 95, 100, 110, 130, 165, 195, 200, 205]
 
 func _ready():
 	player_data.append({"name" : Global.player_name, "points" : Global.player_points})
