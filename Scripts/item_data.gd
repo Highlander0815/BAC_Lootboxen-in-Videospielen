@@ -20,20 +20,20 @@ var seeds = [
 ]
 
 var vegetables = [
-	{"item_type": "Vegetable", "item_name": "Artichoke", "item_rarity": "3", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/artichoke_item.png")},
-	{"item_type": "Vegetable", "item_name": "Aubergine", "item_rarity": "2", "item_sellable" : true, "item_value" : 2, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/aubergine_item.png")},
-	{"item_type": "Vegetable", "item_name": "Blue Poppy", "item_rarity": "4", "item_sellable" : true, "item_value" : 20, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/blue_poppy_item.png")},
-	{"item_type": "Vegetable", "item_name": "Cabbage", "item_rarity": "1", "item_sellable" : true, "item_value" : 1, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/cabbage_item.png")},
-	{"item_type": "Vegetable", "item_name": "Carrot", "item_rarity": "2", "item_sellable" : true, "item_value" : 2, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/carrot_item.png")},
-	{"item_type": "Vegetable", "item_name": "Cauliflower", "item_rarity": "3", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/cauliflower_item.png")},
-	{"item_type": "Vegetable", "item_name": "Corn", "item_rarity": "2", "item_sellable" : true, "item_value" : 2, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/corn_item.png")},
-	{"item_type": "Vegetable", "item_name": "Cucumber", "item_rarity": "2", "item_sellable" : true, "item_value" : 2, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/cucumber_item.png")},
-	{"item_type": "Vegetable", "item_name": "Pumpkin", "item_rarity": "3", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/pumpkin_item.png")},
-	{"item_type": "Vegetable", "item_name": "Purple Radish", "item_rarity": "3", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/purple_radish_item.png")},
-	{"item_type": "Vegetable", "item_name": "Starfruit", "item_rarity": "4", "item_sellable" : true, "item_value" : 20, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/starfruit_item.png")},
-	{"item_type": "Vegetable", "item_name": "Tomato", "item_rarity": "2", "item_sellable" : true, "item_value" : 2, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/tomato_item.png")},
-	{"item_type": "Vegetable", "item_name": "Wheat", "item_rarity": "1", "item_sellable" : true, "item_value" : 1, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/wheat_item.png")},
-	{"item_type": "Vegetable", "item_name": "White Radish", "item_rarity": "2", "item_sellable" : true, "item_value" : 2, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/white_radish_item.png")}
+	{"item_type": "Vegetable", "item_name": "Artichoke", "item_rarity": "3", "item_sellable" : true, "item_value" : 8, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/artichoke_item.png")},
+	{"item_type": "Vegetable", "item_name": "Aubergine", "item_rarity": "2", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/aubergine_item.png")},
+	{"item_type": "Vegetable", "item_name": "Blue Poppy", "item_rarity": "4", "item_sellable" : true, "item_value" : 40, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/blue_poppy_item.png")},
+	{"item_type": "Vegetable", "item_name": "Cabbage", "item_rarity": "1", "item_sellable" : true, "item_value" : 2, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/cabbage_item.png")},
+	{"item_type": "Vegetable", "item_name": "Carrot", "item_rarity": "2", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/carrot_item.png")},
+	{"item_type": "Vegetable", "item_name": "Cauliflower", "item_rarity": "3", "item_sellable" : true, "item_value" : 8, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/cauliflower_item.png")},
+	{"item_type": "Vegetable", "item_name": "Corn", "item_rarity": "2", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/corn_item.png")},
+	{"item_type": "Vegetable", "item_name": "Cucumber", "item_rarity": "2", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/cucumber_item.png")},
+	{"item_type": "Vegetable", "item_name": "Pumpkin", "item_rarity": "3", "item_sellable" : true, "item_value" : 8, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/pumpkin_item.png")},
+	{"item_type": "Vegetable", "item_name": "Purple Radish", "item_rarity": "3", "item_sellable" : true, "item_value" : 8, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/purple_radish_item.png")},
+	{"item_type": "Vegetable", "item_name": "Starfruit", "item_rarity": "4", "item_sellable" : true, "item_value" : 40, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/starfruit_item.png")},
+	{"item_type": "Vegetable", "item_name": "Tomato", "item_rarity": "2", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/tomato_item.png")},
+	{"item_type": "Vegetable", "item_name": "Wheat", "item_rarity": "1", "item_sellable" : true, "item_value" : 2, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/wheat_item.png")},
+	{"item_type": "Vegetable", "item_name": "White Radish", "item_rarity": "2", "item_sellable" : true, "item_value" : 4, "texture": preload("res://Art/Sprout Lands - Sprites - premium pack/Objects/Items/Vegetables/white_radish_item.png")}
 ]
 
 var fruits = [

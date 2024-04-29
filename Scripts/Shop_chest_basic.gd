@@ -25,15 +25,16 @@ func _ready():
 	InfoMessage.hide()
 	seeds = item_data.get_seeds()
 
+# handles the opening of the chest
 func open_chest():
-	state_machine.travel("opening")	
+	state_machine.travel("opening")
 	await get_tree().create_timer(0.5).timeout
 	light.enabled = true
 	print("light enabled: ", light.enabled)
 	await get_tree().create_timer(0.2).timeout
 	particles.emitting = true
 
-
+# generates a random number and returns a seed with the sidgnated rarity level
 func random_seed_generator():
 	var lucky_number = randf_range(0.0, 99.0)
 	if lucky_number <= 0.5:
@@ -45,6 +46,7 @@ func random_seed_generator():
 	else:
 		return get_seeds_by_rarity(1)
 
+# returns a random seed of the given rarity level
 func get_seeds_by_rarity(rarity):
 	var filtered_seeds = []
 	for item in seeds:
@@ -63,6 +65,7 @@ func get_seeds_by_rarity(rarity):
 	# Return the randomly selected vegetable
 	return filtered_seeds[random_index]
 
+# handles the creation of the 3 selected random seeds
 func spawn_items():
 	button.disabled = true
 	
@@ -85,6 +88,7 @@ func spawn_items():
 	for item in items.get_children():
 		item.get_child(0).visible = true
 
+# spawns one specific seed in the gameworld
 func spawn_item(data, item_position):
 	var item_scene = preload("res://Scenes/Shop_Item.tscn")
 	var item_instance = item_scene.instantiate()
@@ -94,7 +98,7 @@ func spawn_item(data, item_position):
 	item_instance.get_child(0).visible = false
 	items.add_child(item_instance)
 
-
+# handles the functionality of the buy button
 func _on_button_pressed():
 	if Global.coins >= 5:
 		update_chest_coins.emit(Global.coins - 5)
@@ -103,13 +107,15 @@ func _on_button_pressed():
 		reset_chest()
 	else:
 		show_prompt("Sry, you don't have enough coins to buy a chest...")
-	
+
+# resets the chest after it has been opened
 func reset_chest():
 	light.enabled = false
 	particles.emitting = false
 	state_machine.travel("Idle")
 	button.disabled = false
 
+# shows a prompt with changeable information
 func show_prompt(text, duration = 3.0):
 	# Set the message
 	Prompt.text = text
@@ -118,5 +124,6 @@ func show_prompt(text, duration = 3.0):
 	# Show the panel
 	InfoMessage.show()
 
+# hides the info message after timer runs out
 func _on_timer_timeout():
 	InfoMessage.hide()

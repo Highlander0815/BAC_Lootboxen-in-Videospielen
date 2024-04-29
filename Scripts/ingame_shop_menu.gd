@@ -20,7 +20,7 @@ signal well_bought
 signal update_exchange_coins
 
 var UI_node
-var inv_space_price = 5
+var inv_space_price = 2
 var farmland_price = 25
 var elapsed_time = 0
 

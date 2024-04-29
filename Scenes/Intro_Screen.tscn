@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://vjvosyk7ytl5"]
+[gd_scene load_steps=17 format=3 uid="uid://vjvosyk7ytl5"]
 
 [ext_resource type="Script" path="res://Scripts/Intro_Screen.gd" id="1_266ca"]
 [ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_5lbvb"]
@@ -12,9 +12,10 @@
 [ext_resource type="FontFile" uid="uid://c4ro6uhxdb4cy" path="res://Roboto/Roboto-BoldItalic.ttf" id="9_07ikn"]
 [ext_resource type="Texture2D" uid="uid://cqrfb1e4k5ruv" path="res://Art/Screenshots/help_assign.png" id="10_181ci"]
 [ext_resource type="Texture2D" uid="uid://bmwu3sjdqnqr" path="res://Art/Screenshots/help_leaderboard.png" id="12_jjxo6"]
+[ext_resource type="Theme" uid="uid://c62jkc2qefg03" path="res://Resources/Shop_ingot_buttons.tres" id="13_tm3hj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvwjl"]
-bg_color = Color(0.552941, 0.694118, 0.364706, 0.901961)
+bg_color = Color(0.396078, 0.54902, 0.631373, 0.921569)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -171,6 +172,7 @@ texture = ExtResource("12_jjxo6")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("13_tm3hj")
 theme_override_fonts/font = ExtResource("2_5lbvb")
 theme_override_font_sizes/font_size = 8
 text = "Next"

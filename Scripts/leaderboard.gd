@@ -12,7 +12,7 @@ func _ready():
 	player_data.append({"name" : Global.player_name, "points" : Global.player_points})
 
 func initialize_list():
-	var lb_element = preload("res://Scenes/leaderbord_element.tscn")
+	var lb_element = preload("res://Scenes/leaderbord_element_menu.tscn")
 	var element = lb_element.instantiate()
 	element.set_variables("Rank", "Player Name", "Points")
 	leaderboard_list.add_child(element)
