@@ -2,11 +2,21 @@ extends Control
 
 @onready var leaderboard_list = $MarginContainer/PanelContainer/VBoxContainer/List
 
-var player_data = [{"name" : "GiantChestnut", "points" : 126}, {"name" : "Adventurer_1123095", "points" : 105}, {"name" : "GreenGecko", "points" : 99}, 
-{"name" : "InnocentLazy", "points" : 88}, {"name" : "ShadyDeep", "points" : 76}, {"name" : "LittleTangerine", "points" : 61},
-{"name" : "HellBeast", "points" : 52}, {"name" : "StormCloud", "points" : 48}, {"name" : "FitEros", "points" : 33},
-{"name" : "DevilsHand", "points" : 19}, {"name" : "Adventurer_3451827", "points" : 12}, {"name" : "LittleBig", "points" : 8},
-{"name" : "Lazarus", "points" : 5}, {"name" : "RandomName", "points" : 0}, {"name" : "Pea", "points" : 0}]
+var player_data = [{"name" : "GiantChestnut", "points" : 126}, 
+{"name" : "Adventurer_1123095", "points" : 105}, 
+{"name" : "GreenGecko", "points" : 99}, 
+{"name" : "InnocentLazy", "points" : 88}, 
+{"name" : "ShadyDeep", "points" : 76}, 
+{"name" : "LittleTangerine", "points" : 61},
+{"name" : "HellBeast", "points" : 52}, 
+{"name" : "StormCloud", "points" : 48}, 
+{"name" : "FitEros", "points" : 33},
+{"name" : "DevilsHand", "points" : 19}, 
+{"name" : "Adventurer_3451827", "points" : 12}, 
+{"name" : "LittleBig", "points" : 8},
+{"name" : "Lazarus", "points" : 5}, 
+{"name" : "RandomName", "points" : 0}, 
+{"name" : "Pea", "points" : 0}]
 
 func _ready():
 	player_data.append({"name" : Global.player_name, "points" : Global.player_points})
@@ -19,15 +29,15 @@ func initialize_list():
 
 func show_leaderboard():
 	clear_leaderboard()  # Clear existing labels
-	initialize_list()
+	initialize_list()    # Initialize list with "Rank", "Player Name" and "Points".
 	add_label()          # Add new labels
-	show()               # Show the Control node
-	pause()              # Pause the game if needed
+	show()               # Show the Leaderboard
+	pause()              # Pause the game
 
 func hide_leaderboard():
 	clear_leaderboard()  # Clear existing labels
-	hide()               # Hide the Control node
-	resume()             # Resume the game if it was paused
+	hide()               # Hide the Leaderboard
+	resume()             # Resume the game
 
 func clear_leaderboard():
 	# Clear all children in the VBoxContainer.
@@ -90,6 +100,7 @@ func resume():
 func pause():
 	get_tree().paused = true
 
+# handles calling of menu
 func testLB():
 	if Input.is_action_just_pressed("leaderboard") and get_tree().paused == false:
 		show_leaderboard()
@@ -98,11 +109,12 @@ func testLB():
 
 func _process(_delta):
 	testLB()
+	
+	# every time the player updates own points, npcs get the chance to add points too.
 	if Global.player_points > Global.old_player_points:
 		if (Global.player_points - Global.old_player_points) >= 50:
 			update_leaderboard_data()
 		update_leaderboard_data()
 		sort_array()
 		Global.old_player_points = Global.player_points
-		
-		
+

@@ -1,6 +1,5 @@
 extends Sprite2D
 
-
 @onready var particles = $CPUParticles2D
 @onready var light = $PointLight2D
 @onready var animation = $AnimationTree
@@ -10,12 +9,8 @@ extends Sprite2D
 @onready var items = get_tree().get_nodes_in_group("Item_Group")
 @onready var colshape = $Chest_Body/CollisionShape2D
 
-
 var seeds
-var player_in_range = false
-
-var fade_out_duration = 2.0 # Duration of the fade-out in seconds
-var fade_out_timer = 0.0 # Tracks the progress of the fade-out
+var player_in_range : bool = false
 
 func _ready():
 	seeds = item_data.get_seeds()
@@ -26,20 +21,13 @@ func _process(_delta):
 		area.disabled = true
 		await spawn_items()
 
-func open_chest():
+func open_chest_animation():
 	state_machine.travel("opening")	
 	await get_tree().create_timer(0.5).timeout
 	light.enabled = true
 	await get_tree().create_timer(0.2).timeout
 	particles.emitting = true
-	
-	var rewards = []
-	
-	for i in range(0, 3):
-		var reward = random_seed_generator()
-		rewards.append(reward)
-	
-	return rewards
+	await get_tree().create_timer(2.0).timeout
 
 func _on_area_2d_body_entered(body):
 	if body.name == "PlayerCat":
@@ -82,16 +70,18 @@ func get_seeds_by_rarity(rarity):
 	return filtered_seeds[random_index]
 
 func spawn_items():
-	var rewards = await open_chest()
-	await get_tree().create_timer(2.0).timeout
+	# Opening Animation
+	await open_chest_animation()
 	
 	# Define position of items
 	var position_array = [Vector2(position.x -15, position.y + 5), Vector2(position.x, position.y + 8), Vector2(position.x + 15, position.y + 5)]
 	
 	# Instantiate and spawn Items from chest
 	for i in range(0, 3):
-		spawn_item(rewards[i], position_array[i])
+		var reward = random_seed_generator()
+		spawn_item(reward, position_array[i])
 	
+	# Fade out and delete animation
 	var alpha = 1.0
 	while true:
 		alpha -= 0.05
@@ -106,7 +96,8 @@ func spawn_items():
 func spawn_item(data, item_position):
 	var item_scene = preload("res://Scenes/Inventory_Item.tscn")
 	var item_instance = item_scene.instantiate()
-	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], data["texture"], data["item_value"], data["item_sellable"])
+	item_instance.initiate_items(data["item_type"], data["item_name"], data["item_rarity"], 
+	data["texture"], data["item_value"], data["item_sellable"])
 	item_instance.global_position = item_position
 	items[0].add_child(item_instance)
 
