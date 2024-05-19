@@ -100,6 +100,3 @@ func spawn_item(data, item_position):
 	data["texture"], data["item_value"], data["item_sellable"])
 	item_instance.global_position = item_position
 	items[0].add_child(item_instance)
-
-
-
