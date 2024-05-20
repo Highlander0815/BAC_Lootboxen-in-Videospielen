@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=3 uid="uid://bfgcr1sp43dvl"]
+
+[ext_resource type="Texture2D" uid="uid://c65b2hk1ahqgp" path="res://Art/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Chest.png" id="1_1a5jl"]
+[ext_resource type="Script" path="res://Scripts/chest.gd" id="2_qcvsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jcfc"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3svuf"]
+size = Vector2(18, 8)
+
+[sub_resource type="Animation" id="Animation_frn5q"]
+resource_name = "opening"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 2, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xds1d"]
+_data = {
+"opening": SubResource("Animation_frn5q")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ugyqy"]
+animation = &"opening"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mlm46"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ugyqy")
+blend_point_0/pos = Vector2(0, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jtvac"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8m8pa"]
+states/Start/position = Vector2(203, 100)
+states/opening/node = SubResource("AnimationNodeBlendSpace2D_mlm46")
+states/opening/position = Vector2(420, 100)
+transitions = ["Start", "opening", SubResource("AnimationNodeStateMachineTransition_jtvac")]
+
+[sub_resource type="Curve" id="Curve_a5eav"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_fu34e"]
+offsets = PackedFloat32Array(0.303419, 0.935897)
+colors = PackedColorArray(1, 1, 1, 1, 0.145993, 0.145993, 0.145993, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v7rik"]
+gradient = SubResource("Gradient_fu34e")
+width = 30
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.667785, 0.22651)
+
+[node name="Chest" type="Sprite2D"]
+light_mask = 3
+position = Vector2(134, 82)
+texture = ExtResource("1_1a5jl")
+hframes = 5
+vframes = 2
+script = ExtResource("2_qcvsq")
+
+[node name="Chest_Body" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest_Body"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_5jcfc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_3svuf")
+debug_color = Color(0.87451, 0.34902, 0, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xds1d")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xds1d")
+}
+tree_root = SubResource("AnimationNodeStateMachine_8m8pa")
+anim_player = NodePath("../AnimationPlayer")
+parameters/opening/blend_position = Vector2(0.0945017, 0.132275)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, -1)
+emitting = false
+amount = 100
+speed_scale = 0.5
+explosiveness = 0.2
+randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, -10)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+scale_amount_min = 0.5
+scale_amount_max = 1.2
+scale_amount_curve = SubResource("Curve_a5eav")
+color = Color(1, 1, 1, 0.784314)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -2)
+enabled = false
+color = Color(1, 1, 0.901961, 1)
+energy = 2.0
+range_z_min = 0
+range_z_max = 0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_v7rik")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

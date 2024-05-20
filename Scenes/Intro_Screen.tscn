@@ -1,0 +1,180 @@
+[gd_scene load_steps=17 format=3 uid="uid://vjvosyk7ytl5"]
+
+[ext_resource type="Script" path="res://Scripts/Intro_Screen.gd" id="1_266ca"]
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="2_5lbvb"]
+[ext_resource type="FontFile" uid="uid://cwe2wo0lk4sid" path="res://Roboto/Roboto-Bold.ttf" id="2_uc3ru"]
+[ext_resource type="Texture2D" uid="uid://c6ib3ft6xhtqt" path="res://Art/Screenshots/help_wallet.png" id="4_ncw06"]
+[ext_resource type="Texture2D" uid="uid://pdtnm6y4w84a" path="res://Art/Screenshots/help_currency.png" id="5_66kqt"]
+[ext_resource type="Texture2D" uid="uid://bh6ax1tuqvg8c" path="res://Art/Screenshots/help_hotbar.png" id="6_cabr2"]
+[ext_resource type="Texture2D" uid="uid://gdusx1nq56fq" path="res://Art/Screenshots/help_shop.png" id="7_21ngl"]
+[ext_resource type="Texture2D" uid="uid://ncg1bkxp2hqy" path="res://Art/Screenshots/help_chest.png" id="8_5uks7"]
+[ext_resource type="FontFile" uid="uid://b475a0cp148tx" path="res://Roboto/Roboto-Italic.ttf" id="8_vh5cp"]
+[ext_resource type="FontFile" uid="uid://c4ro6uhxdb4cy" path="res://Roboto/Roboto-BoldItalic.ttf" id="9_07ikn"]
+[ext_resource type="Texture2D" uid="uid://cqrfb1e4k5ruv" path="res://Art/Screenshots/help_assign.png" id="10_181ci"]
+[ext_resource type="Texture2D" uid="uid://bmwu3sjdqnqr" path="res://Art/Screenshots/help_leaderboard.png" id="12_jjxo6"]
+[ext_resource type="Theme" uid="uid://c62jkc2qefg03" path="res://Resources/Shop_ingot_buttons.tres" id="13_tm3hj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvwjl"]
+bg_color = Color(0.396078, 0.54902, 0.631373, 0.921569)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Theme" id="Theme_u51u3"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_nvwjl")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ug8xw"]
+
+[node name="IntroScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_266ca")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.5
+offset_top = -56.5
+offset_right = 279.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_u51u3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_uc3ru")
+theme_override_font_sizes/font_size = 8
+text = "Controls"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(190, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ug8xw")
+
+[node name="Introduction_old" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_5lbvb")
+theme_override_font_sizes/font_size = 6
+text = "Use \"WASD\" or Arrowkeys to move the character.
+Use \"Left Mouse Click\" to plant seeds and harvest matured crops.
+Use \"E\" to pick up items and open doors or chests.
+Use \"I\" to open the inventory. 
+Use \"Q\" to open the premium shop menu.
+Use \"L\" to open the leaderboard.
+Use \"1, 2, 3, 4 and 5\" to select hotbar items.
+Use \"Esc\" to pause the game.
+You can find the controls in the pause menu.
+"
+horizontal_alignment = 1
+
+[node name="Introduction" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(190, 100)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_5lbvb")
+theme_override_fonts/bold_font = ExtResource("2_uc3ru")
+theme_override_fonts/italics_font = ExtResource("8_vh5cp")
+theme_override_fonts/bold_italics_font = ExtResource("9_07ikn")
+theme_override_font_sizes/normal_font_size = 6
+theme_override_font_sizes/bold_font_size = 7
+theme_override_font_sizes/italics_font_size = 6
+theme_override_font_sizes/bold_italics_font_size = 6
+theme_override_font_sizes/mono_font_size = 6
+bbcode_enabled = true
+text = "[center]Use [b][u]\"WASD\"[/u][/b] or Arrowkeys to [b]move[/b] the character.
+Use [b][u]\"Left Mouse Click\"[/u][/b] to plant seeds and harvest matured crops.
+Use [b][u]\"E\"[/u][/b] to pick up items and open doors or chests.
+Use [b][u]\"I\"[/u][/b] to open the [b][u]inventory[/u][/b]. 
+Use [b][u]\"Q\"[/u][/b] to open the [b][u]premium shop menu[/u][/b].
+Use [b][u]\"L\"[/u][/b] to open the [b][u]leaderboard[/u][/b].
+Use [b][u]\"1, 2, 3, 4 and 5\"[/u][/b] to select hotbar items.
+Use [b][u]\"Esc\"[/u][/b] to [b][u]pause[/u][/b] the game.
+Use [b][u]\"Shift\"[/u][/b] to run.
+
+You can find the controls in the pause menu.[/center]"
+
+[node name="help_wallet" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("4_ncw06")
+
+[node name="help_currency" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("5_66kqt")
+
+[node name="help_chest" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("8_5uks7")
+
+[node name="help_shop" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("7_21ngl")
+
+[node name="help_assign" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("10_181ci")
+
+[node name="help_hotbar" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("6_cabr2")
+
+[node name="help_leaderboard" type="NinePatchRect" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(176, 96)
+layout_mode = 2
+texture = ExtResource("12_jjxo6")
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("13_tm3hj")
+theme_override_fonts/font = ExtResource("2_5lbvb")
+theme_override_font_sizes/font_size = 8
+text = "Next"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

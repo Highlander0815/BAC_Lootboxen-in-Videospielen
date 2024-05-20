@@ -1,0 +1,346 @@
+[gd_scene load_steps=33 format=3 uid="uid://brifydgdfcdpv"]
+
+[ext_resource type="Script" path="res://Scripts/Shop.gd" id="1_x4bgj"]
+[ext_resource type="Texture2D" uid="uid://gs4y12spdv84" path="res://Art/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Wooden House.png" id="2_7ar7c"]
+[ext_resource type="PackedScene" uid="uid://dyck2vr8a43fm" path="res://Characters/npc_cat.tscn" id="2_hayru"]
+[ext_resource type="PackedScene" uid="uid://di1ruj7ad2oil" path="res://Scenes/Door_Double.tscn" id="3_65g88"]
+[ext_resource type="PackedScene" uid="uid://bu40r28yv7nb8" path="res://Scenes/Interior/desk_medium.tscn" id="4_8l03a"]
+[ext_resource type="PackedScene" uid="uid://cp3174ae3necp" path="res://Scenes/Interior/dresser.tscn" id="5_ann3m"]
+[ext_resource type="PackedScene" uid="uid://bbrjy1uoeea7h" path="res://Scenes/Interior/painting_3.tscn" id="6_siocq"]
+[ext_resource type="PackedScene" uid="uid://ki6qgsjluaul" path="res://Scenes/Interior/painting_2.tscn" id="7_c3qgp"]
+[ext_resource type="PackedScene" uid="uid://ocs64o3uo5be" path="res://Scenes/Interior/painting_1.tscn" id="8_qwebp"]
+[ext_resource type="PackedScene" uid="uid://dkd425hyt61ph" path="res://Scenes/Interior/plant_potted_1.tscn" id="9_io5m1"]
+[ext_resource type="PackedScene" uid="uid://dtjft2n4sn0f0" path="res://Scenes/Interior/plant_potted_3.tscn" id="10_derqg"]
+[ext_resource type="PackedScene" uid="uid://b73wg1rrxkkwr" path="res://Scenes/Interior/chair_down.tscn" id="11_78vqm"]
+[ext_resource type="PackedScene" uid="uid://csnh8gdmp0ssh" path="res://Scenes/Interior/Bed_green.tscn" id="15_2brbm"]
+[ext_resource type="PackedScene" uid="uid://cywjf1fltv6wf" path="res://Scenes/Interior/clock_3.tscn" id="16_27pgu"]
+[ext_resource type="PackedScene" uid="uid://dlweiq5c2p2qo" path="res://Scenes/Interior/chair_right.tscn" id="17_mc2d8"]
+[ext_resource type="PackedScene" uid="uid://c3unnc8ckisqr" path="res://Scenes/Interior/chair_up.tscn" id="18_0v0x5"]
+[ext_resource type="PackedScene" uid="uid://cxs0xl032wbxk" path="res://Scenes/Interior/Carpet_medium_blue.tscn" id="19_2by22"]
+[ext_resource type="PackedScene" uid="uid://x5f43k5w5alp" path="res://Scenes/Interior/desk_small.tscn" id="19_r8v7p"]
+[ext_resource type="PackedScene" uid="uid://qw11hol7kd72" path="res://Scenes/Interior/Carpet_small_red.tscn" id="20_7kfhj"]
+[ext_resource type="PackedScene" uid="uid://cqf57gj2wjey5" path="res://Scenes/Interior/plant_potted_2.tscn" id="20_cadm7"]
+[ext_resource type="PackedScene" uid="uid://cgjkrm7hxvvbs" path="res://Scenes/Interior/chair_left.tscn" id="21_3g3db"]
+[ext_resource type="PackedScene" uid="uid://bhopgncjrqvmg" path="res://Scenes/Interior/Carpet_small_green.tscn" id="21_tfbrc"]
+[ext_resource type="Texture2D" uid="uid://mio2egi72a4a" path="res://Art/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Dialouge UI/dialog box small.png" id="23_6fbwd"]
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="24_xocnr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ndc6a"]
+texture = ExtResource("2_7ar7c")
+1:0/0 = 0
+1:0/0/y_sort_origin = 5
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3, 8, 3, 8, 8, 4, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 3, 8, 3, 8, 8, 4, 8, 3, 8)
+1:1/0 = 0
+1:1/0/y_sort_origin = 5
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3, 8, 3, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 3, -8, 3, -8, 8, -4, 8, -3, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 8, -8, 8, 8, 4, 8, 3, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, -8, -8, -8, 8, -4, 8, -3, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 8, -8, 8, 8, 4, 8, 3, 7)
+1:3/0 = 0
+1:3/0/y_sort_origin = 5
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3, 8, 3, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, -8, -8, -8, 8, -4, 8, -3, 7)
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+5:4/0 = 0
+5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:4/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_166ac"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+sources/0 = SubResource("TileSetAtlasSource_ndc6a")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlmro"]
+size = Vector2(58, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvxt2"]
+size = Vector2(144, 107)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4a4eg"]
+texture = ExtResource("2_7ar7c")
+1:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_2e25c"]
+sources/0 = SubResource("TileSetAtlasSource_4a4eg")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5jii"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1napk"]
+line_spacing = 0.0
+font = ExtResource("24_xocnr")
+font_size = 6
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_x4bgj")
+
+[node name="NPCCat" parent="." instance=ExtResource("2_hayru")]
+z_index = 0
+position = Vector2(105, 58)
+
+[node name="Shop_TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_166ac")
+format = 2
+layer_0/name = "Floor"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(131074, 65536, 2, 131075, 65536, 2, 131076, 65536, 2, 131077, 65536, 2, 131078, 65536, 2, 131079, 65536, 2, 131080, 65536, 2, 131081, 65536, 2, 131082, 65536, 2, 196610, 65536, 2, 262146, 65536, 2, 327682, 65536, 2, 393218, 65536, 2, 458754, 65536, 2, 524290, 65536, 2, 524291, 65536, 2, 524292, 65536, 2, 524293, 65536, 2, 524294, 65536, 2, 524295, 65536, 2, 524296, 65536, 2, 524297, 65536, 2, 524298, 65536, 2, 458762, 65536, 2, 393226, 65536, 2, 327690, 65536, 2, 262154, 65536, 2, 196618, 65536, 2, 196617, 65536, 2, 196616, 65536, 2, 196615, 65536, 2, 196614, 65536, 2, 196613, 65536, 2, 196612, 65536, 2, 196611, 65536, 2, 262147, 65536, 2, 327683, 65536, 2, 393219, 65536, 2, 393220, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 65536, 2, 393224, 65536, 2, 393225, 65536, 2, 327688, 65536, 2, 262152, 65536, 2, 262151, 65536, 2, 262150, 65536, 2, 262149, 65536, 2, 262148, 65536, 2, 327684, 65536, 2, 458755, 65536, 2, 393221, 65536, 2, 393222, 65536, 2, 327686, 65536, 2, 327685, 65536, 2, 393223, 65536, 2, 327687, 65536, 2, 327689, 65536, 2, 262153, 65536, 2, 458760, 65536, 2, 458761, 65536, 2, 589826, 65536, 2, 589827, 65536, 2, 589828, 65536, 2, 589829, 65536, 2, 589830, 65536, 2, 589831, 65536, 2, 589832, 65536, 2, 589833, 65536, 2, 589834, 65536, 2)
+layer_1/name = "Walls"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(131077, 65536, 0, 131074, 65536, 1, 131075, 65536, 0, 131076, 65536, 1, 131078, 65536, 1, 131079, 65536, 0, 131080, 65536, 1, 131081, 65536, 0, 196609, 0, 2, 262145, 0, 2, 327681, 0, 2, 393217, 0, 2, 458753, 0, 2, 458763, 131072, 2, 393227, 131072, 2, 327691, 131072, 2, 262155, 131072, 2, 196619, 131072, 2, 131083, 131072, 1, 131082, 65536, 1, 131073, 0, 1, 524289, 0, 2, 524299, 131072, 2, 589826, 65536, 3, 589827, 65536, 0, 589828, 65536, 3, 589832, 65536, 3, 589833, 65536, 0, 589834, 65536, 3, 589825, 0, 3, 589835, 131072, 3)
+
+[node name="DoorDouble" parent="." instance=ExtResource("3_65g88")]
+position = Vector2(104, 152)
+
+[node name="Shop_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop_Area"]
+position = Vector2(105, 91)
+shape = SubResource("RectangleShape2D_tlmro")
+debug_color = Color(0.964706, 0, 0.482353, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(112, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, 5.5)
+shape = SubResource("RectangleShape2D_cvxt2")
+debug_color = Color(0.160784, 0.643137, 0, 0.419608)
+
+[node name="desk_counter1" parent="." instance=ExtResource("4_8l03a")]
+position = Vector2(91, 67)
+
+[node name="blue_flower" parent="desk_counter1" instance=ExtResource("10_derqg")]
+y_sort_enabled = true
+position = Vector2(0, -3)
+
+[node name="desk_counter2" parent="." instance=ExtResource("4_8l03a")]
+position = Vector2(105, 67)
+
+[node name="desk_counter3" parent="." instance=ExtResource("4_8l03a")]
+position = Vector2(119, 67)
+
+[node name="drawer1" parent="." instance=ExtResource("5_ann3m")]
+position = Vector2(72, 46)
+
+[node name="painting1" parent="." instance=ExtResource("6_siocq")]
+position = Vector2(134, 41)
+
+[node name="painting2" parent="." instance=ExtResource("7_c3qgp")]
+position = Vector2(165, 41)
+
+[node name="painting3" parent="." instance=ExtResource("8_qwebp")]
+position = Vector2(42, 41)
+
+[node name="flower1" parent="." instance=ExtResource("9_io5m1")]
+position = Vector2(39, 60)
+
+[node name="flower2" parent="." instance=ExtResource("9_io5m1")]
+position = Vector2(39, 80)
+
+[node name="clock" parent="." instance=ExtResource("16_27pgu")]
+position = Vector2(104, 41)
+
+[node name="chair_up" parent="." instance=ExtResource("11_78vqm")]
+position = Vector2(105, 52)
+
+[node name="bed green" parent="." instance=ExtResource("15_2brbm")]
+position = Vector2(165, 59)
+
+[node name="desk1" parent="." instance=ExtResource("4_8l03a")]
+position = Vector2(53, 120)
+
+[node name="chair left right" parent="." instance=ExtResource("17_mc2d8")]
+position = Vector2(39, 119)
+
+[node name="chair left down" parent="." instance=ExtResource("18_0v0x5")]
+position = Vector2(53, 131)
+
+[node name="chair left up" parent="." instance=ExtResource("11_78vqm")]
+position = Vector2(53, 105)
+
+[node name="desk2" parent="." instance=ExtResource("4_8l03a")]
+position = Vector2(156, 121)
+
+[node name="desk small" parent="." instance=ExtResource("19_r8v7p")]
+position = Vector2(152, 55)
+
+[node name="flower green" parent="desk small" instance=ExtResource("20_cadm7")]
+position = Vector2(0, -4)
+
+[node name="chair right down" parent="." instance=ExtResource("18_0v0x5")]
+position = Vector2(156, 132)
+
+[node name="chair right left" parent="." instance=ExtResource("21_3g3db")]
+position = Vector2(170, 120)
+
+[node name="chair right right" parent="." instance=ExtResource("17_mc2d8")]
+position = Vector2(140, 120)
+
+[node name="CarpetTest2" parent="." instance=ExtResource("19_2by22")]
+position = Vector2(105, 89)
+
+[node name="CarpetTest" parent="." instance=ExtResource("20_7kfhj")]
+position = Vector2(104, 144)
+
+[node name="CarpetTest3" parent="." instance=ExtResource("20_7kfhj")]
+position = Vector2(88, 144)
+
+[node name="CarpetTest4" parent="." instance=ExtResource("21_tfbrc")]
+position = Vector2(141, 74)
+
+[node name="CarpetTest5" parent="." instance=ExtResource("21_tfbrc")]
+position = Vector2(64, 69)
+
+[node name="Roof" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_2e25c")
+format = 2
+layer_0/name = "Roof"
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(327682, 262144, 2, 327683, 262144, 2, 327684, 262144, 2, 327685, 262144, 2, 327686, 262144, 2, 327687, 262144, 2, 327688, 262144, 2, 327689, 262144, 2, 327690, 262144, 2, 327681, 196608, 2, 327691, 327680, 2, 393218, 262144, 3, 393219, 262144, 3, 393220, 262144, 3, 393221, 262144, 3, 458757, 262144, 3, 458758, 262144, 3, 458759, 262144, 3, 458760, 262144, 3, 458761, 262144, 3, 524297, 262144, 3, 524298, 262144, 3, 458762, 262144, 3, 393226, 262144, 3, 393225, 262144, 3, 393224, 262144, 3, 458756, 262144, 3, 524292, 262144, 3, 524291, 262144, 3, 458755, 262144, 3, 458754, 262144, 3, 524290, 262144, 3, 524293, 262144, 3, 524294, 262144, 3, 524295, 262144, 3, 524296, 262144, 3, 393222, 262144, 3, 393223, 262144, 3, 262146, 262144, 1, 196610, 262144, 1, 131074, 262144, 1, 131075, 262144, 1, 131076, 262144, 1, 131077, 262144, 1, 131078, 262144, 1, 131079, 262144, 1, 131080, 262144, 1, 131081, 262144, 1, 196617, 262144, 1, 196618, 262144, 1, 262153, 262144, 1, 262152, 262144, 1, 262151, 262144, 1, 262150, 262144, 1, 262149, 262144, 1, 262148, 262144, 1, 262147, 262144, 1, 196611, 262144, 1, 196612, 262144, 1, 196613, 262144, 1, 196614, 262144, 1, 196615, 262144, 1, 262154, 262144, 1, 131082, 262144, 1, 196616, 262144, 1, 196619, 327680, 1, 131083, 327680, 1, 262155, 327680, 1, 393227, 327680, 3, 458763, 327680, 3, 524299, 327680, 3, 393217, 196608, 3, 458753, 196608, 3, 524289, 196608, 3, 262145, 196608, 1, 196609, 196608, 1, 131073, 196608, 1, 589825, 196608, 4, 589826, 262144, 4, 589827, 262144, 4, 589828, 262144, 4, 589829, 262144, 4, 589830, 262144, 4, 589831, 262144, 4, 589832, 262144, 4, 589833, 262144, 4, 589834, 262144, 4, 589835, 327680, 4, 65537, 196608, 0, 65538, 262144, 0, 65539, 262144, 0, 65540, 262144, 0, 65541, 262144, 0, 65542, 262144, 0, 65543, 262144, 0, 65544, 262144, 0, 65545, 262144, 0, 65546, 262144, 0, 65547, 327680, 0)
+layer_1/name = "Chimney"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(262146, 0, 4)
+
+[node name="shop_dialog" type="NinePatchRect" parent="."]
+visible = false
+z_index = 2
+texture_filter = 1
+offset_left = 113.0
+offset_top = 28.0
+offset_right = 225.0
+offset_bottom = 76.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("23_6fbwd")
+
+[node name="Container" type="PanelContainer" parent="shop_dialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -12.0
+offset_right = 49.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n5jii")
+
+[node name="Label" type="Label" parent="shop_dialog/Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Hi!
+If you want to sell vegetables, 
+just drop them in front of the desk!"
+label_settings = SubResource("LabelSettings_1napk")
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Shop_Area" to="." method="_on_shop_area_area_entered"]
+[connection signal="area_exited" from="Shop_Area" to="." method="_on_shop_area_area_exited"]
+[connection signal="body_entered" from="Shop_Area" to="." method="_on_shop_area_body_entered"]
+[connection signal="body_exited" from="Shop_Area" to="." method="_on_shop_area_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

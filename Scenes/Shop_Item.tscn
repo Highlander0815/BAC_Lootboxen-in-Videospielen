@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://2xeohek821oy"]
+
+[ext_resource type="Script" path="res://Scripts/Shop_Item.gd" id="1_ul3b7"]
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="2_2endu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81hpl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0br86"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hrr5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lp41"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ka45j"]
+
+[node name="Shop_Item" type="Node2D" groups=["Items"]]
+script = ExtResource("1_ul3b7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+script = ExtResource("2_2endu")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_81hpl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0br86")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3hrr5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lp41")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ka45j")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

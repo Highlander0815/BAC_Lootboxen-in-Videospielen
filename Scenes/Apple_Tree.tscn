@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsxwlgd5lyrmh"]
+
+[ext_resource type="Texture2D" uid="uid://cgsd58ef6vsgm" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Basic_Grass_Biom_things.png" id="1_nogyk"]
+[ext_resource type="Script" path="res://Scripts/Apple_Tree.gd" id="1_v4oe6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7xjew"]
+texture = ExtResource("1_nogyk")
+1:0/0 = 0
+1:0/0/y_sort_origin = 20
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/y_sort_origin = 20
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/y_sort_origin = 3
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.15425, 3.18198, -8, 3.0052, -8, 6, -4.24264, 6.18718, -3.09359, 4.59619)
+1:1/0 = 0
+1:1/0/y_sort_origin = 3
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.15425, 3.18198, 8, 3.0052, 8, 6, 4.24264, 6.18718, 3.09359, 4.59619)
+
+[sub_resource type="TileSet" id="TileSet_q1aus"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_7xjew")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8plbt"]
+texture = ExtResource("1_nogyk")
+3:0/0 = 0
+3:0/0/y_sort_origin = 20
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/y_sort_origin = 3
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.18198, -4.24264, 3.62392, -3.18198, 4.50781, -4.06586, 6.01041, -8, 6.0988)
+4:0/0 = 0
+4:0/0/y_sort_origin = 20
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/y_sort_origin = 3
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3.18198, 4.24264, 3.62392, 3.18198, 4.50781, 4.06586, 6.01041, 8, 6.0988)
+
+[sub_resource type="TileSet" id="TileSet_rcije"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_8plbt")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k71f1"]
+radius = 11.0
+
+[node name="AppleTree" type="Node2D"]
+script = ExtResource("1_v4oe6")
+launch_speed = 20.0
+launch_duration = 0.3
+
+[node name="AppleTree_Empty" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_q1aus")
+format = 2
+layer_0/name = "Tree"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(-1, 65536, 1, -65536, 131072, 1, -65537, 65536, 0, -131072, 131072, 0)
+
+[node name="AppleTree_Ripe" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_rcije")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(-65537, 196608, 0, -1, 196608, 1, -131072, 262144, 0, -65536, 262144, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Harvest_Shape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_k71f1")
+debug_color = Color(0.211765, 0.639216, 0, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

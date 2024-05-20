@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dks70jg0pj3nw"]
+
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="1_3u6af"]
+[ext_resource type="StyleBox" uid="uid://diuql2kyholh7" path="res://Resources/UI.tres" id="1_g1vud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvula"]
+bg_color = Color(0.341176, 0.447059, 0.592157, 1)
+border_width_bottom = 3
+border_color = Color(0.235294, 0.317647, 0.435294, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.203922, 0.203922, 0.203922, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[resource]
+Button/fonts/font = ExtResource("1_3u6af")
+Button/styles/hover = ExtResource("1_g1vud")
+Button/styles/normal = SubResource("StyleBoxFlat_pvula")

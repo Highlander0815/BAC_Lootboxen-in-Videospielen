@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvi0y62p58fs4"]
+
+[ext_resource type="Script" path="res://Scripts/Finish_Menu.gd" id="1_k8cjw"]
+[ext_resource type="PackedScene" uid="uid://ctnsvcljd5nug" path="res://Levels/title_scene.tscn" id="2_rbi40"]
+[ext_resource type="Theme" uid="uid://dks70jg0pj3nw" path="res://Resources/menu_button_theme.tres" id="3_lp7sb"]
+[ext_resource type="FontFile" uid="uid://082wydk0ygnw" path="res://Roboto/Roboto-Medium.ttf" id="4_qbi8e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unh3n"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 0.862745)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_k8cjw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -11.0
+offset_right = 50.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title_Scene" parent="MarginContainer" instance=ExtResource("2_rbi40")]
+y_sort_enabled = true
+position = Vector2(153.5, 82.5)
+
+[node name="Camera2D" type="Camera2D" parent="MarginContainer"]
+z_index = 5
+position = Vector2(176.5, 103.5)
+zoom = Vector2(0.44, 0.44)
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_unh3n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="description" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 16
+text = "
+Thank you very much for playing this game!
+Please copy the data below into the survey at the end.
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 12
+text = "Achieved points:"
+
+[node name="Points" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 12
+text = "Money spent:"
+
+[node name="Spent" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 12
+text = "Played time (seconds):"
+horizontal_alignment = 2
+
+[node name="Time" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 12
+text = "Premium shop time (seconds):"
+horizontal_alignment = 2
+
+[node name="PremiumTime" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_qbi8e")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+
+[node name="Quit" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_lp7sb")
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
