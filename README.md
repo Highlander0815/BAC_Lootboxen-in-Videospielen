@@ -5,4 +5,5 @@ Please enjoy this short excourse into the world of lootboxes ;)
 
 I added the whole code and a windows binary.
 
-Assets are made by Cup Nooble from Itch.Io
+Assets are made by Cup Nooble from itch.io
+https://cupnooble.itch.io/sprout-lands-asset-pack
